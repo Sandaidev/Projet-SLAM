@@ -1,6 +1,9 @@
 <?php
 function Vue_Administration_Menu( )
 {
+    /*
+     * Navbar de la page d'administration
+     */
 
     echo "
  
@@ -16,6 +19,11 @@ function Vue_Administration_Menu( )
 }
 
 function Vue_Administration_Gerer_Compte(){
+    /*
+     * Body de le la page "Gérer mon compte"
+     * Administration -> Navbar -> Mon compte
+     */
+
     echo " 
     <H1>Gérer mon compte</H1>
     <table style='display: inline-block'>
