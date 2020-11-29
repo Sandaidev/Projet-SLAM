@@ -1,0 +1,2 @@
+Mettez dans ce dossier, ce qui doit être téléchargé par le client web
+(fichiers javascript, css, images...)
