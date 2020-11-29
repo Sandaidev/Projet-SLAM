@@ -43,6 +43,10 @@ if(isset($_SESSION["idUtilisateur"])) {
             , $_REQUEST["ville"], $_REQUEST["pays"], $_REQUEST["mailContact"], $_REQUEST["siret"]);
         $listeEntreprise = Entreprise_Select($connexion);
         Vue_Gestion_Entreprise_Liste($listeEntreprise);
+    } elseif (isset($_REQUEST["Supprimer"])) {
+        Entreprise_Supprimer($connexion, $_REQUEST["idEntreprise"]);
+        $listeEntreprise = Entreprise_Select($connexion);
+        Vue_Gestion_Entreprise_Liste($listeEntreprise);
 
     } else {
         //situation par défaut :

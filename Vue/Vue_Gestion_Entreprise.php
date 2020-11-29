@@ -43,6 +43,13 @@ function Vue_Gestion_Entreprise_Liste($listeEntreprise)
                      onmouseout=\"this.style.background='';this.style.color='';\" name='Modifer'> Modifier </button>
                 </form>
             </td>
+            <td>
+                <form style='display: contents'>
+                        <input type='hidden' value='$iemeEntreprise[idEntreprise]' name='idEntreprise'>
+                        <button type='submit' onmouseover=\"this.style.background='#FFFF99';this.style.color='#FF0000';\"
+                     onmouseout=\"this.style.background='';this.style.color='';\" name='Supprimer'> Supprimer </button>
+                </form>
+            </td>
         </tr>
         
          ";
