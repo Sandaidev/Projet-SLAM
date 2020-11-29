@@ -1,20 +1,17 @@
 <?php
-function Vue_Administration_Menu( )
+function Vue_Administration_Menu()
 {
     /*
      * Navbar de la page d'administration
      */
 
     echo "
- 
-
-
 <nav id='menu'>
   <ul id='menu-closed'> 
-  <li><a href='Gerer_entreprisesPartenaires.php'>Entreprises partenaires</a></li>  
-   <li><a href='Gerer_monCompte.php'>Mon compte</a></li> 
-   
-   </ul>
+    <li><a href='Gerer_entreprisesPartenaires.php'>Entreprises partenaires</a></li>
+    <li><a href='Gerer_utilisateursAdministratifs.php'>Utilisateurs administratifs</a></li>  
+    <li><a href='Gerer_monCompte.php'>Mon compte</a></li>  
+  </ul>
 </nav> ";
 }
 

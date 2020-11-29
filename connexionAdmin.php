@@ -17,7 +17,7 @@ if (isset($_REQUEST["login"]) and isset($_REQUEST["password"])) {//Si tous les p
 
             $_SESSION["idUtilisateur"] = $utilisateur["idUtilisateur"];
             Vue_Structure_Entete();
-            Vue_Administration_Menu( );
+            Vue_Administration_Menu();
         } else {//mot de passe pas bon
             $msgError = "Mot de passe erroné";
             Vue_Structure_Entete();
