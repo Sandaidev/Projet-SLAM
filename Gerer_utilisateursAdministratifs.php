@@ -16,10 +16,17 @@ if(isset($_SESSION["idUtilisateur"])) {
     if (isset($_REQUEST["Modifier"])) {
         // Mettre à jour les infos d'un utilisateur administratif
         $utilisateur_admin = Utilisateur_Select_ParId($connexion, $_REQUEST["idUtilisateurAdmin"]);
-        Vue_Gestion_Utilisateur_Formulaire($utilisateur_admin);
-//    } elseif (isset($_REQUEST[""]))
 
-    } else {
+        // On doit entrer les valeurs de l'utilisateur à modifier dans la vue.
+        $id_utilisateur_admin = $utilisateur_admin["idUtilisateur"];
+        $login = $utilisateur_admin["login"];
+        $niveau_autorisation = $utilisateur_admin["niveauAutorisation"];
+
+        Vue_Gestion_Utilisateur_Administratif_Formulaire(false, $id_utilisateur_admin, $login, $niveau_autorisation);
+    }
+    //FIXME elseif (isset($_REQUEST["Supprimer"]))
+
+    else {
         // Situation par défaut, on affiche la liste des utilisateurs administratifs
         $liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
         Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
