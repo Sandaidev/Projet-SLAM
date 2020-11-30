@@ -42,3 +42,48 @@ function Vue_Administration_Gerer_Compte(){
     
     ";
 }
+
+function Vue_ModifierMDP_SuperAdmin($erreur = "") {
+    /*
+     * Vue de saisie du nouveau mot de passe administrateur
+     */
+
+    if ($erreur != "") {
+        echo "
+        <h1>Une erreur est survenue!</h1>
+        <p style='text-align: center'>
+            <b>$erreur</b>
+        </p>
+        ";
+
+        return;
+    }
+
+    echo "
+    <table border align='center' style='padding-top: 25px'>
+    <form>
+        <tr>
+            <td>
+                <input type='password' required placeholder='Ancien mot de passe' name='old_pass'> 
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type='password' required placeholder='Nouveau mot de passe' name='new_pass'> 
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type='password' required placeholder='Confirmation du nouveau mot de passe' name='new_pass_confirm'>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type='submit' name='changerMDP_confirmation' value='Confirmer'>
+            </td>
+        </tr>
+    </form>
+    </table>
+    ";
+
+}
