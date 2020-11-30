@@ -116,12 +116,12 @@ function Vue_Gestion_Utilisateur_Administratif_Formulaire($modeCreation = true, 
       
         <tr>";
     if ($modeCreation) {
-        echo " 
-        
-            <td>
+        echo "
             
+            <td>
+                <input type='password' name='password' placeholder='Mot de passe'>
             </td>
-                
+
             <td colspan='2' style='text-align: center'>
                 <button type='submit' name='buttonCreer'>Créer cet utilisateur</button>";
 
