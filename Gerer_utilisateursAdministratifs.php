@@ -16,7 +16,7 @@ if(isset($_SESSION["idUtilisateur"])) {
     if (isset($_REQUEST["Modifier"])) {
         // Mettre à jour les infos d'un utilisateur administratif
         $utilisateur_admin = Utilisateur_Select_ParId($connexion, $_REQUEST["idUtilisateurAdmin"]);
-        // TODO Finir la modifications des infos des utilisateurs administratifs (via super-admin)
+        Vue_Gestion_Utilisateur_Formulaire($utilisateur_admin);
 //    } elseif (isset($_REQUEST[""]))
 
     } else {

@@ -58,3 +58,66 @@ function Vue_Gestion_Utilisateurs_Admin_Liste($listeUtilisateursAdministratifs) 
     echo "</table>";
 }
 
+function Vue_Gestion_Utilisateur_Administratif_Formulaire($modeCreation = true, $idUtilisateur = "", $login = "", $niveauAutorisation = "")
+{
+    // vous trouverez des explications sur les paramètres HTML5 des balises INPUT sur ce site :
+    // https://darchevillepatrick.info/html/html_form.htm
+    if ($modeCreation)
+        echo "<H1>Création d'un nouvel utilisateur administratif</H1>";
+    else
+        echo "<H1>Edition d'un utilisateur administratif</H1>";
+
+    echo "
+<table style='display: inline-block'> 
+    <form>
+        <input type='hidden' name='idUtilisateur' value='$idUtilisateur'>
+        <tr>
+            <td>
+                <label>Numéro de compte : </label>
+            </td>
+            <td>
+                $login
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <label>Niveau d'autorisation : </label>
+            </td>
+            <td>
+                <select name='niveauAutorisation' required>
+                    <option value='2'>Niveau 2 - Commercial</option>
+                    <option value='3'>Niveau 1 - Employé</option>
+                </select>
+            </td>
+        </tr>
+        
+      
+        <tr>";
+    if ($modeCreation) {
+        echo " 
+        
+            <td>
+            
+            </td>
+                
+            <td colspan='2' style='text-align: center'>
+                <button type='submit' name='buttonCreer'>Créer ce client</button>";
+
+
+    } else {
+        echo "<td>
+                <button type='submit' name='réinitialiserMDP'>Réinitialiser le mot de passe</button>
+            </td>
+            <td>
+                <button type='submit' name='mettreAJour'>Mettre à jour</button>";
+    }
+
+    echo "</td>
+        </tr>
+
+    </form>
+</table>
+
+";
+}
