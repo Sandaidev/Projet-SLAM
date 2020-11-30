@@ -22,8 +22,18 @@ if(isset($_SESSION["idUtilisateur"])) {
         $login = $utilisateur_admin["login"];
         $niveau_autorisation = $utilisateur_admin["niveauAutorisation"];
 
+        // On affiche le formulaire de modification d'utilisateur
         Vue_Gestion_Utilisateur_Administratif_Formulaire(false, $id_utilisateur_admin, $login, $niveau_autorisation);
+    } elseif (isset($_REQUEST["mettreAJour"])) {
+        // On a l'ancien login et le nouveau
+        $id_utilisateur_edit = $_REQUEST["id_utilisateur_edit"];
+        $nouveau_login = $_REQUEST["nouveau_login"];
+        $nouvelle_autorisation = $_REQUEST["niveauAutorisation"];
+
+        Utilisateur_Modifier($connexion, $id_utilisateur_edit, $nouveau_login, $nouvelle_autorisation);
+
     }
+
     //FIXME elseif (isset($_REQUEST["Supprimer"]))
 
     else {

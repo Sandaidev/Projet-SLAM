@@ -66,17 +66,16 @@ function Vue_Gestion_Utilisateur_Administratif_Formulaire($modeCreation = true, 
         echo "<H1>Création d'un nouvel utilisateur administratif</H1>";
     else
         echo "<H1>Edition d'un utilisateur administratif</H1>";
-
     echo "
 <table style='display: inline-block'> 
     <form>
-        <input type='hidden' name='idUtilisateur' value='$idUtilisateur'>
+        <input type='hidden' name='id_utilisateur_edit' value='$idUtilisateur'>
         <tr>
             <td>
                 <label>Numéro de compte : </label>
             </td>
             <td>
-                <input type='text' name='login' value='$login'> 
+                <input type='text' name='nouveau_login' value='$login'> 
             </td>
         </tr>
         
