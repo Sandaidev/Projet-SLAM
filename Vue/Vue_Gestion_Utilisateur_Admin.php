@@ -40,7 +40,7 @@ function Vue_Gestion_Utilisateurs_Admin_Liste($listeUtilisateursAdministratifs) 
                 <form style='display: contents'>
                         <input type='hidden' value='$iemeUtilisateurAdministratif[idUtilisateur]' name='idUtilisateurAdmin'>
                         <button type='submit' onmouseover=\"this.style.background='#FFFF99';this.style.color='#FF0000';\"
-                     onmouseout=\"this.style.background='';this.style.color='';\" name='Modifer'>Modifier</button>
+                     onmouseout=\"this.style.background='';this.style.color='';\" name='Modifier'>Modifier</button>
                 </form>
             </td>
             <td>
@@ -76,7 +76,7 @@ function Vue_Gestion_Utilisateur_Administratif_Formulaire($modeCreation = true, 
                 <label>Numéro de compte : </label>
             </td>
             <td>
-                $login
+                <input type='text' name='login' value='$login'> 
             </td>
         </tr>
         
@@ -86,9 +86,30 @@ function Vue_Gestion_Utilisateur_Administratif_Formulaire($modeCreation = true, 
             </td>
             <td>
                 <select name='niveauAutorisation' required>
-                    <option value='2'>Niveau 2 - Commercial</option>
-                    <option value='3'>Niveau 1 - Employé</option>
-                </select>
+                    ";
+
+                switch ($niveauAutorisation) {
+                    case "1":
+                        echo "
+                        <option value='1' selected>Niveau 1 - Administrateur</option>
+                        <option value='2'>Niveau 2 - Commercial</option>
+                        <option value='3'>Niveau 3 - Employé</option>";
+                        break;
+                    case "2":
+                        echo "
+                        <option value='1'>Niveau 1 - Administrateur</option>
+                        <option value='2' selected>Niveau 2 - Commercial</option>
+                        <option value='3'>Niveau 3 - Employé</option>";
+                        break;
+                    case "3":
+                        echo "
+                        <option value='1'>Niveau 1 - Administrateur</option>
+                        <option value='2'>Niveau 2 - Commercial</option>
+                        <option value='3' selected>Niveau 3 - Employé</option>";
+                        break;
+                }
+
+    echo "     </select>
             </td>
         </tr>
         
@@ -102,7 +123,7 @@ function Vue_Gestion_Utilisateur_Administratif_Formulaire($modeCreation = true, 
             </td>
                 
             <td colspan='2' style='text-align: center'>
-                <button type='submit' name='buttonCreer'>Créer ce client</button>";
+                <button type='submit' name='buttonCreer'>Créer cet utilisateur</button>";
 
 
     } else {
