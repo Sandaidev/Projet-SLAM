@@ -58,6 +58,3 @@ function Vue_Gestion_Utilisateurs_Admin_Liste($listeUtilisateursAdministratifs) 
     echo "</table>";
 }
 
-/*
- *
- */
