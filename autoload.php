@@ -10,7 +10,7 @@ $paths = array(
 //Pour chaque dossier à parcourir
 foreach($paths as $path){
     //On récupère la liste des fichiers php dans ces dossiers
-    $fileList = glob($path.'\*.php');
+    $fileList = glob($path.'/*.php');
     //On parcourt la liste des dossiers
     foreach($fileList as $filename){
     //    echo $filename."\n";
