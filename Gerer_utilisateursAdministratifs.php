@@ -40,6 +40,7 @@ if(isset($_SESSION["idUtilisateur"])) {
 
     else {
         // Situation par défaut, on affiche la liste des utilisateurs administratifs
+        $liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
         Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
     }
 } else {
