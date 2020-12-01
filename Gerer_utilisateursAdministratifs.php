@@ -12,7 +12,6 @@ Vue_Structure_Entete();
 if(isset($_SESSION["idUtilisateur"])) {
     Vue_Administration_Menu();
     $connexion = Creer_Connexion();
-    $liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
 
     if (isset($_REQUEST["Modifier"])) {
         // Mettre à jour les infos d'un utilisateur administratif
@@ -32,6 +31,8 @@ if(isset($_SESSION["idUtilisateur"])) {
         $nouvelle_autorisation = $_REQUEST["niveauAutorisation"];
 
         Utilisateur_Modifier($connexion, $id_utilisateur_edit, $nouveau_login, $nouvelle_autorisation);
+
+        $liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
         Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
     }
 
