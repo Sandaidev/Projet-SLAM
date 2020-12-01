@@ -59,9 +59,8 @@ if(isset($_SESSION["idUtilisateur"])) {
         // On crée l'utilisateur dans la BDD
         Utilisateur_Creer($connexion, $login, $niveau_autorisation);
 
-        // Désactiver le FIXME sur le code gestion (no.1)
-        //$id_utilisateur = Utilisateur_Select_ParId($connexion, $login);
-        //Utilisateur_Modifier_motDePasse($connexion, $id_utilisateur, $password);
+        $id_utilisateur = Utilisateur_Select_ParId($connexion, $login);
+        Utilisateur_Modifier_motDePasse($connexion, $id_utilisateur, "secret");
 
         // Tout est OK! on peut afficher la liste
         $liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
