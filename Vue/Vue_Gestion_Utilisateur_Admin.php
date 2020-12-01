@@ -21,7 +21,7 @@ function Vue_Gestion_Utilisateurs_Admin_Liste($listeUtilisateursAdministratifs) 
         <tr>
             <th style="background-color: black; color: white;">Num compte</th>
             <th style="background-color: black; color: white;">Niveau d\'autorisation</th>
-            <th colspan="2" style="background-color: black; color: white;">Actions</th>
+            <th colspan="3" style="background-color: black; color: white;">Actions</th>
         </tr>';
 
         for ($i = 0; $i < count($listeUtilisateursAdministratifs); $i++) {
@@ -48,6 +48,13 @@ function Vue_Gestion_Utilisateurs_Admin_Liste($listeUtilisateursAdministratifs) 
                         <input type='hidden' value='$iemeUtilisateurAdministratif[idUtilisateur]' name='idUtilisateurAdmin'>
                         <button type='submit' onmouseover=\"this.style.background='#FFFF99';this.style.color='#FF0000';\"
                      onmouseout=\"this.style.background='';this.style.color='';\" name='Supprimer'> Supprimer </button>
+                </form>
+            </td>
+            <td>
+                <form style='display: contents'>
+                        <input type='hidden' value='$iemeUtilisateurAdministratif[idUtilisateur]' name='idUtilisateurAdmin'>
+                        <button type='submit' onmouseover=\"this.style.background='#FFFF99';this.style.color='#FF0000';\"
+                     onmouseout=\"this.style.background='';this.style.color='';\" name='Desactiver'> Désactiver </button>
                 </form>
             </td>
             </tr>
