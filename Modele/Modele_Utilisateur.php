@@ -55,7 +55,6 @@ function Utilisateur_Creer($connexionPDO, $login, $niveauAutorisation)
     $requetePreparée->bindParam('paramlogin', $login);
     $requetePreparée->bindParam('paramniveauAutorisation', $niveauAutorisation);
     $reponse = $requetePreparée->execute(); //$reponse boolean sur l'état de la requête
-    echo $reponse;
     $idUtilisateur = $connexionPDO->lastInsertId();
 
     return $idUtilisateur;
