@@ -65,6 +65,19 @@ function Utilisateur_Creer($connexionPDO, $login, $niveauAutorisation)
     return $idUtilisateur;
 }
 
+function Utilisateur_SetStatus($connexionPDO, $idUtilisateur, $status) {
+    $requetePreparee = $connexionPDO->prepare(
+        'UPDATE `utilisateur` SET `statusUtilisateur` = :paramStatus
+         WHERE `utilisateur`.`idUtilisateur` = :paramIDUtilisateur '
+    );
+
+    $requetePreparee->bindParam('paramStatus', $status);
+    $requetePreparee->bindParam('paramIDUtilisateur', $idUtilisateur);
+
+    $reponse = $requetePreparee->execute();
+    return $reponse;
+}
+
 /**
  * @param $connexionPDO
  * @param $idUtilisateur
