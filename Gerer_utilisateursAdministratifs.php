@@ -67,6 +67,17 @@ if(isset($_SESSION["idUtilisateur"])) {
         Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
     }
 
+    elseif (isset($_REQUEST["Desactiver"])) {
+        // L'administrateur a choisi de désactiver l'utilisateur sélectionné,
+        // On a besoin de son ID
+
+        $id_utilisateur = $_REQUEST["idUtilisateurAdmin"];
+
+
+
+
+    }
+
     else {
         // Situation par défaut, on affiche la liste des utilisateurs administratifs
         $liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
