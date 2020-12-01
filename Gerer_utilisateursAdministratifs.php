@@ -25,6 +25,7 @@ if(isset($_SESSION["idUtilisateur"])) {
         // On affiche le formulaire de modification d'utilisateur
         Vue_Gestion_Utilisateur_Administratif_Formulaire(false, $id_utilisateur_admin, $login, $niveau_autorisation);
     } elseif (isset($_REQUEST["mettreAJour"])) {
+        // L'administrateur a choisi de modifier les infos d'un utilisateur. (bouton de confirmation)
         // On a l'ancien login et le nouveau
         $id_utilisateur_edit = $_REQUEST["id_utilisateur_edit"];
         $nouveau_login = $_REQUEST["nouveau_login"];
@@ -36,7 +37,12 @@ if(isset($_SESSION["idUtilisateur"])) {
         Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
     }
 
-    //FIXME elseif (isset($_REQUEST["Supprimer"]))
+    elseif (isset($_REQUEST["Supprimer"])) {
+        Utilisateur_Supprimer($connexion, $_REQUEST["idUtilisateurAdmin"]);
+
+        $liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
+        Vue_Gestion_Utilisateurs_Admin_Liste($connexion);
+    }
 
     else {
         // Situation par défaut, on affiche la liste des utilisateurs administratifs
