@@ -44,6 +44,30 @@ if(isset($_SESSION["idUtilisateur"])) {
         Vue_Gestion_Utilisateurs_Admin_Liste($connexion);
     }
 
+    elseif (isset($_REQUEST["Nouveau"])) {
+        Vue_Gestion_Utilisateur_Administratif_Formulaire(true);
+    }
+
+    elseif (isset($_REQUEST["buttonCreer"])) {
+        // L'administrateur a confirmé la création d'un utilisateur
+        // Il nous faut son mot de passe, son login, son niveau.
+
+        $login = $_REQUEST["nouveau_login"];
+        $password = $_REQUEST["password"];
+        $niveau_autorisation = $_REQUEST["niveauAutorisation"];
+
+        // On crée l'utilisateur dans la BDD
+        Utilisateur_Creer($connexion, $login, $niveau_autorisation);
+
+        // Désactiver le FIXME sur le code gestion (no.1)
+        //$id_utilisateur = Utilisateur_Select_ParId($connexion, $login);
+        //Utilisateur_Modifier_motDePasse($connexion, $id_utilisateur, $password);
+
+        // Tout est OK! on peut afficher la liste
+        $liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
+        Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
+    }
+
     else {
         // Situation par défaut, on affiche la liste des utilisateurs administratifs
         $liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
