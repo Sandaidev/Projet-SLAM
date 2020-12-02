@@ -45,11 +45,11 @@ function Utilisateur_Select_ParLogin($connexionPDO, $login)
  * @param $niveauAutorisation
  * @return mixed
  */
-function Utilisateur_Creer($connexionPDO, $login, $niveauAutorisation)
+function Utilisateur_Creer($connexionPDO, $login, $niveauAutorisation, $statusUtilisateur)
 {
 
     $requetePreparée = $connexionPDO->prepare(
-        'INSERT INTO `utilisateur` (`idUtilisateur`, `login`, `niveauAutorisation`, `motDePasse`) 
+        'INSERT INTO `utilisateur` (`idUtilisateur`, `login`, `niveauAutorisation`, `motDePasse`, `statusUtilisateur`) 
          VALUES (NULL, :paramlogin, :paramniveauAutorisation, "", :paramStatus);');
 
     $requetePreparée->bindParam('paramlogin', $login);
@@ -57,7 +57,7 @@ function Utilisateur_Creer($connexionPDO, $login, $niveauAutorisation)
 
     // On doit faire le bind ici en statique
     // Sur le status de l'utilisateur, par défaut : 1 (Activé)
-    $requetePreparée->bindParam('paramStatus', 1);
+    $requetePreparée->bindParam('paramStatus', $statusUtilisateur);
 
     $reponse = $requetePreparée->execute(); //$reponse boolean sur l'état de la requête
     $idUtilisateur = $connexionPDO->lastInsertId();
