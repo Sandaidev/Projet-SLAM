@@ -23,19 +23,21 @@ function Vue_Administration_Gerer_Compte($nom_compte) {
 
     echo " 
     <H1>Gérer mon compte</H1>
-    <p>Vous êtes connecté(e) en tant que : <em>$nom_compte</em></p>
-    <table style='display: inline-block'>
-        <tr>
+    <table style='display: inline-block;'>
+        <tr style='text-align: center'>
+            <th>Vous êtes connecté(e) en tant que : <em>$nom_compte</em></th>
+        </tr>
+        <tr style='text-align: center'>
             <td>
                 <form style='display: contents'>
-                    <button type='submit' name='changerMDP'>Changer mot de passe </button>
+                    <button style='width: 100%' type='submit' name='changerMDP'>Changer mot de passe </button>
                 </form>
             </td>
         </tr>
-        <tr>
+        <tr style='text-align: center'>
             <td>
                 <form style='display: contents'>
-                    <button type='submit' name='SeDeconnecter'>Se déconnecter </button>
+                    <button style='width: 100%' type='submit' name='SeDeconnecter'>Se déconnecter </button>
                 </form>
             </td>
         </tr>
