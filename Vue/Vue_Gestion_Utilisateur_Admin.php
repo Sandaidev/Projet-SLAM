@@ -120,28 +120,18 @@ function Vue_Gestion_Utilisateur_Administratif_Formulaire($modeCreation = true, 
                     case "2":
                         echo "
                         <option value='1'>Niveau 1 - Administrateur</option>
-                        <option value='2' selected>Niveau 2 - Commercial</option>
-                        <option value='3'>Niveau 3 - Employé</option>";
-                        break;
-                    case "3":
-                        echo "
-                        <option value='1'>Niveau 1 - Administrateur</option>
-                        <option value='2'>Niveau 2 - Commercial</option>
-                        <option value='3' selected>Niveau 3 - Employé</option>";
+                        <option value='2' selected>Niveau 2 - Commercial</option>";
                         break;
                     default:
                         echo "
                         <option value='1' selected>Niveau 1 - Administrateur</option>
-                        <option value='2'>Niveau 2 - Commercial</option>
-                        <option value='3'>Niveau 3 - Employé</option>";
+                        <option value='2'>Niveau 2 - Commercial</option>";
                         break;
                 }
 
     echo "     </select>
             </td>
         </tr>
-        
-      
         <tr>";
     if ($modeCreation) {
         echo "
