@@ -5,13 +5,13 @@ include("autoload.php");
 if(isset($_SESSION["idUtilisateur"])) {
     // Si l'utilisateur est connecté
 
+    $connexion = Creer_Connexion();
     if(isset($_REQUEST["changerMDP"]))
     {
-        // Il a cliqué sur changer Mot de passe. Cas pas fini
+        // Il a cliqué sur changer Mot de passe.
         Vue_Structure_Entete();
         Vue_Administration_Menu();
         Vue_ModifierMDP_SuperAdmin();
-
     }
     elseif(isset($_REQUEST["SeDeconnecter"]))
     {
@@ -24,8 +24,6 @@ if(isset($_SESSION["idUtilisateur"])) {
     elseif (isset($_REQUEST["changerMDP_confirmation"])) {
         Vue_Structure_Entete();
         Vue_Administration_Menu();
-
-        $connexion = Creer_Connexion();
 
         $utilisateur_selectionne = Utilisateur_Select_ParId($connexion, $_SESSION["idUtilisateur"]);
 
@@ -45,11 +43,16 @@ if(isset($_SESSION["idUtilisateur"])) {
             }
         }
     }
+
     else {
         // Cas par défaut: affichage du menu des actions.
         Vue_Structure_Entete();
         Vue_Administration_Menu();
-        Vue_Administration_Gerer_Compte();
+
+        // On lui donne le paramètre idUtilisateur de session pour préciser
+        // sur quel compte nous commes actuellement connecté
+        $nom_utilisateur = Utilisateur_Select_ParId($connexion, $_SESSION["idUtilisateur"])["login"];
+        Vue_Administration_Gerer_Compte($nom_utilisateur);
     }
 }
 else

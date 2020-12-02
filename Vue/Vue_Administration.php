@@ -15,7 +15,7 @@ function Vue_Administration_Menu()
 </nav> ";
 }
 
-function Vue_Administration_Gerer_Compte(){
+function Vue_Administration_Gerer_Compte($nom_compte) {
     /*
      * Body de le la page "Gérer mon compte"
      * Administration -> Navbar -> Mon compte
@@ -23,6 +23,7 @@ function Vue_Administration_Gerer_Compte(){
 
     echo " 
     <H1>Gérer mon compte</H1>
+    <p>Vous êtes connecté(e) en tant que : <em>$nom_compte</em></p>
     <table style='display: inline-block'>
         <tr>
             <td>
