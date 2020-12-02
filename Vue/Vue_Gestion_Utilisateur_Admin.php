@@ -10,7 +10,7 @@ function Vue_Gestion_Utilisateurs_Admin_Liste($listeUtilisateursAdministratifs) 
     
     <table style="display: inline-block">
         <tr>
-            <td colspan="4" style="text-align: center">
+            <td colspan="6" style="text-align: center">
                 <form style="display: contents">
                     <button type="submit" onmouseover="this.style.background=\'FFFF99\';this.style.color=\'#FF0000\';"
                     onmouseout="this.style.background=\'\'; this.style.color=\'\';" name="Nouveau">Nouvel utilisateur administratif ?</button>
@@ -50,12 +50,34 @@ function Vue_Gestion_Utilisateurs_Admin_Liste($listeUtilisateursAdministratifs) 
                      onmouseout=\"this.style.background='';this.style.color='';\" name='Supprimer'> Supprimer </button>
                 </form>
             </td>
-            <td>
-                <form style='display: contents'>
+            <td>";
+
+            switch ($iemeUtilisateurAdministratif["statusUtilisateur"]) {
+                // Si l'utilisateur est activé, on affiche le bouton "désactiver" et vice versa
+
+                case 1:
+                    // L'utilisateur est activé, on affiche le bouton désactiver
+                    echo "
+                    <form style='display: contents'>
                         <input type='hidden' value='$iemeUtilisateurAdministratif[idUtilisateur]' name='idUtilisateurAdmin'>
                         <button type='submit' onmouseover=\"this.style.background='#FFFF99';this.style.color='#FF0000';\"
-                     onmouseout=\"this.style.background='';this.style.color='';\" name='Desactiver'> Désactiver </button>
-                </form>
+                        onmouseout=\"this.style.background='';this.style.color='';\" name='Desactiver'> Désactiver </button>
+                    </form>";
+                    break;
+
+                case 0:
+                    // L'utilisateur est activé, on affiche le bouton désactiver
+                    echo "
+                    <form style='display: contents'>
+                        <input type='hidden' value='$iemeUtilisateurAdministratif[idUtilisateur]' name='idUtilisateurAdmin'>
+                        <button type='submit' onmouseover=\"this.style.background='#FFFF99';this.style.color='#FF0000';\"
+                        onmouseout=\"this.style.background='';this.style.color='';\" name='Activer'> Activer </button>
+                    </form>";
+                    break;
+            }
+
+            echo "
+                
             </td>
             </tr>
             ";

@@ -72,10 +72,21 @@ if(isset($_SESSION["idUtilisateur"])) {
         // On a besoin de son ID
 
         $id_utilisateur = $_REQUEST["idUtilisateurAdmin"];
+        Utilisateur_SetStatus($connexion, $id_utilisateur, 0);
 
+        $liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
+        Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
+    }
 
+    elseif (isset($_REQUEST["Activer"])) {
+        // L'administrateur a choisi d'activer l'utilisateur sélectionné,
+        // On a besoin de son ID
 
+        $id_utilisateur = $_REQUEST["idUtilisateurAdmin"];
+        Utilisateur_SetStatus($connexion, $id_utilisateur, 1);
 
+        $liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
+        Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
     }
 
     else {
