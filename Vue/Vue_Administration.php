@@ -6,13 +6,13 @@ function Vue_Administration_Menu()
      */
 
     echo "
-<nav id='menu'>
-  <ul id='menu-closed'> 
-    <li><a href='Gerer_entreprisesPartenaires.php'>Entreprises partenaires</a></li>
-    <li><a href='Gerer_utilisateursAdministratifs.php'>Utilisateurs administratifs</a></li>  
-    <li><a href='Gerer_monCompte.php'>Mon compte</a></li>  
-  </ul>
-</nav> ";
+    <nav id='menu'>
+      <ul id='menu-closed'> 
+        <li><a href='Gerer_entreprisesPartenaires.php'>Entreprises partenaires</a></li>
+        <li><a href='Gerer_utilisateursAdministratifs.php'>Utilisateurs administratifs</a></li>  
+        <li><a href='Gerer_monCompte.php'>Mon compte</a></li>  
+      </ul>
+    </nav> ";
 }
 
 function Vue_Administration_Gerer_Compte($nom_compte) {
@@ -21,12 +21,15 @@ function Vue_Administration_Gerer_Compte($nom_compte) {
      * Administration -> Navbar -> Mon compte
      */
 
-    echo " 
-    <H1>Gérer mon compte</H1>
-    <table style='display: inline-block;'>
+    echo "
+    <h1>Gérer mon compte</h1>
+    
+    <table style='margin: auto;'>
         <tr style='text-align: center'>
             <th>Vous êtes connecté(e) en tant que : <em>$nom_compte</em></th>
         </tr>
+        
+        <!-- Bouton : Changer le mot de passe actuel -->
         <tr style='text-align: center'>
             <td>
                 <form style='display: contents'>
@@ -34,10 +37,12 @@ function Vue_Administration_Gerer_Compte($nom_compte) {
                 </form>
             </td>
         </tr>
+        
+        <!-- Bouton : Se déconnecter -->
         <tr style='text-align: center'>
             <td>
                 <form style='display: contents'>
-                    <button style='width: 100%' type='submit' name='SeDeconnecter'>Se déconnecter </button>
+                   <button style='width: 100%' type='submit' name='SeDeconnecter'>Se déconnecter </button>
                 </form>
             </td>
         </tr>
@@ -63,29 +68,24 @@ function Vue_ModifierMDP_SuperAdmin($erreur = "") {
     }
 
     echo "
-    <table border align='center' style='padding-top: 25px'>
-    <form>
-        <tr>
-            <td>
-                <input type='password' required placeholder='Ancien mot de passe' name='old_pass'> 
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type='password' required placeholder='Nouveau mot de passe' name='new_pass'> 
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type='password' required placeholder='Confirmation du nouveau mot de passe' name='new_pass_confirm'>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type='submit' name='changerMDP_confirmation' value='Confirmer'>
-            </td>
-        </tr>
-    </form>
+    <table align='center' style='padding-top: 25px'>
+        <form>
+            <tr>
+                <td><input type='password' required placeholder='Ancien mot de passe' name='old_pass'></td>
+            </tr>
+            
+            <tr>
+                <td><input type='password' required placeholder='Nouveau mot de passe' name='new_pass'></td>
+            </tr>
+            
+            <tr>
+                <td><input type='password' required placeholder='Confirmation du nouveau mot de passe' name='new_pass_confirm'></td>
+            </tr>
+            
+            <tr>
+                <td><input type='submit' name='changerMDP_confirmation' value='Confirmer'></td>
+            </tr>
+        </form>
     </table>
     ";
 
