@@ -87,6 +87,11 @@ if(isset($_SESSION["idUtilisateur"])) {
             Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
 
         }
+    } else {
+        // On a un autre niveau d'autorisation
+        // On affiche juste le menu (avec le niveau d'autorisation)
+        $liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
+        Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs, false);
     }
 
 } else {
