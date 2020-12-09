@@ -15,7 +15,8 @@ function Vue_Administration_Menu()
     </nav> ";
 }
 
-function Vue_Administration_Gerer_Compte($nom_compte) {
+function Vue_Administration_Gerer_Compte($nom_compte)
+{
     /*
      * Body de le la page "Gérer mon compte"
      * Administration -> Navbar -> Mon compte
@@ -51,12 +52,14 @@ function Vue_Administration_Gerer_Compte($nom_compte) {
     ";
 }
 
-function Vue_ModifierMDP_SuperAdmin($erreur = "") {
+function Vue_ModifierMDP_SuperAdmin($erreur = "")
+{
     /*
      * Vue de saisie du nouveau mot de passe administrateur
      */
 
-    if ($erreur != "") {
+    if ($erreur != "")
+    {
         echo "
         <h1>Une erreur est survenue!</h1>
         <p style='margin: auto; text-align: center'>
