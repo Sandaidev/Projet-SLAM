@@ -34,6 +34,8 @@ if (    isset($_REQUEST["login"])
             else
             {
                 $msgError = "Votre compte a été désactivé par un administrateur.";
+                Vue_Structure_Entete();
+                Vue_Connexion_Formulaire_connexion_administration($msgError);
             }
         }
 
@@ -57,7 +59,7 @@ if (    isset($_REQUEST["login"])
 else
 {
     // Cas : Login/mot de passe pas définis
-    if ($_REQUEST["login"] == "")
+    if (!isset($_REQUEST["login"]))
     {
         $msgError = "";
     }
