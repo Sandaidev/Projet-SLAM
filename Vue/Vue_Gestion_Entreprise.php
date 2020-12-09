@@ -7,26 +7,26 @@
 function Vue_Gestion_Entreprise_Liste($listeEntreprise)
 {
     echo '
-<H1>Liste des entreprises partenaires</H1>
-
-    <table style="    display: inline-block;">
+    <h1>Liste des entreprises partenaires</h1>
+    <table style="display: inline-block;">
          <tr>
-            <td colspan="3" style="text-align: center"><form style=\'display: contents\'>
+            <td colspan="3" style="text-align: center">
+                <form style=\'display: contents\'>
  
-                        <button type=\'submit\' onmouseover=\"this.style.background=\'#FFFF99\';this.style.color=\'#FF0000\';\"
+                    <button type=\'submit\' onmouseover=\"this.style.background=\'#FFFF99\';this.style.color=\'#FF0000\';\"
                      onmouseout=\"this.style.background=\'\';this.style.color=\'\';\" name=\'nouveau\'> Nouvelle entreprise ? </button>
                 </form>
             </td>
- 
         </tr>
+        
         <tr>
             <th>Num compte</th>
             <th>Dénomination</th>
             <th>Ville</th>
         </tr>';
 
-    $i = 0;
-    while ($i < count($listeEntreprise)) {
+    for ($i = 0; $i < count($listeEntreprise); $i++)
+    {
         $iemeEntreprise = $listeEntreprise[$i];
 
         echo "
@@ -53,8 +53,6 @@ function Vue_Gestion_Entreprise_Liste($listeEntreprise)
         </tr>
         
          ";
-
-        $i++;
     }
 
 
