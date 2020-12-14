@@ -7,6 +7,8 @@ include("autoload.php");
  * Le tri entre les actions est fait sur l'existence des boutons submit.
  */
 
+// TODO : Refactor this
+
 Vue_Structure_Entete();
 
 if(isset($_SESSION["idUtilisateur"])) {
