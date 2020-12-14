@@ -11,7 +11,7 @@ function Entreprise_Select($connexionPDO)
     return $tableauReponse;
 }
 
-/**
+/** 
  * @param $connexionPDO : connexion à la base de données
  * @param $idEntreprise
  * @return mixed

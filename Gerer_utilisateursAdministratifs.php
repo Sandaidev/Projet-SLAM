@@ -23,7 +23,7 @@ if(isset($_SESSION["idUtilisateur"])) {
         if (isset($_REQUEST["Modifier"])) {
             // Mettre à jour les infos d'un utilisateur administratif
             $utilisateur_admin = Utilisateur_Select_ParId($connexion, $_REQUEST["idUtilisateurAdmin"]);
- 
+
             // On doit entrer les valeurs de l'utilisateur à modifier dans la vue.
             $id_utilisateur_admin = $utilisateur_admin["idUtilisateur"];
             $login = $utilisateur_admin["login"];
