@@ -11,40 +11,60 @@ include("autoload.php");
 
 Vue_Structure_Entete();
 
-if(isset($_SESSION["idUtilisateur"])) {
+if(isset($_SESSION["idUtilisateur"]))
+{
+    // Si l'utilisateur est connecté
+    // -> On affiche la navbar
     Vue_Administration_Menu();
+
+    // Connexion à la BDD
     $connexion = Creer_Connexion();
 
     // On récupère le niveau de permission de l'utilisateur sur la page.
     $niveau_autorisation = Utilisateur_Select_ParId($connexion, $_SESSION["idUtilisateur"])["niveauAutorisation"];
 
-    if ($niveau_autorisation == 1) {
-        // Dans le cas ou l'utilisateur connexté aurait le niveau d'autorisation no.1
-        // on lui donne les outils d'administration des utilisateurs.
+    if ($niveau_autorisation == 1)
+    {
+        // Si l'utilisateur est niveau 1
+        // -> On accepte les requêtes de modification
 
-        if (isset($_REQUEST["Modifier"])) {
-            // Mettre à jour les infos d'un utilisateur administratif
+        if (isset($_REQUEST["Modifier"]))
+        {
+            // Cas : Modification des infos d'un utilisateur
+
             $utilisateur_admin = Utilisateur_Select_ParId($connexion, $_REQUEST["idUtilisateurAdmin"]);
 
-            // On doit entrer les valeurs de l'utilisateur à modifier dans la vue.
-            $id_utilisateur_admin = $utilisateur_admin["idUtilisateur"];
-            $login = $utilisateur_admin["login"];
-            $niveau_autorisation = $utilisateur_admin["niveauAutorisation"];
+            /*
+             * Paramètres de la vue de modification d'utilisateur:
+             *  - Mode création (false = modification)
+             *  - ID utilisateur
+             *  - Nom de l'utilisateur
+             *  - Niveau d'autorisation
+             */
+            Vue_Gestion_Utilisateur_Administratif_Formulaire(   false,
+                                                                $utilisateur_admin["idUtilisateur"],
+                                                                $utilisateur_admin["login"],
+                                                                $utilisateur_admin["niveauAutorisation"]);
+        }
 
-            // On affiche le formulaire de modification d'utilisateur
-            Vue_Gestion_Utilisateur_Administratif_Formulaire(false, $id_utilisateur_admin, $login, $niveau_autorisation);
-        } elseif (isset($_REQUEST["mettreAJour"])) {
-            // L'administrateur a choisi de modifier les infos d'un utilisateur. (bouton de confirmation)
-            // On a l'ancien login et le nouveau
-            $id_utilisateur_edit = $_REQUEST["id_utilisateur_edit"];
-            $nouveau_login = $_REQUEST["nouveau_login"];
-            $nouvelle_autorisation = $_REQUEST["niveauAutorisation"];
+        elseif (isset($_REQUEST["mettreAJour"]))
+        {
+            // Cas : CONFIRMATION de modification d'un uitilisateur
 
-            Utilisateur_Modifier($connexion, $id_utilisateur_edit, $nouveau_login, $nouvelle_autorisation);
+            $new_id_utilisateur = $_REQUEST["id_utilisateur_edit"];
+            $new_login          = $_REQUEST["nouveau_login"];
+            $new_autorisation   = $_REQUEST["niveauAutorisation"];
 
+            Utilisateur_Modifier(   $connexion,
+                                    $new_id_utilisateur,
+                                    $new_login,
+                                    $new_autorisation);
+            
             $liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
             Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
-        } elseif (isset($_REQUEST["Supprimer"])) {
+        }
+
+        elseif (isset($_REQUEST["Supprimer"])) {
             Utilisateur_Supprimer($connexion, $_REQUEST["idUtilisateurAdmin"]);
 
             $liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
