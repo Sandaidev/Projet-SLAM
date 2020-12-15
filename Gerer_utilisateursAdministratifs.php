@@ -7,20 +7,18 @@ include("autoload.php");
  * Le tri entre les actions est fait sur l'existence des boutons submit.
  */
 
-// TODO : Refactor this
-
 Vue_Structure_Entete();
 
 if(isset($_SESSION["idUtilisateur"]))
 {
-    // Si l'utilisateur est connecté
+    // Cas : L'utilisateur est connecté
     // -> On affiche la navbar
     Vue_Administration_Menu();
 
     // Connexion à la BDD
     $connexion = Creer_Connexion();
 
-    // On récupère le niveau de permission de l'utilisateur sur la page.
+    // On récupère le niveau de permission de l'utilisateur sur la page
     $niveau_autorisation = Utilisateur_Select_ParId($connexion, $_SESSION["idUtilisateur"])["niveauAutorisation"];
 
     if ($niveau_autorisation == 1)
@@ -59,66 +57,60 @@ if(isset($_SESSION["idUtilisateur"]))
                                     $new_id_utilisateur,
                                     $new_login,
                                     $new_autorisation);
-            
-            $liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
-            Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
         }
 
-        elseif (isset($_REQUEST["Supprimer"])) {
+        elseif (isset($_REQUEST["Supprimer"]))
+        {
+            // Cas : Suppression d'un utilisateur
             Utilisateur_Supprimer($connexion, $_REQUEST["idUtilisateurAdmin"]);
+        }
 
-            $liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
-            Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
-        } elseif (isset($_REQUEST["Nouveau"])) {
+        elseif (isset($_REQUEST["Nouveau"]))
+        {
+            // Cas : Création d'un nouvel utilisateur (étape 1/2)
             Vue_Gestion_Utilisateur_Administratif_Formulaire(true);
-        } elseif (isset($_REQUEST["buttonCreer"])) {
-            // L'administrateur a confirmé la création d'un utilisateur
-            // Il nous faut son mot de passe, son login, son niveau.
+        }
 
-            $login = $_REQUEST["nouveau_login"];
-            $niveau_autorisation = $_REQUEST["niveauAutorisation"];
+        elseif (isset($_REQUEST["buttonCreer"]))
+        {
+            // Cas : CONFIRMATION de création d'un nouvel utilisateur (étape 2/2)
+            $new_username = $_REQUEST["nouveau_login"];
+            $new_authorization = $_REQUEST["niveauAutorisation"];
 
-            // On crée l'utilisateur dans la BDD
-            $id_utilisateur_cree = Utilisateur_Creer($connexion, $login, $niveau_autorisation, "1");
-            Utilisateur_Modifier_motDePasse($connexion, $id_utilisateur_cree, "secret");
+            $id_new_user = Utilisateur_Creer($connexion, $new_username, $new_authorization);
+            Utilisateur_Modifier_motDePasse($connexion, $id_new_user, "secret");
+        }
 
-            // Tout est OK! on peut afficher la liste
-            $liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
-            Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
-        } elseif (isset($_REQUEST["Desactiver"])) {
-            // L'administrateur a choisi de désactiver l'utilisateur sélectionné,
-            // On a besoin de son ID
-
+        elseif (isset($_REQUEST["Desactiver"]))
+        {
+            // Cas : Désactivation d'un utilisateur
             $id_utilisateur = $_REQUEST["idUtilisateurAdmin"];
             Utilisateur_SetStatus($connexion, $id_utilisateur, 0);
+        }
 
-            $liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
-            Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
-        } elseif (isset($_REQUEST["Activer"])) {
-            // L'administrateur a choisi d'activer l'utilisateur sélectionné,
-            // On a besoin de son ID
-
+        elseif (isset($_REQUEST["Activer"]))
+        {
+            // Cas : Activation d'un utilisateur
             $id_utilisateur = $_REQUEST["idUtilisateurAdmin"];
             Utilisateur_SetStatus($connexion, $id_utilisateur, 1);
-
-            $liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
-            Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
-        } else {
-            // Situation par défaut, on affiche la liste des utilisateurs administratifs
-            $liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
-            Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
-
         }
-    } else {
+
+        $liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
+        Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
+    }
+
+    else
+    {
         // On a un autre niveau d'autorisation
         // On affiche juste le menu (avec le niveau d'autorisation)
         $liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
         Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs, false);
     }
+}
 
-} else {
-    // My bad
-    // On redirige l'utilisateur vers la page de connexion
+else
+{
+    // Cas : Infos de connexion invalides
     Vue_Connexion_Formulaire_connexion_administration();
 }
 

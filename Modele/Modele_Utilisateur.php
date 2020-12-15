@@ -45,7 +45,7 @@ function Utilisateur_Select_ParLogin($connexionPDO, $login)
  * @param $niveauAutorisation
  * @return mixed
  */
-function Utilisateur_Creer($connexionPDO, $login, $niveauAutorisation, $statusUtilisateur)
+function Utilisateur_Creer($connexionPDO, $login, $niveauAutorisation, $statusUtilisateur="1")
 {
 
     $requetePreparée = $connexionPDO->prepare(
