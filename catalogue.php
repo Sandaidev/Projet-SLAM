@@ -7,8 +7,18 @@ if (isset($_SESSION["idEntreprise"]))
 {
     $connexion = Creer_Connexion();
 
+    // Affichage de la navbar + catégories dynamiques
     $liste_categories = Categorie_select($connexion);
-    Vue_liste_afficher_categories($liste_categories);
+    Vue_Catalogue_menu($liste_categories);
+
+    if (!isset($_REQUEST["idCategorie"]) or $_REQUEST["idCategorie"] == -1)
+    {
+        // Cas : Aucune catégorie n'est sélectionnée
+        //       ou la catégorie "Afficher tout" est sélectionnée
+
+
+
+    }
 }
 
 else
