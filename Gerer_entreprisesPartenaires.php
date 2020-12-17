@@ -48,7 +48,10 @@ if(isset($_SESSION["idUtilisateur"])) {
         $listeEntreprise = Entreprise_Select($connexion);
         Vue_Gestion_Entreprise_Liste($listeEntreprise);
 
-    } else {
+    }
+
+    else
+    {
         //situation par défaut :
         $listeEntreprise = Entreprise_Select($connexion);
         Vue_Gestion_Entreprise_Liste($listeEntreprise);
