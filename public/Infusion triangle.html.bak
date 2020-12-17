@@ -1,0 +1,336 @@
+
+
+<html>
+        <head>
+           <meta charset="utf-8">
+            <!-- importer le fichier de style -->
+            <link rel="stylesheet" href="..\style.css" media="screen" type="text/css" />
+        </head>
+        <body>
+            <div id="container"><nav id="menu">
+  <ul id="menu-closed"><li><a href='Cafe-Capsule.html'>Café-Capsule</a></li><li><a href='Cafe-Grain.html'>Café-Grain</a></li><li><a href='Cafe-Moulu.html'>Cafe-Moulu</a></li><li><a href='Infusion triangle.html'>Infusion triangle</a></li><li><a href='Infusion vrac.html'>Infusion vrac</a></li><li><a href='Rooibos.html'>Rooibos</a></li><li><a href='The-triangle.html'>Thé triangle</a></li><li><a href='The-vrac.html'>Thé vrac</a></li></ul>
+</nav><H1>Liste des articles : Infusion triangle</H1><form action='produit_INF_SYM_128.html' style='display: contents;'><button onclick='submit();' width='25%' 
+                    onmouseover="this.style.background='#FFFF99';this.style.color='#FF0000';"
+                     onmouseout="this.style.background='';this.style.color='';"
+                     style='margin: 20px'>
+             <table style='padding: 20px;    display: inline-block;     height: 300px;' >
+                <tr>
+                    <td style='vertical-align: top;width : 250px'>
+                        <b>Article : </b>
+                        Symphonie <br>
+                    </td><td rowspan='4'>  <br><img style='width:110px;' src='../image/vign_infu_symphonie_800px.jpg '></td>
+                <tr>   
+                    <td style='vertical-align: top;width : 250px'>
+                        <b>Référence : </b>
+                        INF_SYM_128<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td style='vertical-align: top;width : 250px'><b>Prix : </b>6 € HT
+            
+                    </td>
+                </tr>
+                <tr>
+                    <td style='vertical-align: top;width : 250px'><b>Description :</b> Raisin de Corynthe, Cynorrhodon, Hibiscus, Orange, Ananas, Papaye, arômes 
+            
+                    </td>
+                </tr> 
+            </table>
+            </button>
+        </form>
+         <form action='produit_INF_CER_129.html' style='display: contents;'><button onclick='submit();' width='25%' 
+                    onmouseover="this.style.background='#FFFF99';this.style.color='#FF0000';"
+                     onmouseout="this.style.background='';this.style.color='';"
+                     style='margin: 20px'>
+             <table style='padding: 20px;    display: inline-block;     height: 300px;' >
+                <tr>
+                    <td style='vertical-align: top;width : 250px'>
+                        <b>Article : </b>
+                        Cerise sauvage <br>
+                    </td><td rowspan='4'>  <br><img style='width:110px;' src='../image/vign_infu_cerise_sauvage_800px.jpg '></td>
+                <tr>   
+                    <td style='vertical-align: top;width : 250px'>
+                        <b>Référence : </b>
+                        INF_CER_129<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td style='vertical-align: top;width : 250px'><b>Prix : </b>6 € HT
+            
+                    </td>
+                </tr>
+                <tr>
+                    <td style='vertical-align: top;width : 250px'><b>Description :</b> Pomme, Cynorrhodon, Hibiscus, Cerise sauvage (3%), arômes 
+            
+                    </td>
+                </tr> 
+            </table>
+            </button>
+        </form>
+         <form action='produit_INF_DIG_130.html' style='display: contents;'><button onclick='submit();' width='25%' 
+                    onmouseover="this.style.background='#FFFF99';this.style.color='#FF0000';"
+                     onmouseout="this.style.background='';this.style.color='';"
+                     style='margin: 20px'>
+             <table style='padding: 20px;    display: inline-block;     height: 300px;' >
+                <tr>
+                    <td style='vertical-align: top;width : 250px'>
+                        <b>Article : </b>
+                        Digestive <br>
+                    </td><td rowspan='4'>  <br><img style='width:110px;' src='../image/vign_infu_digestive_800px.jpg '></td>
+                <tr>   
+                    <td style='vertical-align: top;width : 250px'>
+                        <b>Référence : </b>
+                        INF_DIG_130<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td style='vertical-align: top;width : 250px'><b>Prix : </b>6 € HT
+            
+                    </td>
+                </tr>
+                <tr>
+                    <td style='vertical-align: top;width : 250px'><b>Description :</b> Menthe Poivrée BIO plante, Mélisse BIO plante, Angélique BIO fruit, Anis Vert BIO fruit, Fenouil BIO fruit 
+            
+                    </td>
+                </tr> 
+            </table>
+            </button>
+        </form>
+         <form action='produit_INF_AUC_131.html' style='display: contents;'><button onclick='submit();' width='25%' 
+                    onmouseover="this.style.background='#FFFF99';this.style.color='#FF0000';"
+                     onmouseout="this.style.background='';this.style.color='';"
+                     style='margin: 20px'>
+             <table style='padding: 20px;    display: inline-block;     height: 300px;' >
+                <tr>
+                    <td style='vertical-align: top;width : 250px'>
+                        <b>Article : </b>
+                        Infusion Au clair de la Lune <br>
+                    </td><td rowspan='4'>  <br><img style='width:110px;' src='../image/vign_infu_au_clair_lune_800px.jpg '></td>
+                <tr>   
+                    <td style='vertical-align: top;width : 250px'>
+                        <b>Référence : </b>
+                        INF_AUC_131<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td style='vertical-align: top;width : 250px'><b>Prix : </b>6 € HT
+            
+                    </td>
+                </tr>
+                <tr>
+                    <td style='vertical-align: top;width : 250px'><b>Description :</b> Oranger Doux feuille, Passiflore des Indes, Mélisse, Verveine Odorante, Aspérule Odorante 
+            
+                    </td>
+                </tr> 
+            </table>
+            </button>
+        </form>
+         <form action='produit_INF_CAM_132.html' style='display: contents;'><button onclick='submit();' width='25%' 
+                    onmouseover="this.style.background='#FFFF99';this.style.color='#FF0000';"
+                     onmouseout="this.style.background='';this.style.color='';"
+                     style='margin: 20px'>
+             <table style='padding: 20px;    display: inline-block;     height: 300px;' >
+                <tr>
+                    <td style='vertical-align: top;width : 250px'>
+                        <b>Article : </b>
+                        Infusion Camomille bio <br>
+                    </td><td rowspan='4'>  <br><img style='width:110px;' src='../image/vign_infu_camomille_800px.jpg '></td>
+                <tr>   
+                    <td style='vertical-align: top;width : 250px'>
+                        <b>Référence : </b>
+                        INF_CAM_132<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td style='vertical-align: top;width : 250px'><b>Prix : </b>6 € HT
+            
+                    </td>
+                </tr>
+                <tr>
+                    <td style='vertical-align: top;width : 250px'><b>Description :</b> Camomille Bio 
+            
+                    </td>
+                </tr> 
+            </table>
+            </button>
+        </form>
+         <form action='produit_INF_TIL_133.html' style='display: contents;'><button onclick='submit();' width='25%' 
+                    onmouseover="this.style.background='#FFFF99';this.style.color='#FF0000';"
+                     onmouseout="this.style.background='';this.style.color='';"
+                     style='margin: 20px'>
+             <table style='padding: 20px;    display: inline-block;     height: 300px;' >
+                <tr>
+                    <td style='vertical-align: top;width : 250px'>
+                        <b>Article : </b>
+                        Infusion Tilleul <br>
+                    </td><td rowspan='4'>  <br><img style='width:110px;' src='../image/vign_infu_tilleul_800px.jpg '></td>
+                <tr>   
+                    <td style='vertical-align: top;width : 250px'>
+                        <b>Référence : </b>
+                        INF_TIL_133<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td style='vertical-align: top;width : 250px'><b>Prix : </b>6 € HT
+            
+                    </td>
+                </tr>
+                <tr>
+                    <td style='vertical-align: top;width : 250px'><b>Description :</b> Tilleul 
+            
+                    </td>
+                </tr> 
+            </table>
+            </button>
+        </form>
+         <form action='produit_INF_VER_134.html' style='display: contents;'><button onclick='submit();' width='25%' 
+                    onmouseover="this.style.background='#FFFF99';this.style.color='#FF0000';"
+                     onmouseout="this.style.background='';this.style.color='';"
+                     style='margin: 20px'>
+             <table style='padding: 20px;    display: inline-block;     height: 300px;' >
+                <tr>
+                    <td style='vertical-align: top;width : 250px'>
+                        <b>Article : </b>
+                        Infusion Verveine Bio <br>
+                    </td><td rowspan='4'>  <br><img style='width:110px;' src='../image/vign_infu_verveine_800px.jpg '></td>
+                <tr>   
+                    <td style='vertical-align: top;width : 250px'>
+                        <b>Référence : </b>
+                        INF_VER_134<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td style='vertical-align: top;width : 250px'><b>Prix : </b>6 € HT
+            
+                    </td>
+                </tr>
+                <tr>
+                    <td style='vertical-align: top;width : 250px'><b>Description :</b> Verveine Bio 
+            
+                    </td>
+                </tr> 
+            </table>
+            </button>
+        </form>
+         <form action='produit_INF_LAD_135.html' style='display: contents;'><button onclick='submit();' width='25%' 
+                    onmouseover="this.style.background='#FFFF99';this.style.color='#FF0000';"
+                     onmouseout="this.style.background='';this.style.color='';"
+                     style='margin: 20px'>
+             <table style='padding: 20px;    display: inline-block;     height: 300px;' >
+                <tr>
+                    <td style='vertical-align: top;width : 250px'>
+                        <b>Article : </b>
+                        La délicieuse <br>
+                    </td><td rowspan='4'>  <br><img style='width:110px;' src='../image/vign_infu_la_delicieuse_800px.jpg '></td>
+                <tr>   
+                    <td style='vertical-align: top;width : 250px'>
+                        <b>Référence : </b>
+                        INF_LAD_135<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td style='vertical-align: top;width : 250px'><b>Prix : </b>6 € HT
+            
+                    </td>
+                </tr>
+                <tr>
+                    <td style='vertical-align: top;width : 250px'><b>Description :</b> Verveine, Menthe Poivrée, Mélisse, Réglisse 
+            
+                    </td>
+                </tr> 
+            </table>
+            </button>
+        </form>
+         <form action='produit_INF_TIS_147.html' style='display: contents;'><button onclick='submit();' width='25%' 
+                    onmouseover="this.style.background='#FFFF99';this.style.color='#FF0000';"
+                     onmouseout="this.style.background='';this.style.color='';"
+                     style='margin: 20px'>
+             <table style='padding: 20px;    display: inline-block;     height: 300px;' >
+                <tr>
+                    <td style='vertical-align: top;width : 250px'>
+                        <b>Article : </b>
+                        Tisane de Noël <br>
+                    </td><td rowspan='4'>  <br><img style='width:110px;' src='../image/vign_infu_tisane_de_noel_800px.jpg '></td>
+                <tr>   
+                    <td style='vertical-align: top;width : 250px'>
+                        <b>Référence : </b>
+                        INF_TIS_147<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td style='vertical-align: top;width : 250px'><b>Prix : </b>6 € HT
+            
+                    </td>
+                </tr>
+                <tr>
+                    <td style='vertical-align: top;width : 250px'><b>Description :</b> Cannelle, Orange Douce, Badiane, Hibiscus, Orange Amère, Cardamome  
+            
+                    </td>
+                </tr> 
+            </table>
+            </button>
+        </form>
+         <form action='produit_INF_TRA_148.html' style='display: contents;'><button onclick='submit();' width='25%' 
+                    onmouseover="this.style.background='#FFFF99';this.style.color='#FF0000';"
+                     onmouseout="this.style.background='';this.style.color='';"
+                     style='margin: 20px'>
+             <table style='padding: 20px;    display: inline-block;     height: 300px;' >
+                <tr>
+                    <td style='vertical-align: top;width : 250px'>
+                        <b>Article : </b>
+                        Transit <br>
+                    </td><td rowspan='4'>  <br><img style='width:110px;' src='../image/vign_infu_transit_800px.jpg '></td>
+                <tr>   
+                    <td style='vertical-align: top;width : 250px'>
+                        <b>Référence : </b>
+                        INF_TRA_148<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td style='vertical-align: top;width : 250px'><b>Prix : </b>6 € HT
+            
+                    </td>
+                </tr>
+                <tr>
+                    <td style='vertical-align: top;width : 250px'><b>Description :</b> Anis Vert, Menthe Douce, Citronnelle 
+            
+                    </td>
+                </tr> 
+            </table>
+            </button>
+        </form>
+         <form action='produit_INF_ZEN_149.html' style='display: contents;'><button onclick='submit();' width='25%' 
+                    onmouseover="this.style.background='#FFFF99';this.style.color='#FF0000';"
+                     onmouseout="this.style.background='';this.style.color='';"
+                     style='margin: 20px'>
+             <table style='padding: 20px;    display: inline-block;     height: 300px;' >
+                <tr>
+                    <td style='vertical-align: top;width : 250px'>
+                        <b>Article : </b>
+                        Zen <br>
+                    </td><td rowspan='4'>  <br><img style='width:110px;' src='../image/ '></td>
+                <tr>   
+                    <td style='vertical-align: top;width : 250px'>
+                        <b>Référence : </b>
+                        INF_ZEN_149<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td style='vertical-align: top;width : 250px'><b>Prix : </b>6 € HT
+            
+                    </td>
+                </tr>
+                <tr>
+                    <td style='vertical-align: top;width : 250px'><b>Description :</b> Oranger Doux pétale, Passiflore des Indes, Camomille Matricaire, Mélisse, Coquelicot 
+            
+                    </td>
+                </tr> 
+            </table>
+            </button>
+        </form>
+          
+            
+
+        </div>
+    </body>
+</html>
