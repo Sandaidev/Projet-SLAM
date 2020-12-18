@@ -95,15 +95,16 @@ function Entreprise_Modifier($connexionPDO, $idEntreprise, $denomination, $rueAd
 
     $requetePreparée = $connexionPDO->prepare(
         'UPDATE `entreprise` 
-SET `denomination`= :paramdenomination,
-`rueAdresse`= :paramrueAdresse,
-`complementAdresse`= :paramcomplementAdresse,
-`codePostal`= :paramcodePostal ,
-`ville`= :paramville,
-`pays`= :parampays, 
-`mailContact`= :parammailContact,
-`siret`= :paramsiret
-WHERE idEntreprise = :paramidEntreprise');
+	SET `denomination`= :paramdenomination,
+	`rueAdresse`= :paramrueAdresse,
+	`complementAdresse`= :paramcomplementAdresse,
+	`codePostal`= :paramcodePostal ,
+	`ville`= :paramville,
+	`pays`= :parampays, 
+	`mailContact`= :parammailContact,
+	`siret`= :paramsiret
+	WHERE idEntreprise = :paramidEntreprise');
+
     $requetePreparée->bindParam('paramdenomination', $denomination);
     $requetePreparée->bindParam('paramrueAdresse', $rueAdresse);
     $requetePreparée->bindParam('paramcomplementAdresse', $complementAdresse);
