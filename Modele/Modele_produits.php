@@ -41,37 +41,34 @@ function produit_selectParCategorie($connexionPDO, $idCategorie)
 
 /**
  * @param $connexionPDO
- * @param $login
- * @param $niveauAutorisation
+ * @param $idCategorie
+ * @param $nomProduit
+ * @param $description
+ * @param $codeReference
+ * @param $prixHT
+ * @param $resume
  * @return mixed
  */
-function Utilisateur_Creer($connexionPDO, $login, $niveauAutorisation, $statusUtilisateur="1")
+function produit_creer($connexionPDO, $idCategorie, $nomProduit, $description, $prixHT, $resume)
 {
-
     $requetePreparée = $connexionPDO->prepare(
-        'INSERT INTO `utilisateur` (`idUtilisateur`, `login`, `niveauAutorisation`, `motDePasse`, `statusUtilisateur`) 
-         VALUES (NULL, :paramlogin, :paramniveauAutorisation, "", :paramStatus);');
+        'INSERT INTO `produit` (`idCategorie`, `nomProduit`, `description`, `codeReference`, `prixHT`, `resume`) 
+         VALUES (:paramIDCategorie, :paramNomProduit, :paramDescription, :paramCodeReference, :paramPrixHT, :paramResume);');
 
-    $requetePreparée->bindParam('paramlogin', $login);
-    $requetePreparée->bindParam('paramniveauAutorisation', $niveauAutorisation);
-    $requetePreparée->bindParam('paramStatus', $statusUtilisateur);
+    $requetePreparée->bindParam('paramIDCategorie', $idCategorie);
+	$requetePreparée->bindParam('paramNomProduit', $nomProduit);
+	$requetePreparée->bindParam('paramDescription', $description);
+	$requetePreparée->bindParam('paramPrixHT', $prixHT);
+    $requetePreparée->bindParam('paramResume', $resume);
 
-    $reponse = $requetePreparée->execute(); //$reponse boolean sur l'état de la requête
-    $idUtilisateur = $connexionPDO->lastInsertId();
+    // Le code de référence est dynamique
+	// C'est les trois premières lettres du produit suivi de son ID dans la BDD
+	$codeReference_id = $connexionPDO->lastInsertId();
+	$codeReference = substr(strtoupper($nomProduit), 0, 3) . "_" . $codeReference_id;
+	$requetePreparée->bindParam('paramCodeReference', $codeReference);
 
-    return $idUtilisateur;
-}
+	$reponse = $requetePreparée->execute(); //$reponse boolean sur l'état de la requête
 
-function Utilisateur_SetStatus($connexionPDO, $idUtilisateur, $status) {
-    $requetePreparee = $connexionPDO->prepare(
-        'UPDATE `utilisateur` SET `statusUtilisateur` = :paramStatus
-         WHERE `utilisateur`.`idUtilisateur` = :paramIDUtilisateur '
-    );
-
-    $requetePreparee->bindParam('paramStatus', $status);
-    $requetePreparee->bindParam('paramIDUtilisateur', $idUtilisateur);
-
-    $reponse = $requetePreparee->execute();
     return $reponse;
 }
 
@@ -111,26 +108,3 @@ WHERE idUtilisateur = :paramidUtilisateur');
     $reponse = $requetePreparée->execute(); //$reponse boolean sur l'état de la requête
     return $reponse;
 }
-
-
-/**
- * @param $connexionPDO
- * @param $idUtilisateur
- * @param $motDePasseClair
- * @return mixed
- */
-function Utilisateur_Modifier_motDePasse($connexionPDO, $idUtilisateur, $motDePasseClair)
-
-{
-    $parammotDePasseHache = password_hash($motDePasseClair, PASSWORD_DEFAULT);
-
-    $requetePreparée = $connexionPDO->prepare(
-        'UPDATE `utilisateur` 
-SET motDePasse = :parammotDePasseHache
-WHERE idUtilisateur = :paramidUtilisateur');
-    $requetePreparée->bindParam('parammotDePasseHache', $parammotDePasseHache);
-    $requetePreparée->bindParam('paramidUtilisateur', $idUtilisateur);
-    $reponse = $requetePreparée->execute(); //$reponse boolean sur l'état de la requête
-    return $reponse;
-}
-
