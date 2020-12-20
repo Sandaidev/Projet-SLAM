@@ -3,7 +3,7 @@
  * @param $connexionPDO : connexion à la base de données
  * @return mixed : le tableau des produits ou null (something went wrong...)
  */
-function Produit_select($connexionPDO)
+function produit_select($connexionPDO)
 {
     $requetePreparée = $connexionPDO->prepare('select * from `produit`');
     $reponse = $requetePreparée->execute(); //$reponse boolean sur l'état de la requête
@@ -94,7 +94,7 @@ function produit_supprimer($connexionPDO, $idProduit)
  * @param $resume
  * @return bool
  */
-function Utilisateur_Modifier($connexionPDO, $idProduit, $idCategorie, $nomProduit, $description, $prixHT, $resume)
+function produit_modifier($connexionPDO, $idProduit, $idCategorie, $nomProduit, $description, $prixHT, $resume)
 {
     $requetePreparée = $connexionPDO->prepare(
         '
