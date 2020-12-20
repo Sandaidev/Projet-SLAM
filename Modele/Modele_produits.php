@@ -54,9 +54,6 @@ function Utilisateur_Creer($connexionPDO, $login, $niveauAutorisation, $statusUt
 
     $requetePreparée->bindParam('paramlogin', $login);
     $requetePreparée->bindParam('paramniveauAutorisation', $niveauAutorisation);
-
-    // On doit faire le bind ici en statique
-    // Sur le status de l'utilisateur, par défaut : 1 (Activé)
     $requetePreparée->bindParam('paramStatus', $statusUtilisateur);
 
     $reponse = $requetePreparée->execute(); //$reponse boolean sur l'état de la requête
