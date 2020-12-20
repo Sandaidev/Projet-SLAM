@@ -16,6 +16,8 @@ if (isset($_SESSION["idEntreprise"]))
         // Cas : Aucune catégorie n'est sélectionnée
         //       ou la catégorie "Afficher tout" est sélectionnée
 
+		$liste_produits = produit_select($connexion);
+		Vue_afficher_liste_produits($liste_produits);
 
 
     }
