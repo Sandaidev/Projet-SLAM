@@ -47,7 +47,7 @@ function produit_selectParCategorie($connexionPDO, $idCategorie)
  * @param $codeReference
  * @param $prixHT
  * @param $resume
- * @return mixed
+ * @return bool
  */
 function produit_creer($connexionPDO, $idCategorie, $nomProduit, $description, $prixHT, $resume)
 {
@@ -68,43 +68,51 @@ function produit_creer($connexionPDO, $idCategorie, $nomProduit, $description, $
 	$requetePreparée->bindParam('paramCodeReference', $codeReference);
 
 	$reponse = $requetePreparée->execute(); //$reponse boolean sur l'état de la requête
-
     return $reponse;
 }
 
 /**
  * @param $connexionPDO
- * @param $idUtilisateur
- * @return mixed
+ * @param $idProduit
+ * @return bool
  */
-function Utilisateur_Supprimer($connexionPDO, $idUtilisateur)
+function produit_supprimer($connexionPDO, $idProduit)
 {
-
-    $requetePreparée = $connexionPDO->prepare('delete utilisateur.* from `utilisateur` where idUtilisateur = :paramId');
-    $requetePreparée->bindParam('paramId', $idUtilisateur);
+    $requetePreparée = $connexionPDO->prepare('delete produit.* from `produit` where idProduit = :paramId');
+    $requetePreparée->bindParam('paramId', $idProduit);
     $reponse = $requetePreparée->execute(); //$reponse boolean sur l'état de la requête
     return $reponse;
 }
 
 /**
  * @param $connexionPDO
- * @param $idUtilisateur
- * @param $login
- * @param $niveauAutorisation
- * @return mixed
+ * @param $idProduit
+ * @param $idCategorie
+ * @param $nomProduit
+ * @param $description
+ * @param $prixHT
+ * @param $resume
+ * @return bool
  */
-function Utilisateur_Modifier($connexionPDO, $idUtilisateur, $login, $niveauAutorisation)
-
+function Utilisateur_Modifier($connexionPDO, $idProduit, $idCategorie, $nomProduit, $description, $prixHT, $resume)
 {
-
     $requetePreparée = $connexionPDO->prepare(
-        'UPDATE `utilisateur` 
-SET `login`= :paramlogin,
-`niveauAutorisation`= :paramniveauAutorisation
-WHERE idUtilisateur = :paramidUtilisateur');
-    $requetePreparée->bindParam('paramlogin', $login);
-    $requetePreparée->bindParam('paramniveauAutorisation', $niveauAutorisation);
-    $requetePreparée->bindParam('paramidUtilisateur', $idUtilisateur);
-    $reponse = $requetePreparée->execute(); //$reponse boolean sur l'état de la requête
+        '
+		UPDATE `produit` 
+		SET `idCategorie`= :paramIDCategorie,
+			`nomProduit`= :paramNomProduit,
+			`description`= :paramDescription,
+			`prixHT`= :paramPrixHT,
+			`resume`= :paramResume,
+		WHERE idProduit = :paramIDProduit');
+
+    $requetePreparée->bindParam('paramIDCategorie', $idCategorie);
+    $requetePreparée->bindParam('paramNomProduit', $nomProduit);
+    $requetePreparée->bindParam('paramDescription', $description);
+	$requetePreparée->bindParam('paramPrixHT', $prixHT);
+	$requetePreparée->bindParam('paramResume', $resume);
+	$requetePreparée->bindParam('paramIDProduit', $idProduit);
+
+    $reponse = $requetePreparée->execute();
     return $reponse;
 }
