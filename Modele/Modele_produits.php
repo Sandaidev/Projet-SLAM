@@ -32,10 +32,10 @@ function produit_selectParID($connexionPDO, $idProduit)
  */
 function produit_selectParCategorie($connexionPDO, $idCategorie)
 {
-    $requetePreparée = $connexionPDO->prepare('select * from `produit` where idCategorie = :paramIDCategorie');
+    $requetePreparée = $connexionPDO->prepare('SELECT * FROM `produit` WHERE `idCategorie` = :paramIDCategorie');
     $requetePreparée->bindParam('paramIDCategorie', $idCategorie);
     $reponse = $requetePreparée->execute(); //$reponse boolean sur l'état de la requête
-    $produits = $requetePreparée->fetch(PDO::FETCH_ASSOC);
+    $produits = $requetePreparée->fetchAll(PDO::FETCH_ASSOC);
     return $produits;
 }
 
