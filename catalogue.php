@@ -11,16 +11,29 @@ if (isset($_SESSION["idEntreprise"]))
     $liste_categories = Categorie_select($connexion);
     Vue_Catalogue_menu($liste_categories);
 
-    if (!isset($_REQUEST["idCategorie"]) or $_REQUEST["idCategorie"] == -1)
+    if (isset($_REQUEST["idProduit"]))
+	{
+		// Cas : L'utilisateur a choisi de consulter un produit spécifique
+		$produit = produit_selectParID($connexion, $_REQUEST["idProduit"]);
+		Vue_afficher_produit_detail($produit);
+	}
+
+    elseif (!isset($_REQUEST["idCategorie"]) or $_REQUEST["idCategorie"] == -1)
     {
         // Cas : Aucune catégorie n'est sélectionnée
         //       ou la catégorie "Afficher tout" est sélectionnée
 
+		$_REQUEST["idCategorie"] = "-1";
 		$liste_produits = produit_select($connexion);
 		Vue_afficher_liste_produits($liste_produits);
-
-
     }
+
+    else
+	{
+		// Cas : une catégorie est sélectionnée
+		$liste_produits = produit_selectParCategorie($connexion, $_REQUEST["idCategorie"]);
+		Vue_afficher_liste_produits($liste_produits);
+	}
 }
 
 else
