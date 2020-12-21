@@ -14,6 +14,7 @@ function Vue_Structure_Entete($enHTML = false)
                <meta charset=\"utf-8\">
                 <!-- importer le fichier de style -->
                 <link rel=\"stylesheet\" href=\".\public\style.css\" media=\"screen\" type=\"text/css\" />
+                <link rel=\"stylesheet\" href=\".\public\fontawesome-free\css\all.css\" media='screen' type='text/css'>
             </head>
             <body>
                 <div id=\"container\">";
@@ -27,6 +28,7 @@ function Vue_Structure_Entete($enHTML = false)
                <meta charset=\"utf-8\">
                 <!-- importer le fichier de style -->
                 <link rel=\"stylesheet\" href=\"..\style.css\" media=\"screen\" type=\"text/css\" />
+                <link rel=\"stylesheet\" href=\"..\fontawesome-free\css\all.css\" media='screen' type='text/css'>
             </head>
             <body>
                 <div id=\"container\">";
