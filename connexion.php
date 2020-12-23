@@ -4,6 +4,12 @@ include_once("autoload.php");
  * Contrôleur gérant la connexion au catalogue
  * En cas de succès, il affiche uniquement le catalogue
  */
+// FIXME LE LOGIN MARCHE PAS!
+echo "<pre>_SESSION</pre>";
+print_debug($_SESSION);
+echo "<hr><pre>_REQUEST</pre>";
+print_debug($_REQUEST);
+echo "<hr>";
 
 if (isset($_REQUEST["compte"]) and isset($_REQUEST["password"])) {//Si tous les paramètres du formulaire sont bons
     $connexion = Creer_Connexion();
@@ -14,8 +20,7 @@ if (isset($_REQUEST["compte"]) and isset($_REQUEST["password"])) {//Si tous les 
 
             //redirection sur la première page du catalogue
             //Construction du lien vers lequel rediriger
-            //Dans la vraie vie, se serait plus court, mais comme je ne connais les url sur vos postes, j'ai créé un lien qui
-            //devrait marcher tout le temps (ou presque)
+
             /*if (isset($_SERVER['HTTPS']) &&
                 $_SERVER['HTTPS'] === 'on')
                 $link = "https";
@@ -37,6 +42,7 @@ if (isset($_REQUEST["compte"]) and isset($_REQUEST["password"])) {//Si tous les 
             exit(); //La page s'arrête là, pour envoyer l'ordre de redirection au navigateur.
         } else {//mot de passe pas bon
             $msgError = "Mot de passe erroné";
+            print_debug($entreprise);
             Vue_Structure_Entete();
             Vue_Connexion_Formulaire_connexion_entreprise($msgError);
         }

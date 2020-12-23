@@ -186,7 +186,6 @@ WHERE idEntreprise = :paramidEntreprise');
  * @return mixed
  */
 function Entreprise_Modifier_motDePasse($connexionPDO, $idEntreprise, $motDePasseClair)
-
 {
     $parammotDePasseHache = password_hash($motDePasseClair, PASSWORD_DEFAULT);
 

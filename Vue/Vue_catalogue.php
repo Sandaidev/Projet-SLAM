@@ -33,9 +33,11 @@ function Vue_Catalogue_menu($liste_categories, $mode_admin=false)
 	{
 		echo "
 		<li>
-			<button onclick='submit();' name='ajouterCategorie'>
-    			<i style='font-size: 22px;' class=\"fas fa-folder-plus\"> Ajouter une catégorie</i>
-    		</button>
+			<form style='border: none; background: none; box-shadow: none;'>
+				<button style='background-color: #53af57; border-radius: 8px; color: white; padding: 6px; font-family: Tahoma;' onclick='submit();' name='ajouter_categorie'>
+					<i class='fas fa-folder-plus' style='font-size: 18px;'> Ajouter une catégorie</i>
+				</input>
+    		</form>
     	</li>
     	";
 	}

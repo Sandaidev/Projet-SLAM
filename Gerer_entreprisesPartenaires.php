@@ -29,8 +29,8 @@ if(isset($_SESSION["idUtilisateur"])) {
     } elseif (isset($_REQUEST["réinitialiserMDP"])) {
         //Réinitialiser MDP sur la fiche de l'entreprise
         $entreprise = Entreprise_Select_ParId($connexion, $_REQUEST["idEntreprise"]);
-        Entreprise_Modifier_motDePasse($connexion, $_REQUEST["idEntreprise"], $entreprise["numCompte"]);
-        $listeEntreprise = Entreprise_Select($connexion);
+		Entreprise_Modifier_motDePasse($connexion, $_REQUEST["idEntreprise"], "secret");
+		$listeEntreprise = Entreprise_Select($connexion);
         Vue_Gestion_Entreprise_Liste($listeEntreprise);
 
     } elseif (isset($_REQUEST["nouveau"])) {
@@ -41,7 +41,10 @@ if(isset($_SESSION["idUtilisateur"])) {
         //Créer sur la fiche de création d'une entreprise
         Entreprise_Creer($connexion, $_REQUEST["denomination"], $_REQUEST["rueAdresse"], $_REQUEST["complementAdresse"], $_REQUEST["codePostal"]
             , $_REQUEST["ville"], $_REQUEST["pays"], $_REQUEST["mailContact"], $_REQUEST["siret"]);
-        $listeEntreprise = Entreprise_Select($connexion);
+		Entreprise_Modifier_motDePasse($connexion, $_REQUEST["idEntreprise"], "secret");
+
+
+		$listeEntreprise = Entreprise_Select($connexion);
         Vue_Gestion_Entreprise_Liste($listeEntreprise);
     } elseif (isset($_REQUEST["Supprimer"])) {
         Entreprise_Supprimer($connexion, $_REQUEST["idEntreprise"]);
