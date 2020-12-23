@@ -7,11 +7,12 @@ function Vue_Administration_Menu()
 
     echo "
     <nav id='menu'>
-      <ul id='menu-closed'> 
-        <li><a href='Gerer_entreprisesPartenaires.php'>Entreprises partenaires</a></li>
-        <li><a href='Gerer_utilisateursAdministratifs.php'>Utilisateurs administratifs</a></li>  
-        <li><a href='Gerer_monCompte.php'>Mon compte</a></li>  
-      </ul>
+    	<ul id='menu-closed'> 
+        	<li><a href='Gerer_entreprisesPartenaires.php'>Entreprises partenaires</a></li>
+			<li><a href='Gerer_utilisateursAdministratifs.php'>Utilisateurs administratifs</a></li>        
+			<li><a href='Gerer_catalogue.php'>Catalogue</a></li>
+			<li><a href='Gerer_monCompte.php'>Mon compte</a></li>  
+      	</ul>
     </nav> ";
 }
 

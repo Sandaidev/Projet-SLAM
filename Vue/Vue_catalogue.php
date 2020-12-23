@@ -1,6 +1,6 @@
 <?php
 
-function Vue_Catalogue_menu($liste_categories)
+function Vue_Catalogue_menu($liste_categories, $mode_admin=false)
 {
     echo "
     <nav style='height: auto;'>
@@ -26,8 +26,19 @@ function Vue_Catalogue_menu($liste_categories)
                 <input type='hidden' name='idCategorie' value='-1'>
                 <input style='padding: 6px 0px; margin: 0;' type='submit' value='Afficher tout'>
             </form>
-        </li>  
+        </li>
     ";
+
+    if ($mode_admin)
+	{
+		echo "
+		<li>
+			<button onclick='submit();' name='ajouterCategorie'>
+    			<i style='font-size: 22px;' class=\"fas fa-folder-plus\"> Ajouter une catégorie</i>
+    		</button>
+    	</li>
+    	";
+	}
 
     echo "
         </ul>

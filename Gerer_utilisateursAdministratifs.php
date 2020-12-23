@@ -20,7 +20,6 @@ if(isset($_SESSION["idUtilisateur"]))
 
     // On récupère le niveau de permission de l'utilisateur sur la page
     $niveau_autorisation = Utilisateur_Select_ParId($connexion, $_SESSION["idUtilisateur"])["niveauAutorisation"];
-    $liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
 
     if ($niveau_autorisation == 1)
     {
@@ -48,7 +47,7 @@ if(isset($_SESSION["idUtilisateur"]))
 
         elseif (isset($_REQUEST["mettreAJour"]))
         {
-            // Cas : CONFIRMATION de modification d'un uitilisateur
+            // Cas : CONFIRMATION de modification d'un utilisateur
 
             $new_id_utilisateur = $_REQUEST["id_utilisateur_edit"];
             $new_login          = $_REQUEST["nouveau_login"];
@@ -58,14 +57,18 @@ if(isset($_SESSION["idUtilisateur"]))
                                  $new_id_utilisateur,
                                  $new_login,
                                  $new_autorisation);
-            Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
+
+			$liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
+			Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
         }
 
         elseif (isset($_REQUEST["Supprimer"]))
         {
             // Cas : Suppression d'un utilisateur
             Utilisateur_Supprimer($connexion, $_REQUEST["idUtilisateurAdmin"]);
-            Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
+
+			$liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
+			Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
         }
 
         elseif (isset($_REQUEST["Nouveau"]))
@@ -82,7 +85,9 @@ if(isset($_SESSION["idUtilisateur"]))
 
             $id_new_user = Utilisateur_Creer($connexion, $new_username, $new_authorization);
             Utilisateur_Modifier_motDePasse($connexion, $id_new_user, "secret");
-            Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
+
+			$liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
+			Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
         }
 
         elseif (isset($_REQUEST["Desactiver"]))
@@ -90,7 +95,9 @@ if(isset($_SESSION["idUtilisateur"]))
             // Cas : Désactivation d'un utilisateur
             $id_utilisateur = $_REQUEST["idUtilisateurAdmin"];
             Utilisateur_SetStatus($connexion, $id_utilisateur, 0);
-            Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
+
+			$liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
+			Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
         }
 
         elseif (isset($_REQUEST["Activer"]))
@@ -98,8 +105,17 @@ if(isset($_SESSION["idUtilisateur"]))
             // Cas : Activation d'un utilisateur
             $id_utilisateur = $_REQUEST["idUtilisateurAdmin"];
             Utilisateur_SetStatus($connexion, $id_utilisateur, 1);
-            Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
+
+			$liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
+			Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
         }
+
+        else
+		{
+			// Cas : Il n'y a aucune commande
+			$liste_utilisateurs_administratifs = Utilisateur_Select($connexion);
+			Vue_Gestion_Utilisateurs_Admin_Liste($liste_utilisateurs_administratifs);
+		}
     }
 
     else
