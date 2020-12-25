@@ -99,19 +99,19 @@ function produit_modifier($connexionPDO, $idProduit, $idCategorie, $nomProduit, 
     $requetePreparée = $connexionPDO->prepare(
         '
 		UPDATE `produit` 
-		SET `idCategorie`= :paramIDCategorie,
+		SET `produit`.`idCategorie`= :paramIDCategorie,
 			`nomProduit`= :paramNomProduit,
 			`description`= :paramDescription,
 			`prixHT`= :paramPrixHT,
 			`resume`= :paramResume,
-		WHERE `idProduit` = :paramIDProduit');
+		WHERE `produit`.`idProduit` = :paramIDProduit');
 
-    $requetePreparée->bindParam('paramIDCategorie', $idCategorie);
-    $requetePreparée->bindParam('paramNomProduit', $nomProduit);
-    $requetePreparée->bindParam('paramDescription', $description);
-	$requetePreparée->bindParam('paramPrixHT', $prixHT);
-	$requetePreparée->bindParam('paramResume', $resume);
-	$requetePreparée->bindParam('paramIDProduit', $idProduit);
+    $requetePreparée->bindParam(':paramIDCategorie', $idCategorie);
+    $requetePreparée->bindParam(':paramNomProduit', $nomProduit);
+    $requetePreparée->bindParam(':paramDescription', $description);
+	$requetePreparée->bindParam(':paramPrixHT', $prixHT);
+	$requetePreparée->bindParam(':paramResume', $resume);
+	$requetePreparée->bindParam(':paramIDProduit', $idProduit);
 
     $reponse = $requetePreparée->execute();
     return $reponse;

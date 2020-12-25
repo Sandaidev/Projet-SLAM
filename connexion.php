@@ -4,12 +4,6 @@ include_once("autoload.php");
  * Contrôleur gérant la connexion au catalogue
  * En cas de succès, il affiche uniquement le catalogue
  */
-// FIXME LE LOGIN MARCHE PAS!
-echo "<pre>_SESSION</pre>";
-print_debug($_SESSION);
-echo "<hr><pre>_REQUEST</pre>";
-print_debug($_REQUEST);
-echo "<hr>";
 
 if (isset($_REQUEST["compte"]) and isset($_REQUEST["password"])) {//Si tous les paramètres du formulaire sont bons
     $connexion = Creer_Connexion();
