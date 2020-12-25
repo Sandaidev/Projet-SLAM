@@ -104,7 +104,7 @@ function produit_modifier($connexionPDO, $idProduit, $idCategorie, $nomProduit, 
 			`description`= :paramDescription,
 			`prixHT`= :paramPrixHT,
 			`resume`= :paramResume,
-		WHERE idProduit = :paramIDProduit');
+		WHERE `idProduit` = :paramIDProduit');
 
     $requetePreparée->bindParam('paramIDCategorie', $idCategorie);
     $requetePreparée->bindParam('paramNomProduit', $nomProduit);

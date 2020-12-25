@@ -22,41 +22,70 @@ if(isset($_SESSION["idUtilisateur"]))
 	$liste_categories = Categorie_select($connexion);
 	Vue_Catalogue_menu($liste_categories, true);
 
-	if (isset($_REQUEST["modifier_produit"]))
-	{
-		// Cas : Modification d'un produit
-		// FIXME
-	}
-
-	elseif (isset($_REQUEST["confirmation_modifier_produit"]))
+	if (isset($_REQUEST["confirmation_modifier_produit"]))
 	{
 		// Cas : CONFIRMATION de modification d'un produit
-		// FIXME
+
+		print_debug($_REQUEST);
+
+		produit_modifier(
+			$connexion,
+			$_REQUEST["id_produit"],
+			$_REQUEST["id_categorie"],
+			$_REQUEST["nom_produit"],
+			$_REQUEST["description"],
+			$_REQUEST["prix_ht"],
+			$_REQUEST["resume"]);
+
+		$liste_produits = produit_select($connexion);
+		Vue_afficher_liste_produits($liste_produits);
 	}
 
 	elseif (isset($_REQUEST["supprimer_produit"]))
 	{
 		// Cas : Suppression d'un produit
-		// FIXME
+		// TODO
 	}
 
 	elseif (isset($_REQUEST["creer_produit"]))
 	{
 		// Cas : Création d'un produit (affichage du formulaire)
-		// FIXME
+		// TODO
 	}
 
 	elseif (isset($_REQUEST["confirmation_creer_produit"]))
 	{
 		// Cas : CONFIRMATION de création d'un produit
-		// FIXME
+		// TODO
 	}
 
 	elseif (isset($_REQUEST["ajouter_categorie"]))
 	{
 		// Cas : Création d'un catégorie (affichage du formulaire)
-		// FIXME
+		// TODO
 	}
+
+	elseif (isset($_REQUEST["idProduit"]))
+	{
+		// Cas : Un produit a été sélectionné,
+		// 		 NB : ça risque de pas fonctionner correctement; Caveat Emptor.
+
+		$infos_produit = produit_selectParID($connexion, $_REQUEST["idProduit"]);
+		$liste_categories = Categorie_select($connexion);
+		Vue_formulaire_modification_produit($liste_categories, $infos_produit);
+	}
+
+	elseif (!isset($_REQUEST["idCategorie"]) or $_REQUEST["idCategorie"] == -1)
+	{
+		// Cas : L'admin a choisi d'afficher toutes les catégories
+		//		 OU c'est sa première visite sur le site
+
+		$_REQUEST["idCategorie"] = -1;
+		$liste_produits = produit_select($connexion);
+		Vue_afficher_liste_produits($liste_produits);
+	}
+
+
 }
 
 else

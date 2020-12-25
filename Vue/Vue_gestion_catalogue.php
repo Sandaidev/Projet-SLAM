@@ -5,16 +5,7 @@
  * Paramètres (explicites exclus) :
  * 	$liste_categories : Pour la liste déroulante dans le choix de la catégorie à affecter.
  */
-function Vue_formulaire_modification_produit($liste_categories,
-											 $id_produit=null,
-											 $id_categorie=null,
-											 $nom_produit=null,
-											 $description=null,
-											 $code_reference=null,
-											 $prix_ht=null,
-											 $resume=null,
-											 $img_src=null,
-											 $mode_creation=false)
+function Vue_formulaire_modification_produit($liste_categories, $infos_produit=null, $mode_creation=false)
 {
 	// Affichage du titre
 	if ($mode_creation)
@@ -33,38 +24,38 @@ function Vue_formulaire_modification_produit($liste_categories,
 		// Cas : Création d'un nouveau produit
 		echo "
 		<form style='display: contents;'>			
-			<table style='padding: 20px; display: inline-block; height: 300px;'>
+			<table style='padding: 20px; display: inline-block;'>
 
 				<tr>
 					<td style='vertical-align: top;width : 250px'>
-						<b>Article :</b> <input type='text' name='nom_produit' value='$nom_produit'>
+						<b>Article :</b> <input type='text' name='nom_produit' value='$infos_produit[nomProduit]'>
 					</td>
 					<!-- FIXME path to article thumbnail in prod -->
-					<td rowspan='4'> <img style='width:110px;' src='$img_src'>
+					<td rowspan='7'> <img style='width:250px;' src='/Projet-SLAM/public/PLACEHOLDER.jpg'>
 					</td>
 				</tr>
 				
 				<tr>
 					<td style='vertical-align: top;width : 250px'>
-						<b>Référence : </b> <input type='text' name='code_reference' value='$code_reference'>
+						<b>Référence : </b> <input type='text' name='code_reference' value='$infos_produit[codeReference]'>
+					</td>
+				</tr>
+				
+				<tr>f
+					<td style='vertical-align: top;width : 250px'>
+						<b>Prix : </b> <input type='number' name='prix_ht' value='$infos_produit[prixHT]'> € HT
 					</td>
 				</tr>
 				
 				<tr>
 					<td style='vertical-align: top;width : 250px'>
-						<b>Prix : </b> <input type='number' name='prix_ht' value='$prix_ht'>
+						<b>Description :</b> <input type='text' name='description' value='$infos_produit[description]'>
 					</td>
 				</tr>
 				
 				<tr>
 					<td style='vertical-align: top;width : 250px'>
-						<b>Description :</b> <input type='text' name='description' value='$description'>
-					</td>
-				</tr>
-				
-				<tr>
-					<td style='vertical-align: top;width : 250px'>
-						<b>Résumé :</b> <input type='text' name='resume' value='$resume'>
+						<b>Résumé :</b> <input type='text' name='resume' value='$infos_produit[resume]'>
 					</td>
 				</tr>
 				
@@ -76,15 +67,7 @@ function Vue_formulaire_modification_produit($liste_categories,
 		// Category dropdown filling
 		foreach ($liste_categories as $categorie)
 		{
-			if ($categorie["idCategorie"] == $id_categorie)
-			{
-				echo "<option value='$categorie[idCategorie]' selected>$categorie[nomCategorie]</option>";
-			}
-
-			else
-			{
-				echo "<option value='$categorie[idCategorie]'>$categorie[nomCategorie]</option>";
-			}
+			echo "<option value='$categorie[idCategorie]'>$categorie[nomCategorie]</option>";
 		}
 
 		echo "
@@ -104,42 +87,44 @@ function Vue_formulaire_modification_produit($liste_categories,
 
 	else
 	{
-		// Cas : Modification d'un nouveau produit
+		// Cas : Modification d'un produit
 		echo "
 		<form style='display: contents;'>			
-			<input type='hidden' name='id_produit' value='$id_produit'>
-			<table style='padding: 20px; display: inline-block; height: 300px;'>
+			<input type='hidden' name='id_produit' value='$infos_produit[idProduit]'>
+			<table style='padding: 20px; display: inline-block;'>
 
 				<tr>
 					<td style='vertical-align: top;width : 250px'>
-						<b>Article :</b> <input type='text' name='nom_produit' value='$nom_produit'>
+						<b>Article :</b> <input type='text' name='nom_produit' value='$infos_produit[nomProduit]'>
 					</td>
 					<!-- FIXME path to article thumbnail in prod -->
-					<td rowspan='4'> <img style='width:110px;' src='$img_src'>
+					<!--
+					<td rowspan='7'> <img style='width:110px;' src='$infos_produit[imgSrc]'>-->
+					<td rowspan='7'> <img style='width:250px;' src='/Projet-SLAM/public/PLACEHOLDER.jpg'>
 					</td>
 				</tr>
 				
 				<tr>
 					<td style='vertical-align: top;width : 250px'>
-						<b>Référence : </b> <input type='text' name='code_reference' value='$code_reference'>
+						<b>Référence : </b> <input type='text' name='code_reference' value='$infos_produit[codeReference]'>
 					</td>
 				</tr>
 				
 				<tr>
 					<td style='vertical-align: top;width : 250px'>
-						<b>Prix : </b> <input type='number' name='prix_ht' value='$prix_ht'>
+						<b>Prix : </b> <input type='number' name='prix_ht' value='$infos_produit[prixHT]'> € HT
 					</td>
 				</tr>
 				
 				<tr>
 					<td style='vertical-align: top;width : 250px'>
-						<b>Description :</b> <input type='text' name='description' value='$description'>
+						<b>Description :</b> <input type='text' name='description' value='$infos_produit[description]'>
 					</td>
 				</tr>
 				
 				<tr>
 					<td style='vertical-align: top;width : 250px'>
-						<b>Résumé :</b> <input type='text' name='resume' value='$resume'>
+						<b>Résumé :</b> <input type='text' name='resume' value='$infos_produit[resume]'>
 					</td>
 				</tr>
 				
@@ -151,7 +136,7 @@ function Vue_formulaire_modification_produit($liste_categories,
 							// Category dropdown filling
 							foreach ($liste_categories as $categorie)
 							{
-								if ($categorie["idCategorie"] == $id_categorie)
+								if ($categorie["idCategorie"] == $infos_produit[id_categorie])
 								{
 									echo "<option value='$categorie[idCategorie]' selected>$categorie[nomCategorie]</option>";
 								}
@@ -168,7 +153,10 @@ function Vue_formulaire_modification_produit($liste_categories,
 				</tr>
 				
 				<tr>
-					<td><input type='submit' name='confirmation_modifier_produit' value='Confirmer'></td>
+					<td>
+						<input type='submit' name='confirmation_modifier_produit' value='Confirmer'>
+						<input type='submit' name='supprimer_produit' value='Supprimer ce produit' style='background-color: red'>
+					</td>
 				</tr>
 				
 			</table>

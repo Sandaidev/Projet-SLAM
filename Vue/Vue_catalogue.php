@@ -13,7 +13,7 @@ function Vue_Catalogue_menu($liste_categories, $mode_admin=false)
             <li>
                 <form style='border: none; background: none; box-shadow: none;'>
                     <input type='hidden' name='idCategorie' value='". $categorie["idCategorie"] ."'>
-                    <input style='padding: 6px 0px; margin: 0;' type='submit' value='". $categorie["nomCategorie"] ."'>
+                    <input style='padding: 6px 0px; margin: 0; text-shadow: 1px 1px 4px black;' type='submit' value='". $categorie["nomCategorie"] ."'>
                 </form>
             </li>
         ";
@@ -24,7 +24,7 @@ function Vue_Catalogue_menu($liste_categories, $mode_admin=false)
         <li>
             <form style='border: none; background: none; box-shadow: none;'>
                 <input type='hidden' name='idCategorie' value='-1'>
-                <input style='padding: 6px 0px; margin: 0;' type='submit' value='Afficher tout'>
+                <input style='padding: 6px 0px; margin: 0; text-shadow: 1px 1px 4px black;' type='submit' value='Afficher tout'>
             </form>
         </li>
     ";
@@ -34,8 +34,8 @@ function Vue_Catalogue_menu($liste_categories, $mode_admin=false)
 		echo "
 		<li>
 			<form style='border: none; background: none; box-shadow: none;'>
-				<button style='background-color: #53af57; border-radius: 8px; color: white; padding: 6px; font-family: Tahoma;' onclick='submit();' name='ajouter_categorie'>
-					<i class='fas fa-folder-plus' style='font-size: 18px;'> Ajouter une catégorie</i>
+				<button style='background-color: #53af57; border-radius: 8px; color: white; padding: 6px; font-family: Tahoma; cursor: pointer;' onclick='submit();' name='ajouter_categorie'>
+					<i class='fas fa-folder-plus' style='font-size: 18px; text-shadow: 1px 1px 4px black;'> Ajouter une catégorie</i>
 				</input>
     		</form>
     	</li>
