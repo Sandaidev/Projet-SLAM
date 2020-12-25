@@ -166,3 +166,4 @@ function Vue_formulaire_modification_produit($liste_categories, $infos_produit=n
 	}
 
 }
+

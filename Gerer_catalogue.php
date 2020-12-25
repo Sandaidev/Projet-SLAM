@@ -5,8 +5,6 @@ include("autoload.php");
  * Ce contrôleur est dédié à la gestion des produis et catégories
  */
 
-// TODO Gérer l'affichage des produits!!
-
 Vue_Structure_Entete();
 
 if(isset($_SESSION["idUtilisateur"]))
@@ -26,8 +24,6 @@ if(isset($_SESSION["idUtilisateur"]))
 	{
 		// Cas : CONFIRMATION de modification d'un produit
 
-		print_debug($_REQUEST);
-
 		produit_modifier(
 			$connexion,
 			$_REQUEST["id_produit"],
@@ -44,13 +40,17 @@ if(isset($_SESSION["idUtilisateur"]))
 	elseif (isset($_REQUEST["supprimer_produit"]))
 	{
 		// Cas : Suppression d'un produit
-		// TODO
+
+		produit_supprimer($connexion, $_REQUEST["id_produit"]);
+		$liste_produits = produit_select($connexion);
+		Vue_afficher_liste_produits($liste_produits);
 	}
 
 	elseif (isset($_REQUEST["creer_produit"]))
 	{
 		// Cas : Création d'un produit (affichage du formulaire)
-		// TODO
+
+
 	}
 
 	elseif (isset($_REQUEST["confirmation_creer_produit"]))
@@ -62,13 +62,13 @@ if(isset($_SESSION["idUtilisateur"]))
 	elseif (isset($_REQUEST["ajouter_categorie"]))
 	{
 		// Cas : Création d'un catégorie (affichage du formulaire)
+
 		// TODO
 	}
 
 	elseif (isset($_REQUEST["idProduit"]))
 	{
 		// Cas : Un produit a été sélectionné,
-		// 		 NB : ça risque de pas fonctionner correctement; Caveat Emptor.
 
 		$infos_produit = produit_selectParID($connexion, $_REQUEST["idProduit"]);
 		$liste_categories = Categorie_select($connexion);
@@ -83,6 +83,13 @@ if(isset($_SESSION["idUtilisateur"]))
 		$_REQUEST["idCategorie"] = -1;
 		$liste_produits = produit_select($connexion);
 		Vue_afficher_liste_produits($liste_produits);
+	}
+
+	else
+	{
+		// Cas : Une catégorie a été sélectionnée
+		$liste_produits_par_categorie = produit_selectParCategorie($connexion, $_REQUEST["idCategorie"]);
+		Vue_afficher_liste_produits($liste_produits_par_categorie);
 	}
 
 
