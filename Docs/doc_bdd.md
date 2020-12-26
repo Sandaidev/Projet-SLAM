@@ -27,7 +27,7 @@ Structure / Champs :
     - Siret (14 chiffres) de l'entreprise
 - `motDePasse` - [`text`]
     -  Mot de passe haché de l'entreprise sur le site
-    
+ 
 ### Table : `Utilisateur`
 
 Permet la gestion des utilisateurs du back office
