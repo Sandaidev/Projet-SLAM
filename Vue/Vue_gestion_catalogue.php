@@ -23,39 +23,39 @@ function Vue_formulaire_modification_produit($liste_categories, $infos_produit=n
 	{
 		// Cas : Création d'un nouveau produit
 		echo "
-		<form style='display: contents;'>			
-			<table style='padding: 20px; display: inline-block;'>
+		<form style='display: contents;'>
+			<table style='padding: 20px; display: inline-block;' border=''>
 
 				<tr>
 					<td style='vertical-align: top;width : 250px'>
-						<b>Article :</b> <input type='text' name='nom_produit' value='$infos_produit[nomProduit]'>
+						<b>Article :</b> <input type='text' name='nom_produit'>
 					</td>
 					<!-- FIXME path to article thumbnail in prod -->
-					<td rowspan='7'> <img style='width:250px;' src='/Projet-SLAM/public/PLACEHOLDER.jpg'>
+					<td rowspan='7'> <img style='width:250px; border-radius: 16px; margin: 16px;' src='/Projet-SLAM/public/PLACEHOLDER.jpg'>
 					</td>
 				</tr>
 				
 				<tr>
 					<td style='vertical-align: top;width : 250px'>
-						<b>Référence : </b> <input type='text' name='code_reference' value='$infos_produit[codeReference]'>
-					</td>
-				</tr>
-				
-				<tr>f
-					<td style='vertical-align: top;width : 250px'>
-						<b>Prix : </b> <input type='number' name='prix_ht' value='$infos_produit[prixHT]'> € HT
+						<b>Référence : </b> <input type='text' name='code_reference'>
 					</td>
 				</tr>
 				
 				<tr>
 					<td style='vertical-align: top;width : 250px'>
-						<b>Description :</b> <input type='text' name='description' value='$infos_produit[description]'>
+						<b>Prix : </b> <input type='number' name='prix_ht'> € HT
 					</td>
 				</tr>
 				
 				<tr>
 					<td style='vertical-align: top;width : 250px'>
-						<b>Résumé :</b> <input type='text' name='resume' value='$infos_produit[resume]'>
+						<b>Description :</b> <input type='text' name='description'>
+					</td>
+				</tr>
+				
+				<tr>
+					<td style='vertical-align: top;width : 250px'>
+						<b>Résumé :</b> <input type='text' name='resume'>
 					</td>
 				</tr>
 				
@@ -67,7 +67,7 @@ function Vue_formulaire_modification_produit($liste_categories, $infos_produit=n
 		// Category dropdown filling
 		foreach ($liste_categories as $categorie)
 		{
-			echo "<option value='$categorie[idCategorie]'>$categorie[nomCategorie]</option>";
+			echo "<option value='$categorie[idCategorie]'>$categorie[idCategorie] - $categorie[nomCategorie]</option>";
 		}
 
 		echo "
@@ -167,3 +167,41 @@ function Vue_formulaire_modification_produit($liste_categories, $infos_produit=n
 
 }
 
+/**
+ * @param bool $mode_creation
+ * @return mixed
+ */
+function Vue_formulaire_modification_categorie($mode_creation=false, $id_categorie=null, $nom_categorie=null)
+{
+	if ($mode_creation)
+	{
+		echo "<h1>Création d'une catégorie</h1>";
+		echo "
+		<table style='margin: auto;'>
+		<form style='display: contents;'>
+			
+			<tr>
+				<td>
+					<b>Nom de la nouvelle catégorie :</b>
+				</td>
+				<td>
+					<input type='text' name='nom_categorie' required placeholder='Nouvelle catégorie'>
+				</td>
+			</tr>
+			<tr>
+				<td colspan='2'>
+					<input type='submit' name='confirmation_creer_categorie' value='Créer la catégorie!'>
+				</td>
+			</tr>
+		</form>
+		</table>
+		";
+	}
+
+	else
+	{
+		echo "<h1>Modification d'une catégorie</h1>";
+	}
+
+
+}
