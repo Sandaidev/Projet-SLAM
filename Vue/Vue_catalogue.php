@@ -4,14 +4,14 @@ function Vue_Catalogue_menu($liste_categories, $mode_admin=false)
 {
     echo "
     <nav style='height: auto;'>
-        <ul>
+        <ul style='max-height: 100%;'>
     ";
 
     foreach ($liste_categories as $categorie)
     {
         echo "
             <li>
-                <form style='border: none; background: none; box-shadow: none;'>
+                <form style='border: none; background: none; box-shadow: none; padding: 10px;'>
                     <input type='hidden' name='idCategorie' value='". $categorie["idCategorie"] ."'>
                     <input style='padding: 6px 0px; margin: 0; text-shadow: 1px 1px 4px black;' type='submit' value='". $categorie["nomCategorie"] ."'>
                 </form>
@@ -22,7 +22,7 @@ function Vue_Catalogue_menu($liste_categories, $mode_admin=false)
     // Bonton hardcoded : Afficher toutes les catégories (idCategorie == -1)
     echo "
         <li>
-            <form style='border: none; background: none; box-shadow: none;'>
+            <form style='border: none; background: none; box-shadow: none; padding: 10px;'>
                 <input type='hidden' name='idCategorie' value='-1'>
                 <input style='padding: 6px 0px; margin: 0; text-shadow: 1px 1px 4px black;' type='submit' value='Afficher tout'>
             </form>
@@ -33,17 +33,58 @@ function Vue_Catalogue_menu($liste_categories, $mode_admin=false)
 	{
 		echo "
 		<li>
-			<form style='border: none; background: none; box-shadow: none;'>
+			<form style='border: none; background: none; box-shadow: none; padding: 10px;'>
 				<button style='
 				background-color: #53af57;
 				border-radius: 8px;
 				color: white;
 				padding: 6px;
 				font-family: Tahoma;
-				cursor: pointer;
-				cursor: url(https://cur.cursors-4u.net/sports/spo-1/spo16.ani), url(https://cur.cursors-4u.net/sports/spo-1/spo16.png), auto;'
-				onclick='submit();' name='ajouter_categorie'>
-					<i class='fas fa-folder-plus' style='font-size: 18px; text-shadow: 1px 1px 4px black;'> Ajouter une catégorie</i>
+				cursor: pointer; background-color: #1bb700;'
+				onclick='submit();' name='creer_categorie'>
+					<i class='fas fa-folder-plus' style='font-size: 18px; text-shadow: 1px 1px 4px black;'> Créer une catégorie</i>
+				</input>
+    		</form>
+    	</li>
+    	<li>
+			<form style='border: none; background: none; box-shadow: none; padding: 10px;'>
+				<button style='
+				background-color: #53af57;
+				border-radius: 8px;
+				color: white;
+				padding: 6px;
+				font-family: Tahoma;
+				cursor: pointer; background-color: #1bb700;'
+				onclick='submit();' name='creer_produit'>
+					<i class='fas fa-plus-square' style='font-size: 18px; text-shadow: 1px 1px 4px black;'> Créer un produit</i>
+				</input>
+    		</form>
+    	</li>
+    	<li>
+			<form style='border: none; background: none; box-shadow: none; padding: 10px;'>
+				<button style='
+				background-color: #53af57;
+				border-radius: 8px;
+				color: white;
+				padding: 6px;
+				font-family: Tahoma;
+				cursor: pointer; background-color: red;'
+				onclick='submit();' name='creer_categorie'>
+					<i class='fas fa-folder-minus' style='font-size: 18px; text-shadow: 1px 1px 4px black;'> Supprimer une catégorie</i>
+				</input>
+    		</form>
+    	</li>
+    	<li>
+			<form style='border: none; background: none; box-shadow: none; padding: 10px;'>
+				<button style='
+				background-color: #53af57;
+				border-radius: 8px;
+				color: white;
+				padding: 6px;
+				font-family: Tahoma;
+				cursor: pointer; background-color: red;'
+				onclick='submit();' name='creer_categorie'>
+					<i class='fas fa-minus-square' style='font-size: 18px; text-shadow: 1px 1px 4px black;'> Supprimer un produit</i>
 				</input>
     		</form>
     	</li>
