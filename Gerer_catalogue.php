@@ -49,21 +49,39 @@ if(isset($_SESSION["idUtilisateur"]))
 	elseif (isset($_REQUEST["creer_produit"]))
 	{
 		// Cas : Création d'un produit (affichage du formulaire)
-
-
+		$liste_categories = Categorie_select($connexion);
+		Vue_formulaire_modification_produit($liste_categories, null, true);
 	}
 
 	elseif (isset($_REQUEST["confirmation_creer_produit"]))
 	{
 		// Cas : CONFIRMATION de création d'un produit
-		// TODO
+		produit_creer($connexion,
+			$_REQUEST["id_categorie"],
+			$_REQUEST["nom_produit"],
+			$_REQUEST["description"],
+			$_REQUEST["prix_ht"],
+			$_REQUEST["resume"]);
+
+		$liste_produits = produit_select($connexion);
+		Vue_afficher_liste_produits($liste_produits);
 	}
 
-	elseif (isset($_REQUEST["ajouter_categorie"]))
+	elseif (isset($_REQUEST["creer_categorie"]))
 	{
 		// Cas : Création d'un catégorie (affichage du formulaire)
 
-		// TODO
+		Vue_formulaire_modification_categorie(true);
+	}
+
+	elseif (isset($_REQUEST["confirmation_creer_categorie"]))
+	{
+		// Cas : Création d'un catégorie (affichage du formulaire)
+		Categorie_Creer($connexion, $_REQUEST["nom_categorie"]);
+
+		// On doit recharger la page après la création de la catégorie
+		// On doit aussi unset $_REQUEST pour éviter un reload infini de la page.
+		Vue_notifier_msg("Votre catégorie a été créé.");
 	}
 
 	elseif (isset($_REQUEST["idProduit"]))
