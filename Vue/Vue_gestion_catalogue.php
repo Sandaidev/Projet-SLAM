@@ -24,26 +24,21 @@ function Vue_formulaire_modification_produit($liste_categories, $infos_produit=n
 		// Cas : Création d'un nouveau produit
 		echo "
 		<form style='display: contents;'>
-			<table style='padding: 20px; display: inline-block;' border=''>
+			<table style='display: inline-block;'>
 
 				<tr>
-					<td style='vertical-align: top;width : 250px'>
+					<td>
 						<b>Article :</b> <input type='text' name='nom_produit'>
 					</td>
 					<!-- FIXME path to article thumbnail in prod -->
-					<td rowspan='7'> <img style='width:250px; border-radius: 16px; margin: 16px;' src='/Projet-SLAM/public/PLACEHOLDER.jpg'>
+					<td rowspan='4'> <img style='width:250px; border-radius: 16px; margin: 16px;' src='/Projet-SLAM/public/PLACEHOLDER.jpg'>
 					</td>
+					
 				</tr>
 				
 				<tr>
 					<td style='vertical-align: top;width : 250px'>
-						<b>Référence : </b> <input type='text' name='code_reference'>
-					</td>
-				</tr>
-				
-				<tr>
-					<td style='vertical-align: top;width : 250px'>
-						<b>Prix : </b> <input type='number' name='prix_ht'> € HT
+						<b>Prix (€ HT): </b> <input type='number' name='prix_ht'>
 					</td>
 				</tr>
 				
@@ -73,10 +68,11 @@ function Vue_formulaire_modification_produit($liste_categories, $infos_produit=n
 		echo "
 					</select>
 					</td>
+					<td><b>Image : </b><input style='width: 80%;' type='url' name='img_src' placeholder=\"lien vers l'image\"></td>
 				</tr>
 				
 				<tr>
-					<td><input type='submit' name='confirmation_creer_produit' value='Confirmer'></td>
+					<td colspan='2'><input type='submit' name='confirmation_creer_produit' value='Confirmer'></td>
 				</tr>
 				
 			</table>
