@@ -44,3 +44,11 @@ function Vue_Structure_BasDePage(){
         </body>
     </html>";
 }
+
+/**
+ * @param $msg
+ */
+function Vue_notifier_msg($msg)
+{
+	echo "<pre>$msg</pre>";
+}
