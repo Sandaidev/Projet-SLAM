@@ -6,23 +6,22 @@
  */
 function Vue_Gestion_Utilisateurs_Admin_Liste($listeUtilisateursAdministratifs, $autoriserEdit=true) {
     echo '
-    <h1>Liste des utilisateurs administratifs</h1>
+    <h1 style="color: white;">Liste des utilisateurs administratifs</h1>
     
     <table style="display: inline-block">
         <tr>
             <td colspan="6" style="text-align: center">
                 <form style="display: contents">
-                    <button type="submit" onmouseover="this.style.background=\'FFFF99\';this.style.color=\'#FF0000\';"
-                    onmouseout="this.style.background=\'\'; this.style.color=\'\';" name="Nouveau">Nouvel utilisateur administratif ?</button>
+                    <button type="submit" name="Nouveau">Nouvel utilisateur administratif</button>
                 </form>
             </td>
         </tr>
         
-        <tr>
-            <th style="background-color: black; color: white;">Num compte</th>
-            <th style="background-color: black; color: white;">Niveau d\'autorisation</th>';
+        <tr style="text-decoration: white underline;">
+            <th style="color: white;">Num compte</th>
+            <th style="color: white;">Niveau d\'autorisation</th>';
     if ($autoriserEdit == true) {
-        echo '<th colspan="3" style="background-color: black; color: white;">Actions</th>';
+        echo '<th colspan="3" style="color: white;">Actions</th>';
     }
     echo "</tr>";
 
@@ -34,7 +33,7 @@ function Vue_Gestion_Utilisateurs_Admin_Liste($listeUtilisateursAdministratifs, 
             $iemeUtilisateurAdministratif = $listeUtilisateursAdministratifs[$i];
 
             echo "
-                <tr>
+                <tr style='color: white;'>
                     <td>$iemeUtilisateurAdministratif[login]</td>
                     <td>$iemeUtilisateurAdministratif[niveauAutorisation]</td>
                 ";
@@ -44,15 +43,13 @@ function Vue_Gestion_Utilisateurs_Admin_Liste($listeUtilisateursAdministratifs, 
                 <td>
                     <form style='display: contents'>
                             <input type='hidden' value='$iemeUtilisateurAdministratif[idUtilisateur]' name='idUtilisateurAdmin'>
-                            <button type='submit' onmouseover=\"this.style.background='#FFFF99';this.style.color='#FF0000';\"
-                         onmouseout=\"this.style.background='';this.style.color='';\" name='Modifier'>Modifier</button>
+                            <button type='submit' name='Modifier'>Modifier</button>
                     </form>
                 </td>
                 <td>
                     <form style='display: contents'>
                             <input type='hidden' value='$iemeUtilisateurAdministratif[idUtilisateur]' name='idUtilisateurAdmin'>
-                            <button type='submit' onmouseover=\"this.style.background='#FFFF99';this.style.color='#FF0000';\"
-                         onmouseout=\"this.style.background='';this.style.color='';\" name='Supprimer'> Supprimer </button>
+                            <button type='submit' name='Supprimer'>Supprimer</button>
                     </form>
                 </td>
                 <td>";
@@ -65,8 +62,7 @@ function Vue_Gestion_Utilisateurs_Admin_Liste($listeUtilisateursAdministratifs, 
                             echo "
                         <form style='display: contents'>
                             <input type='hidden' value='$iemeUtilisateurAdministratif[idUtilisateur]' name='idUtilisateurAdmin'>
-                            <button type='submit' onmouseover=\"this.style.background='#FFFF99';this.style.color='#FF0000';\"
-                            onmouseout=\"this.style.background='';this.style.color='';\" name='Desactiver'> Désactiver </button>
+                            <button style='width: 100%;' type='submit' name='Desactiver'>Désactiver</button>
                         </form>";
                             break;
 
@@ -75,8 +71,7 @@ function Vue_Gestion_Utilisateurs_Admin_Liste($listeUtilisateursAdministratifs, 
                             echo "
                         <form style='display: contents'>
                             <input type='hidden' value='$iemeUtilisateurAdministratif[idUtilisateur]' name='idUtilisateurAdmin'>
-                            <button type='submit' onmouseover=\"this.style.background='#FFFF99';this.style.color='#FF0000';\"
-                            onmouseout=\"this.style.background='';this.style.color='';\" name='Activer'> Activer </button>
+                            <button style='width: 100%;' type='submit' name='Activer'>Activer</button>
                         </form>";
                         break;
                 }
@@ -96,6 +91,9 @@ function Vue_Gestion_Utilisateur_Administratif_Formulaire($modeCreation = true, 
 {
     // vous trouverez des explications sur les paramètres HTML5 des balises INPUT sur ce site :
     // https://darchevillepatrick.info/html/html_form.htm
+
+    echo "<style>* {color: white;}</style>";
+
     if ($modeCreation)
         echo "<H1>Création d'un nouvel utilisateur administratif</H1>";
     else
@@ -109,7 +107,7 @@ function Vue_Gestion_Utilisateur_Administratif_Formulaire($modeCreation = true, 
                 <label>Nom de compte : </label>
             </td>
             <td>
-                <input type='text' name='nouveau_login' value='$login'> 
+                <input style='color: black;' type='text' name='nouveau_login' value='$login'> 
             </td>
         </tr>
         
@@ -118,7 +116,7 @@ function Vue_Gestion_Utilisateur_Administratif_Formulaire($modeCreation = true, 
                 <label>Niveau d'autorisation : </label>
             </td>
             <td>
-                <select name='niveauAutorisation' required>
+                <select style='color: black;' name='niveauAutorisation' required>
                     ";
 
                 switch ($niveauAutorisation) {
@@ -141,15 +139,15 @@ function Vue_Gestion_Utilisateur_Administratif_Formulaire($modeCreation = true, 
     if ($modeCreation) {
         echo "
             <td colspan='2' style='text-align: center'>
-                <button type='submit' name='buttonCreer'>Créer cet utilisateur</button>";
+                <button style='color: black;' type='submit' name='buttonCreer'>Créer cet utilisateur</button>";
 
 
     } else {
         echo "<td>
-                <button type='submit' name='réinitialiserMDP'>Réinitialiser le mot de passe</button>
+                <button style='color: black;' type='submit' name='réinitialiserMDP'>Réinitialiser le mot de passe</button>
             </td>
             <td>
-                <button type='submit' name='mettreAJour'>Mettre à jour</button>";
+                <button style='color: black; width: 100%' type='submit' name='mettreAJour'>Mettre à jour</button>";
     }
 
     echo "</td>

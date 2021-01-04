@@ -24,10 +24,10 @@ function Vue_Administration_Gerer_Compte($nom_compte)
      */
 
     echo "
-    <h1>Gérer mon compte</h1>
+    <h1 style='color: white;'>Gérer mon compte</h1>
     
     <table style='margin: auto;'>
-        <tr style='text-align: center'>
+        <tr style='text-align: center; color: white;'>
             <th>Vous êtes connecté(e) en tant que : <em>$nom_compte</em></th>
         </tr>
         

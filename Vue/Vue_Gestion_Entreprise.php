@@ -7,22 +7,19 @@
 function Vue_Gestion_Entreprise_Liste($listeEntreprise)
 {
     echo '
-    <h1>Liste des entreprises partenaires</h1>
+    <h1 style="color: white;">Liste des entreprises partenaires</h1>
     <table style="display: inline-block;">
          <tr>
-            <td colspan="3" style="text-align: center">
-                <form style=\'display: contents\'>
- 
-                    <button type=\'submit\' onmouseover=\"this.style.background=\'#FFFF99\';this.style.color=\'#FF0000\';\"
-                     onmouseout=\"this.style.background=\'\';this.style.color=\'\';\" name=\'nouveau\'> Nouvelle entreprise ? </button>
-                </form>
+            <td colspan="5" style="text-align: center">
+                <button type=\'submit\' name=\'nouveau\'>Nouvelle entreprise</button>
             </td>
         </tr>
         
-        <tr>
+        <tr style="color: white; text-decoration: white underline;">
             <th>Num compte</th>
             <th>Dénomination</th>
             <th>Ville</th>
+            <th colspan="2">Actions</th>
         </tr>';
 
     for ($i = 0; $i < count($listeEntreprise); $i++)
@@ -32,22 +29,20 @@ function Vue_Gestion_Entreprise_Liste($listeEntreprise)
         echo "
            
             
-        <tr >
+        <tr style='color: white;'>
             <td>$iemeEntreprise[numCompte]</td>
             <td>$iemeEntreprise[denomination]</td>
             <td>$iemeEntreprise[codePostal] - $iemeEntreprise[ville]</td>
             <td>
                 <form style='display: contents'>
                         <input type='hidden' value='$iemeEntreprise[idEntreprise]' name='idEntreprise'>
-                        <button type='submit' onmouseover=\"this.style.background='#FFFF99';this.style.color='#FF0000';\"
-                     onmouseout=\"this.style.background='';this.style.color='';\" name='Modifer'> Modifier </button>
+                        <button type='submit' name='Modifer'> Modifier </button>
                 </form>
             </td>
             <td>
                 <form style='display: contents'>
                         <input type='hidden' value='$iemeEntreprise[idEntreprise]' name='idEntreprise'>
-                        <button type='submit' onmouseover=\"this.style.background='#FFFF99';this.style.color='#FF0000';\"
-                     onmouseout=\"this.style.background='';this.style.color='';\" name='Supprimer'> Supprimer </button>
+                        <button type='submit' name='Supprimer'> Supprimer </button>
                 </form>
             </td>
         </tr>
@@ -79,8 +74,16 @@ function Vue_Gestion_Entreprise_Formulaire($modeCreation = true, $idEntreprise =
 {
     // vous trouverez des explications sur les paramètres HTML5 des balises INPUT sur ce site :
     // https://darchevillepatrick.info/html/html_form.htm
+
+    echo "<style>
+        * {color: white;}
+        input {
+        color: black;
+        }
+    </style>";
+
     if ($modeCreation)
-        echo "<H1>Création d'un nouveau client Entreprise</H1>";
+        echo "<H1>Création d'une nouvelle Entreprise</H1>";
     else
         echo "<H1>Edition d'une entreprise</H1>";
 
@@ -180,14 +183,14 @@ function Vue_Gestion_Entreprise_Formulaire($modeCreation = true, $idEntreprise =
     if ($modeCreation) {
         echo " 
                 
-            <td colspan='2' style='text-align: center'>
-                <button type='submit' name='buttonCreer'>Créer ce client</button>";
+            <td colspan='2' style='text-align: center;'>
+                <button style='color: black;' type='submit' name='buttonCreer'>Créer ce client</button>";
     } else {
         echo "<td>
-                <button type='submit' name='réinitialiserMDP'>Réinitialiser le mot de passe</button>
+                <button style='color: black;' type='submit' name='réinitialiserMDP'>Réinitialiser le mot de passe</button>
             </td>
             <td>
-                <button type='submit' name='mettreAJour'>Mettre à jour</button>";
+                <button style='color: black;' type='submit' name='mettreAJour'>Mettre à jour</button>";
     }
 
     echo "</td>
