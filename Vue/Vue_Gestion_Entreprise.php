@@ -8,7 +8,7 @@ function Vue_Gestion_Entreprise_Liste($listeEntreprise)
 {
     echo '
     <h1 style="color: white;">Liste des entreprises partenaires</h1>
-    <table style="display: inline-block;">
+    <table style="display: inline-block; border-collapse: collapse;" class="bordered">
          <tr>
             <td colspan="5" style="text-align: center">
                 <button type=\'submit\' name=\'nouveau\'>Nouvelle entreprise</button>

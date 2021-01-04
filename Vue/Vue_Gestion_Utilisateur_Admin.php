@@ -8,7 +8,7 @@ function Vue_Gestion_Utilisateurs_Admin_Liste($listeUtilisateursAdministratifs, 
     echo '
     <h1 style="color: white;">Liste des utilisateurs administratifs</h1>
     
-    <table style="display: inline-block">
+    <table style="display: inline-block; border-collapse: collapse;" class="bordered">
         <tr>
             <td colspan="6" style="text-align: center">
                 <form style="display: contents">

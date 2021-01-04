@@ -62,8 +62,8 @@ function Vue_ModifierMDP_SuperAdmin($erreur = "")
     if ($erreur != "")
     {
         echo "
-        <h1>Une erreur est survenue!</h1>
-        <p style='margin: auto; text-align: center'>
+        <h1 style='color: white;'>Une erreur est survenue!</h1>
+        <p style='margin: auto; text-align: center; color: white;'>
             <b>$erreur</b>
         </p>
         ";

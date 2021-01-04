@@ -40,7 +40,7 @@ if (isset($_SESSION["idUtilisateur"])) {
         {
             // Le mot de passe est OK, on le modifie dans la BDD!
             Utilisateur_Modifier_motDePasse($connexion, $_SESSION["idUtilisateur"], $_REQUEST["new_pass"]);
-            echo "<p>Votre mot de passe a été modifié!</p>";
+            echo "<p style='margin: auto; color: white; font-size: 30px;'>Votre mot de passe a été modifié!</p>";
         }
 
         else
