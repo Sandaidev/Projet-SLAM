@@ -47,7 +47,7 @@ if (isset($_SESSION["idUtilisateur"])) {
         {
             // L'utilisateur a rentré un mauvais mot de passe (ancien ou nouveau)
             // On affiche un message d'erreur
-            Vue_ModifierMDP_SuperAdmin("L'ancien mot de passe est invalide ou les nouveaux mot de passe ne coïncident pas.");
+            Vue_ModifierMDP_SuperAdmin("L'ancien mot de passe est invalide ou les nouveaux mot de passe ne coïncident pas. Veuillez réessayer.");
         }
     }
 
