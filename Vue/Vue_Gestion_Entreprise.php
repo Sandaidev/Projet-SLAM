@@ -14,7 +14,9 @@ function Vue_Gestion_Entreprise_Liste($listeEntreprise)
     <table style="display: inline-block; border-collapse: collapse;" class="bordered">
          <tr>
             <td colspan="5" style="text-align: center">
-                <button type=\'submit\' name=\'nouveau\'>Nouvelle entreprise</button>
+                <form style="display: contents">
+                    <button type=\'submit\' name=\'nouveau\'>Nouvelle entreprise</button>
+                </form>
             </td>
         </tr>
         
