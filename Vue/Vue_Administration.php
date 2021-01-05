@@ -7,7 +7,7 @@ function Vue_Administration_Menu()
 
     echo "
     <nav id='menu'>
-    	<ul id='menu-closed'>
+    	<ul id='menu-closed' style='color: white;'>
         	<li><a href='Gerer_entreprisesPartenaires.php'>Entreprises partenaires</a></li>
 			<li><a href='Gerer_utilisateursAdministratifs.php'>Utilisateurs administratifs</a></li>        
 			<li><a href='Gerer_catalogue.php'>Catalogue</a></li>

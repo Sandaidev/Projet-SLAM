@@ -17,7 +17,7 @@ function Vue_Connexion_Formulaire_connexion_entreprise($msgErreur = "")
         <label><b>Mot de passe</b></label>
         <input type=\"password\" placeholder=\"mot de passe\" name=\"password\" required>
                 
-        <input type=\"submit\" id='submit' value='Se connecter'>
+        <input class='input_styled' type=\"submit\" id='submit' value='Se connecter'>
         
         <hr class='styled' style='background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); width: 100%'>
         
@@ -25,7 +25,7 @@ function Vue_Connexion_Formulaire_connexion_entreprise($msgErreur = "")
 
     if($msgErreur != "")
     {
-        echo "<h3>Erreur : $msgErreur</h3>";
+        echo "<p>Erreur de connexion : $msgErreur</p>";
     }
 
     echo "</form>";
@@ -46,7 +46,7 @@ function Vue_Connexion_Formulaire_connexion_administration($msgErreur = "")
         <label><b>Mot de passe</b></label>
         <input type=\"password\" placeholder=\"mot de passe\" name=\"password\" required>
 
-        <input type=\"submit\" id='submit' value='Se connecter' >
+        <input class='input_styled' type=\"submit\" id='submit' value='Se connecter' >
         
         <hr class='styled' style='background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); width: 100%'>
         
@@ -55,7 +55,7 @@ function Vue_Connexion_Formulaire_connexion_administration($msgErreur = "")
 
     if($msgErreur != "")
     {
-        echo "<h4>Erreur : $msgErreur</h4>";
+        echo "<p>Erreur de connexion : $msgErreur</p>";
     }
 
     echo "</form>";
