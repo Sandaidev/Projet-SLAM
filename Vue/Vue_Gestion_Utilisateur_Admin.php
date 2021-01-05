@@ -10,11 +10,12 @@ function Vue_Gestion_Utilisateurs_Admin_Liste($listeUtilisateursAdministratifs, 
     
     <hr class="styled">
     
-    <table style="display: inline-block; border-collapse: collapse;" class="bordered">
+    <table style="display: inline-block;">
         <tr>
             <td colspan="6" style="text-align: center">
                 <form style="display: contents">
-                    <button type="submit" name="Nouveau">Nouvel utilisateur administratif</button>
+                    <button style="width: 60%;" type="submit" name="Nouveau"><b>Nouvel utilisateur administratif</b></button>
+                    <hr class="styled" style="width:80%">
                 </form>
             </td>
         </tr>

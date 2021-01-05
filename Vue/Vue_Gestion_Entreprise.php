@@ -11,12 +11,13 @@ function Vue_Gestion_Entreprise_Liste($listeEntreprise)
     
     <hr class="styled">
     
-    <table style="display: inline-block; border-collapse: collapse;" class="bordered">
+    <table style="display: inline-block;">
          <tr>
             <td colspan="5" style="text-align: center">
                 <form style="display: contents">
-                    <button type=\'submit\' name=\'nouveau\'>Nouvelle entreprise</button>
+                    <button style="width: 60%;" type=\'submit\' name=\'nouveau\'><b>Nouvelle entreprise</b></button>
                 </form>
+                <hr class="styled" style="width:80%">
             </td>
         </tr>
         
@@ -127,7 +128,7 @@ function Vue_Gestion_Entreprise_Formulaire($modeCreation = true, $idEntreprise =
             <td>
                 <label>Rue (complément)  : </label>
             </td>
-            <td><input type='text' optional placeholder='Complément' name='complementAdresse' value='$complementAdresse'>
+            <td><input type='text' placeholder='Complément' name='complementAdresse' value='$complementAdresse'>
         </tr>
         <tr>
             <td>
