@@ -32,6 +32,16 @@ function Vue_Gestion_Utilisateurs_Admin_Liste($listeUtilisateursAdministratifs, 
 
             $iemeUtilisateurAdministratif = $listeUtilisateursAdministratifs[$i];
 
+            if ($iemeUtilisateurAdministratif["idUtilisateur"] == $_SESSION["idUtilisateur"])
+            {
+                $disabled_tag = "disabled";
+            }
+
+            else
+            {
+                $disabled_tag = "";
+            }
+
             echo "
                 <tr style='color: white;'>
                     <td>$iemeUtilisateurAdministratif[login]</td>
@@ -39,17 +49,18 @@ function Vue_Gestion_Utilisateurs_Admin_Liste($listeUtilisateursAdministratifs, 
                 ";
 
                 if ($autoriserEdit == true) {
+
                     echo "
                 <td>
                     <form style='display: contents'>
                             <input type='hidden' value='$iemeUtilisateurAdministratif[idUtilisateur]' name='idUtilisateurAdmin'>
-                            <button type='submit' name='Modifier'>Modifier</button>
+                            <button type='submit' name='Modifier' $disabled_tag>Modifier</button>
                     </form>
                 </td>
                 <td>
                     <form style='display: contents'>
                             <input type='hidden' value='$iemeUtilisateurAdministratif[idUtilisateur]' name='idUtilisateurAdmin'>
-                            <button type='submit' name='Supprimer'>Supprimer</button>
+                            <button type='submit' name='Supprimer' $disabled_tag>Supprimer</button>
                     </form>
                 </td>
                 <td>";
@@ -62,7 +73,7 @@ function Vue_Gestion_Utilisateurs_Admin_Liste($listeUtilisateursAdministratifs, 
                             echo "
                         <form style='display: contents'>
                             <input type='hidden' value='$iemeUtilisateurAdministratif[idUtilisateur]' name='idUtilisateurAdmin'>
-                            <button style='width: 100%;' type='submit' name='Desactiver'>Désactiver</button>
+                            <button style='width: 100%;' type='submit' name='Desactiver' $disabled_tag>Désactiver</button>
                         </form>";
                             break;
 
@@ -71,7 +82,7 @@ function Vue_Gestion_Utilisateurs_Admin_Liste($listeUtilisateursAdministratifs, 
                             echo "
                         <form style='display: contents'>
                             <input type='hidden' value='$iemeUtilisateurAdministratif[idUtilisateur]' name='idUtilisateurAdmin'>
-                            <button style='width: 100%;' type='submit' name='Activer'>Activer</button>
+                            <button style='width: 100%;' type='submit' name='Activer' $disabled_tag>Activer</button>
                         </form>";
                         break;
                 }
@@ -99,7 +110,7 @@ function Vue_Gestion_Utilisateur_Administratif_Formulaire($modeCreation = true, 
     else
         echo "<H1>Edition d'un utilisateur administratif</H1>";
     echo "
-<table style='display: inline-block'> 
+    <table style='display: inline-block'> 
     <form>
         <input type='hidden' name='id_utilisateur_edit' value='$idUtilisateur'>
         <tr>
@@ -115,9 +126,19 @@ function Vue_Gestion_Utilisateur_Administratif_Formulaire($modeCreation = true, 
             <td>
                 <label>Niveau d'autorisation : </label>
             </td>
-            <td>
-                <select style='color: black;' name='niveauAutorisation' required>
-                    ";
+            <td>";
+
+
+    if ($_SESSION["idUtilisateur"] == $idUtilisateur)
+    {
+        // Si l'utilisateur qu'on modifie est celui connecté, on désactive le choix du niveau d'autorisation
+        echo "<select style='color: black;' name='niveauAutorisation' required disabled>";
+    }
+
+    else
+    {
+        echo "<select style='color: black;' name='niveauAutorisation' required>";
+    }
 
                 switch ($niveauAutorisation) {
                     case "2":
@@ -139,7 +160,7 @@ function Vue_Gestion_Utilisateur_Administratif_Formulaire($modeCreation = true, 
     if ($modeCreation) {
         echo "
             <td colspan='2' style='text-align: center'>
-                <button style='color: black;' type='submit' name='buttonCreer'>Créer cet utilisateur</button>";
+            <button style='color: black;' type='submit' name='buttonCreer'>Créer cet utilisateur</button>";
 
 
     } else {
