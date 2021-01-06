@@ -118,8 +118,11 @@ function Vue_Gestion_Utilisateur_Administratif_Formulaire($modeCreation = true, 
     if ($modeCreation)
         echo "<H1>Création d'un nouvel utilisateur administratif</H1>";
     else
-        echo "<H1>Edition d'un utilisateur administratif</H1>";
+        echo "<H1>Édition d'un utilisateur administratif</H1>";
     echo "
+
+    <hr class='styled'>
+    
     <table style='display: inline-block'> 
     <form>
         <input type='hidden' name='id_utilisateur_edit' value='$idUtilisateur'>
@@ -170,7 +173,7 @@ function Vue_Gestion_Utilisateur_Administratif_Formulaire($modeCreation = true, 
     if ($modeCreation) {
         echo "
             <td colspan='2' style='text-align: center'>
-            <button style='color: black;' type='submit' name='buttonCreer'>Créer cet utilisateur</button>";
+            <button style='color: black; width: 100%;' type='submit' name='buttonCreer'>Créer cet utilisateur</button>";
 
 
     } else {
