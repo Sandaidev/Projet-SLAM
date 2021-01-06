@@ -94,7 +94,7 @@ function Vue_ModifierMDP_SuperAdmin($erreur = "")
             </tr>
             
             <tr>
-                <td><input type='submit' name='changerMDP_confirmation' value='Confirmer'></td>
+                <td><input style='background-color: black;' class='input_styled' type='submit' name='changerMDP_confirmation' value='Confirmer'></td>
             </tr>
         </form>
     </table>

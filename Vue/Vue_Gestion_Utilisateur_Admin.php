@@ -10,32 +10,39 @@ function Vue_Gestion_Utilisateurs_Admin_Liste($listeUtilisateursAdministratifs, 
     
     <hr class="styled">
     
-    <table style="display: inline-block;">
-        <tr>
+    <table style="display: inline-block;">';
+
+    if ($autoriserEdit)
+    {
+        echo '<tr>
             <td colspan="6" style="text-align: center">
                 <form style="display: contents">
                     <button style="width: 60%;" type="submit" name="Nouveau"><b>Nouvel utilisateur administratif</b></button>
                     <hr class="styled" style="width:80%">
                 </form>
             </td>
-        </tr>
-        
-        <tr style="text-decoration: white underline;">
+        </tr>';
+    }
+
+    echo '  
+            <tr style="text-decoration: white underline;">
             <th style="color: white;">Num compte</th>
             <th style="color: white;">Niveau d\'autorisation</th>';
+
     if ($autoriserEdit == true) {
         echo '<th colspan="3" style="color: white;">Actions</th>';
     }
+
     echo "</tr>";
 
-        for ($i = 0; $i < count($listeUtilisateursAdministratifs); $i++) {
+    for ($i = 0; $i < count($listeUtilisateursAdministratifs); $i++) {
             /*
              * Itération sur tous les utilisateurs administratifs stockés dans la BDD
              */
 
             $iemeUtilisateurAdministratif = $listeUtilisateursAdministratifs[$i];
 
-            if ($iemeUtilisateurAdministratif["idUtilisateur"] == $_SESSION["idUtilisateur"])
+            if ($iemeUtilisateurAdministratif["login"] == "root")
             {
                 $disabled_tag = "disabled";
             }
