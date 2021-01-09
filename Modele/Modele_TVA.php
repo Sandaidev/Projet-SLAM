@@ -4,10 +4,9 @@
  * @param $connexionPDO
  * @return mixed
  */
-function tva_select($connexionPDO)
+function TVA_select($connexionPDO)
 {
     $requetePreparée = $connexionPDO->prepare('select * from `tva`');
-
     $requetePreparée->execute();
     $lignes_tva = $requetePreparée->fetchAll(PDO::FETCH_ASSOC);
     return $lignes_tva;
