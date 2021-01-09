@@ -84,6 +84,14 @@ if(isset($_SESSION["idUtilisateur"]))
 		Vue_notifier_msg("Votre catégorie a été créé.");
 	}
 
+	elseif (isset($_REQUEST["gerer_produits"]))
+    {
+        // Cas : On affiche la page de gestion des produits (format liste)
+        $liste_produits = produit_select($connexion);
+        $liste_categories = Categorie_select($connexion);
+        Vue_afficher_liste_gestion_produits($liste_produits, $liste_categories);
+    }
+
 	elseif (isset($_REQUEST["idProduit"]))
 	{
 		// Cas : Un produit a été sélectionné,
