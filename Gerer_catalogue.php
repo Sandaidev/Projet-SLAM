@@ -175,6 +175,21 @@ if(isset($_SESSION["idUtilisateur"]))
 	elseif (isset($_REQUEST["confirmation_creer_produit"]))
 	{
 		// Cas : CONFIRMATION de création d'un produit
+        produit_creer(
+          $connexion,
+          $_REQUEST["id_categorie"],
+          $_REQUEST["nom_produit"],
+          $_REQUEST["description"],
+          $_REQUEST["prix_ht"],
+          $_REQUEST["resume"],
+          $_REQUEST["status_produit"],
+          $_REQUEST["idTVA"]
+        );
+
+        $liste_produits = produit_select($connexion);
+        $liste_categories = Categorie_select($connexion);
+        $liste_tva = TVA_select($connexion);
+        Vue_afficher_liste_gestion_produits($liste_produits, $liste_categories, $liste_tva);
 
 	}
 
