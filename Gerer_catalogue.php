@@ -39,10 +39,14 @@ if(isset($_SESSION["idUtilisateur"]))
 
 	elseif (isset($_REQUEST["activer_liste_produits"]))
     {
-        $liste_produits = $_REQUEST["liste_produit"];
-        foreach ($liste_produits as $id_produit)
+        if (isset($_REQUEST["liste_produit"]))
         {
-            produit_activer($connexion, $id_produit);
+            $liste_produits = $_REQUEST["liste_produit"];
+
+            foreach ($liste_produits as $id_produit)
+            {
+                produit_activer($connexion, $id_produit);
+            }
         }
 
         $liste_produits = produit_select($connexion);
@@ -53,10 +57,14 @@ if(isset($_SESSION["idUtilisateur"]))
 
 	elseif (isset($_REQUEST["desactiver_liste_produits"]))
     {
-        $liste_produits = $_REQUEST["liste_produit"];
-        foreach ($liste_produits as $id_produit)
+        if (isset($_REQUEST["liste_produit"]))
         {
-            produit_desactiver($connexion, $id_produit);
+            $liste_produits = $_REQUEST["liste_produit"];
+
+            foreach ($liste_produits as $id_produit)
+            {
+                produit_desactiver($connexion, $id_produit);
+            }
         }
 
         $liste_produits = produit_select($connexion);
@@ -67,10 +75,14 @@ if(isset($_SESSION["idUtilisateur"]))
 
 	elseif (isset($_REQUEST["supprimer_liste_produits"]))
     {
-        $liste_produits = $_REQUEST["liste_produit"];
-        foreach ($liste_produits as $id_produit)
+        if (isset($_REQUEST["liste_produit"]))
         {
-            produit_supprimer($connexion, $id_produit);
+            $liste_produits = $_REQUEST["liste_produit"];
+
+            foreach ($liste_produits as $id_produit)
+            {
+                produit_supprimer($connexion, $id_produit);
+            }
         }
 
         $liste_produits = produit_select($connexion);
@@ -81,10 +93,21 @@ if(isset($_SESSION["idUtilisateur"]))
 
 	elseif (isset($_REQUEST["supprimer_liste_categories"]))
     {
-        $liste_categories = $_REQUEST["liste_categories"];
-        foreach ($liste_categories as $id_categorie)
+        if (isset($_REQUEST["liste_categories"]))
         {
-            Categorie_Supprimer($connexion, $id_categorie);
+            $liste_categories = $_REQUEST["liste_categories"];
+
+            foreach ($liste_categories as $id_categorie)
+            {
+                // On doit supprimer également les articles dans cette catégorie.
+                $liste_produits_a_supprimer = produit_selectParCategorie($connexion, $id_categorie);
+                foreach ($liste_produits_a_supprimer as $produit_a_supprimer)
+                {
+                    produit_supprimer($connexion, $produit_a_supprimer["idProduit"]);
+                }
+
+                Categorie_Supprimer($connexion, $id_categorie);
+            }
         }
 
         $liste_categories = Categorie_select($connexion);
@@ -93,10 +116,14 @@ if(isset($_SESSION["idUtilisateur"]))
 
     elseif (isset($_REQUEST["desactiver_liste_categories"]))
     {
-        $liste_categories = $_REQUEST["liste_categories"];
-        foreach ($liste_categories as $id_categorie)
+        if (isset($_REQUEST["liste_categories"]))
         {
-            categorie_desactiver($connexion, $id_categorie);
+            $liste_categories = $_REQUEST["liste_categories"];
+
+            foreach ($liste_categories as $id_categorie)
+            {
+                categorie_desactiver($connexion, $id_categorie);
+            }
         }
 
         $liste_categories = Categorie_select($connexion);
@@ -105,10 +132,14 @@ if(isset($_SESSION["idUtilisateur"]))
 
     elseif (isset($_REQUEST["activer_liste_categories"]))
     {
-        $liste_categories = $_REQUEST["liste_categories"];
-        foreach ($liste_categories as $id_categorie)
+        if (isset($_REQUEST["liste_categories"]))
         {
-            categorie_activer($connexion, $id_categorie);
+            $liste_categories = $_REQUEST["liste_categories"];
+
+            foreach ($liste_categories as $id_categorie)
+            {
+                categorie_activer($connexion, $id_categorie);
+            }
         }
 
         $liste_categories = Categorie_select($connexion);
@@ -124,18 +155,15 @@ if(isset($_SESSION["idUtilisateur"]))
 		Vue_formulaire_modification_produit($liste_categories, null, true, $liste_tva);
 	}
 
+	elseif (isset($_REQUEST["produit_upload_image"]))
+    {
+
+    }
+
 	elseif (isset($_REQUEST["confirmation_creer_produit"]))
 	{
 		// Cas : CONFIRMATION de création d'un produit
-		produit_creer($connexion,
-			$_REQUEST["id_categorie"],
-			$_REQUEST["nom_produit"],
-			$_REQUEST["description"],
-			$_REQUEST["prix_ht"],
-			$_REQUEST["resume"]);
 
-		$liste_produits = produit_select($connexion);
-		Vue_afficher_liste_produits($liste_produits);
 	}
 
 	elseif (isset($_REQUEST["creer_categorie"]))
