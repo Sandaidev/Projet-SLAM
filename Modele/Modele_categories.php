@@ -1,4 +1,21 @@
 <?php
+
+function categorie_desactiver($connexionPDO, $id_categorie)
+{
+    $db_request = $connexionPDO->prepare("UPDATE `categorie` SET `statusCategorie` = 0 WHERE `categorie`.`idCategorie` = :paramID; ");
+    $db_request->bindParam('paramID', $id_categorie);
+    $reponse = $db_request->execute();
+    return $reponse;
+}
+
+function categorie_activer($connexionPDO, $id_categorie)
+{
+    $db_request = $connexionPDO->prepare("UPDATE `categorie` SET `statusCategorie` = 1 WHERE `categorie`.`idCategorie` = :paramID; ");
+    $db_request->bindParam('paramID', $id_categorie);
+    $reponse = $db_request->execute();
+    return $reponse;
+}
+
 /**
  * @param $connexionPDO : connexion à la base de données
  * @return mixed : le tableau des catégories ou null (something went wrong...)
