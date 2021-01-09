@@ -25,7 +25,7 @@ function Vue_afficher_liste_gestion_categories($liste_categories)
         </tr>
     <tr>
         <td style='color: white; text-align: center; font-family: ralewaylight;' colspan='3'>
-            <i>Attention : Supprimer une catégorie va également les produits qui y sont liés!</i>
+            <i><i class='fas fa-exclamation-circle'></i> <u>Attention</u> : Supprimer une catégorie va également supprimer les produits qui y sont liés!</i>
         </td>
     </tr>
     <form>
