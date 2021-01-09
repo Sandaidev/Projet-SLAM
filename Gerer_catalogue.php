@@ -37,14 +37,84 @@ if(isset($_SESSION["idUtilisateur"]))
 		Vue_afficher_liste_produits($liste_produits);
 	}
 
-	elseif (isset($_REQUEST["supprimer_produit"]))
-	{
-		// Cas : Suppression d'un produit
+	elseif (isset($_REQUEST["activer_liste_produits"]))
+    {
+        $liste_produits = $_REQUEST["liste_produit"];
+        foreach ($liste_produits as $id_produit)
+        {
+            produit_activer($connexion, $id_produit);
+        }
 
-		produit_supprimer($connexion, $_REQUEST["id_produit"]);
-		$liste_produits = produit_select($connexion);
-		Vue_afficher_liste_produits($liste_produits);
-	}
+        $liste_produits = produit_select($connexion);
+        $liste_categories = Categorie_select($connexion);
+        $liste_tva = TVA_select($connexion);
+        Vue_afficher_liste_gestion_produits($liste_produits, $liste_categories, $liste_tva);
+    }
+
+	elseif (isset($_REQUEST["desactiver_liste_produits"]))
+    {
+        $liste_produits = $_REQUEST["liste_produit"];
+        foreach ($liste_produits as $id_produit)
+        {
+            produit_desactiver($connexion, $id_produit);
+        }
+
+        $liste_produits = produit_select($connexion);
+        $liste_categories = Categorie_select($connexion);
+        $liste_tva = TVA_select($connexion);
+        Vue_afficher_liste_gestion_produits($liste_produits, $liste_categories, $liste_tva);
+    }
+
+	elseif (isset($_REQUEST["supprimer_liste_produits"]))
+    {
+        $liste_produits = $_REQUEST["liste_produit"];
+        foreach ($liste_produits as $id_produit)
+        {
+            produit_supprimer($connexion, $id_produit);
+        }
+
+        $liste_produits = produit_select($connexion);
+        $liste_categories = Categorie_select($connexion);
+        $liste_tva = TVA_select($connexion);
+        Vue_afficher_liste_gestion_produits($liste_produits, $liste_categories, $liste_tva);
+    }
+
+	elseif (isset($_REQUEST["supprimer_liste_categories"]))
+    {
+        $liste_categories = $_REQUEST["liste_categories"];
+        foreach ($liste_categories as $id_categorie)
+        {
+            Categorie_Supprimer($connexion, $id_categorie);
+        }
+
+        $liste_categories = Categorie_select($connexion);
+        Vue_afficher_liste_gestion_categories($liste_categories);
+    }
+
+    elseif (isset($_REQUEST["desactiver_liste_categories"]))
+    {
+        $liste_categories = $_REQUEST["liste_categories"];
+        foreach ($liste_categories as $id_categorie)
+        {
+            categorie_desactiver($connexion, $id_categorie);
+        }
+
+        $liste_categories = Categorie_select($connexion);
+        Vue_afficher_liste_gestion_categories($liste_categories);
+    }
+
+    elseif (isset($_REQUEST["activer_liste_categories"]))
+    {
+        $liste_categories = $_REQUEST["liste_categories"];
+        foreach ($liste_categories as $id_categorie)
+        {
+            categorie_activer($connexion, $id_categorie);
+        }
+
+        $liste_categories = Categorie_select($connexion);
+        Vue_afficher_liste_gestion_categories($liste_categories);
+    }
+
 
 	elseif (isset($_REQUEST["creer_produit"]))
 	{
@@ -92,6 +162,12 @@ if(isset($_SESSION["idUtilisateur"]))
         $liste_categories = Categorie_select($connexion);
         $liste_tva = TVA_select($connexion);
         Vue_afficher_liste_gestion_produits($liste_produits, $liste_categories, $liste_tva);
+    }
+
+	elseif (isset($_REQUEST["gerer_categories"]))
+    {
+        $liste_categories = Categorie_select($connexion);
+        Vue_afficher_liste_gestion_categories($liste_categories);
     }
 
 	elseif (isset($_REQUEST["idProduit"]))
