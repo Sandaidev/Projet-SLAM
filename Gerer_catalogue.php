@@ -89,7 +89,8 @@ if(isset($_SESSION["idUtilisateur"]))
         // Cas : On affiche la page de gestion des produits (format liste)
         $liste_produits = produit_select($connexion);
         $liste_categories = Categorie_select($connexion);
-        Vue_afficher_liste_gestion_produits($liste_produits, $liste_categories);
+        $liste_tva = TVA_select($connexion);
+        Vue_afficher_liste_gestion_produits($liste_produits, $liste_categories, $liste_tva);
     }
 
 	elseif (isset($_REQUEST["idProduit"]))
