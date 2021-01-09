@@ -11,7 +11,7 @@ function Vue_Catalogue_menu($liste_categories, $mode_admin=false)
     {
         echo "
             <li>
-                <form style='border: none; background: none; box-shadow: none; padding: 10px;'>
+                <form style='border: none; background: none; box-shadow: none; padding: 10px; margin-bottom: 0;'>
                     <input type='hidden' name='idCategorie' value='". $categorie["idCategorie"] ."'>
                     <input class='input_styled' type='submit' value='". $categorie["nomCategorie"] ."'>
                 </form>
@@ -22,7 +22,7 @@ function Vue_Catalogue_menu($liste_categories, $mode_admin=false)
     // Bonton hardcoded : Afficher toutes les catégories (idCategorie == -1)
     echo "
         <li>
-            <form style='border: none; background: none; box-shadow: none; padding: 10px;'>
+            <form style='border: none; background: none; box-shadow: none; padding: 10px; margin-bottom: 0;'>
                 <input type='hidden' name='idCategorie' value='-1'>
                 <input class='input_styled' type='submit' value='Afficher tout'>
             </form>
@@ -36,12 +36,12 @@ function Vue_Catalogue_menu($liste_categories, $mode_admin=false)
 		echo "
         <ul>
             <li>
-                <form style='border: none; background: none; box-shadow: none; padding: 10px;'>
+                <form style='border: none; background: none; box-shadow: none; padding: 10px; margin-top: 0;'>
                     <input class='input_styled' type='submit' name='gerer_produits' value='Gérer les produits'>
                 </form>
             </li>
             <li>
-                <form style='border: none; background: none; box-shadow: none; padding: 10px;'>
+                <form style='border: none; background: none; box-shadow: none; padding: 10px; margin-top: 0;'>
                     <input class='input_styled' type='submit' name='gerer_categories' value='Gérer les catégories'>
                 </form>
             </li>
