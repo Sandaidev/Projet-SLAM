@@ -50,7 +50,8 @@ if(isset($_SESSION["idUtilisateur"]))
 	{
 		// Cas : Création d'un produit (affichage du formulaire)
 		$liste_categories = Categorie_select($connexion);
-		Vue_formulaire_modification_produit($liste_categories, null, true);
+		$liste_tva = TVA_select($connexion);
+		Vue_formulaire_modification_produit($liste_categories, null, true, $liste_tva);
 	}
 
 	elseif (isset($_REQUEST["confirmation_creer_produit"]))
@@ -81,7 +82,7 @@ if(isset($_SESSION["idUtilisateur"]))
 
 		// On doit recharger la page après la création de la catégorie
 		// On doit aussi unset $_REQUEST pour éviter un reload infini de la page.
-		Vue_notifier_msg("Votre catégorie a été créé.");
+		Vue_notifier_msg("La catégorie a été créé.");
 	}
 
 	elseif (isset($_REQUEST["gerer_produits"]))
@@ -95,11 +96,12 @@ if(isset($_SESSION["idUtilisateur"]))
 
 	elseif (isset($_REQUEST["idProduit"]))
 	{
-		// Cas : Un produit a été sélectionné,
+		// Cas : Un produit a été sélectionné.
 
 		$infos_produit = produit_selectParID($connexion, $_REQUEST["idProduit"]);
 		$liste_categories = Categorie_select($connexion);
-		Vue_formulaire_modification_produit($liste_categories, $infos_produit);
+        $liste_tva = TVA_select($connexion);
+        Vue_formulaire_modification_produit($liste_categories, $infos_produit, false, $liste_tva);
 	}
 
 	elseif (!isset($_REQUEST["idCategorie"]) or $_REQUEST["idCategorie"] == -1)

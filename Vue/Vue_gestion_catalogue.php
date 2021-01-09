@@ -5,18 +5,20 @@
  * Paramètres (explicites exclus) :
  * 	$liste_categories : Pour la liste déroulante dans le choix de la catégorie à affecter.
  */
-function Vue_formulaire_modification_produit($liste_categories, $infos_produit=null, $mode_creation=false)
+function Vue_formulaire_modification_produit($liste_categories, $infos_produit=null, $mode_creation=false, $liste_tva)
 {
 	// Affichage du titre
 	if ($mode_creation)
 	{
-		echo "<h1>Création d'un nouveau produit</h1>";
+		echo "<h1 style='color: white;'>Création d'un nouveau produit</h1>";
 	}
 
 	else
 	{
-		echo "<h1>Modification d'un produit</h1>";
+		echo "<h1 style='color: white;'>Modification d'un produit</h1>";
 	}
+
+	echo "<hr class='styled'>";
 
 	// Form & pre-fills
 	if ($mode_creation)
@@ -24,39 +26,39 @@ function Vue_formulaire_modification_produit($liste_categories, $infos_produit=n
 		// Cas : Création d'un nouveau produit
 		echo "
 		<form style='display: contents;'>
-			<table style='display: inline-block;'>
+			<table style='display: inline-block; font-family: ralewaymedium;'>
 
 				<tr>
 					<td>
-						<b>Article :</b> <input type='text' name='nom_produit'>
+						<b style='color: white'>Article :</b> <input type='text' name='nom_produit'>
 					</td>
 					<!-- FIXME path to article thumbnail in prod -->
-					<td rowspan='4'> <img style='width:250px; border-radius: 16px; margin: 16px;' src='/Projet-SLAM/public/PLACEHOLDER.jpg'>
+					<td rowspan='6'> <img style='width:250px; border-radius: 16px; margin: 16px; box-shadow: black 0 0 16px;' src='/Projet-SLAM/public/PLACEHOLDER.jpg'>
 					</td>
 					
 				</tr>
 				
 				<tr>
 					<td style='vertical-align: top;width : 250px'>
-						<b>Prix (€ HT): </b> <input type='number' name='prix_ht'>
+						<b style='color: white'>Prix (€ HT): </b> <input type='number' name='prix_ht' step='0.01' min='0'>
 					</td>
 				</tr>
 				
 				<tr>
 					<td style='vertical-align: top;width : 250px'>
-						<b>Description :</b> <input type='text' name='description'>
+						<b style='color: white'>Description :</b> <input type='text' name='description'>
 					</td>
 				</tr>
 				
 				<tr>
 					<td style='vertical-align: top;width : 250px'>
-						<b>Résumé :</b> <input type='text' name='resume'>
+						<b style='color: white'>Résumé :</b> <input type='text' name='resume'>
 					</td>
 				</tr>
 				
 				<tr>
 					<td style='vertical-align: top;width : 250px'>
-						<b>Catégorie :</b>
+						<b style='color: white'>Catégorie :</b>
 						<select name='id_categorie'>";
 
 		// Category dropdown filling
@@ -68,11 +70,31 @@ function Vue_formulaire_modification_produit($liste_categories, $infos_produit=n
 		echo "
 					</select>
 					</td>
-					<td><b>Image : </b><input style='width: 80%;' type='url' name='img_src' placeholder=\"lien vers l'image\"></td>
+					</tr>
+					
+					<tr>
+					<td style='vertical-align: top;width : 250px'>
+					<b style='color: white'>TVA :</b>
+					<select name='idTVA'>";
+
+		// Tax dropdown filling
+		foreach ($liste_tva as $ligne_tva)
+        {
+            echo "<option value='$ligne_tva[idTVA]'>$ligne_tva[idTVA] - $ligne_tva[nomTVA]</option>";
+        }
+
+
+		echo "
+					</select>
+                    </td>
+                    </tr>
+					
+					<tr>
+					<td><b style='color: white;'>Image : </b><input style='width: 80%;' type='url' name='img_src' placeholder=\"lien vers l'image\"></td>
 				</tr>
 				
 				<tr>
-					<td colspan='2'><input type='submit' name='confirmation_creer_produit' value='Confirmer'></td>
+					<td colspan='2'><input style='background-color: black;' class='input_styled' type='submit' name='confirmation_creer_produit' value='Confirmer'></td>
 				</tr>
 				
 			</table>
