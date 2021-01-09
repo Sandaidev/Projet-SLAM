@@ -13,7 +13,7 @@ function Vue_Catalogue_menu($liste_categories, $mode_admin=false)
             <li>
                 <form style='border: none; background: none; box-shadow: none; padding: 10px;'>
                     <input type='hidden' name='idCategorie' value='". $categorie["idCategorie"] ."'>
-                    <input style='padding: 6px 0px; margin: 0; text-shadow: 1px 1px 4px black;' type='submit' value='". $categorie["nomCategorie"] ."'>
+                    <input class='input_styled' type='submit' value='". $categorie["nomCategorie"] ."'>
                 </form>
             </li>
         ";
@@ -29,25 +29,27 @@ function Vue_Catalogue_menu($liste_categories, $mode_admin=false)
         </li>
     ";
 
+    echo "</ul>";
+
     if ($mode_admin)
 	{
 		echo "
-		<li>
-			<form style='border: none; background: none; box-shadow: none; padding: 10px;'>
-			    <input class='input_styled' type='submit' name='gerer_produits' value='Gérer les produits'>
-
-    		</form>
-    	</li>
-    	<li>
-			<form style='border: none; background: none; box-shadow: none; padding: 10px;'>
-				<input class='input_styled' type='submit' name='gerer_categories' value='Gérer les catégories'>
-    		</form>
-    	</li>
+        <ul>
+            <li>
+                <form style='border: none; background: none; box-shadow: none; padding: 10px;'>
+                    <input class='input_styled' type='submit' name='gerer_produits' value='Gérer les produits'>
+                </form>
+            </li>
+            <li>
+                <form style='border: none; background: none; box-shadow: none; padding: 10px;'>
+                    <input class='input_styled' type='submit' name='gerer_categories' value='Gérer les catégories'>
+                </form>
+            </li>
+    	</ul>
     	";
 	}
 
     echo "
-        </ul>
     </nav>";
 }
 
