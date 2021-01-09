@@ -193,22 +193,38 @@ function Vue_formulaire_modification_categorie($mode_creation=false, $id_categor
 {
 	if ($mode_creation)
 	{
-		echo "<h1>Création d'une catégorie</h1>";
 		echo "
+        <h1 style='color: white;'>Création d'une catégorie</h1>
+        
+        <hr class='styled'>
+        
 		<table style='margin: auto;'>
 		<form style='display: contents;'>
 			
 			<tr>
-				<td>
+				<td style='color: white; font-family: ralewaylight;'>
 					<b>Nom de la nouvelle catégorie :</b>
 				</td>
 				<td>
 					<input type='text' name='nom_categorie' required placeholder='Nouvelle catégorie'>
 				</td>
 			</tr>
+			
+			<tr>
+			    <td style='color: white; font-family: ralewaylight;'>
+			        <b>Status à la création : </b>
+                </td>
+                <td>
+                    <select name='status_categorie' required>
+                        <option value='1' selected>Activé</option>
+                        <option value='0'>Désactivé</option>
+                    </select>
+                </td>
+            </tr>
+			
 			<tr>
 				<td colspan='2'>
-					<input type='submit' name='confirmation_creer_categorie' value='Créer la catégorie!'>
+					<input style='background-color: black;' class='input_styled' type='submit' name='confirmation_creer_categorie' value='Créer la catégorie!'>
 				</td>
 			</tr>
 		</form>
