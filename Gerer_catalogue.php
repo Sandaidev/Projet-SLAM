@@ -37,6 +37,18 @@ if(isset($_SESSION["idUtilisateur"]))
 		Vue_afficher_liste_produits($liste_produits);
 	}
 
+	elseif (isset($_REQUEST["confirmation_modifier_categorie"]))
+    {
+        Categorie_Modifier(
+            $connexion,
+            $_REQUEST["id_categorie"],
+            $_REQUEST["nom_categorie"],
+            $_REQUEST["status_categorie"]);
+
+        $liste_categories = Categorie_select($connexion);
+        Vue_afficher_liste_gestion_categories($liste_categories);
+    }
+
 	elseif (isset($_REQUEST["activer_liste_produits"]))
     {
         if (isset($_REQUEST["liste_produit"]))
@@ -193,6 +205,16 @@ if(isset($_SESSION["idUtilisateur"]))
     {
         $liste_categories = Categorie_select($connexion);
         Vue_afficher_liste_gestion_categories($liste_categories);
+    }
+
+	elseif (isset($_REQUEST["modifier_categorie"]))
+    {
+        $categorie = categorie_selectParID($connexion, $_REQUEST["liste_categories"][0]);
+        Vue_formulaire_modification_categorie(
+            false,
+            $categorie["idCategorie"],
+            $categorie["nomCategorie"],
+            $categorie["statusCategorie"]);
     }
 
 	elseif (isset($_REQUEST["idProduit"]))
