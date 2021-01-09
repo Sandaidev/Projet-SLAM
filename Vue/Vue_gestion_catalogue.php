@@ -189,13 +189,12 @@ function Vue_formulaire_modification_produit($liste_categories, $infos_produit=n
  * @param bool $mode_creation
  * @return mixed
  */
-function Vue_formulaire_modification_categorie($mode_creation=false, $id_categorie=null, $nom_categorie=null)
+function Vue_formulaire_modification_categorie($mode_creation=false, $id_categorie=null, $nom_categorie=null, $status_categorie=null)
 {
 	if ($mode_creation)
 	{
 		echo "
         <h1 style='color: white;'>Création d'une catégorie</h1>
-        
         <hr class='styled'>
         
 		<table style='margin: auto;'>
@@ -234,7 +233,60 @@ function Vue_formulaire_modification_categorie($mode_creation=false, $id_categor
 
 	else
 	{
-		echo "<h1>Modification d'une catégorie</h1>";
+		echo "
+        <h1 style='color: white;'>Modification d'une catégorie</h1>
+        <hr class='styled'>
+        
+        <table style='margin: auto;'>
+		<form style='display: contents;'>
+			
+			<tr>
+				<td style='color: white; font-family: ralewaylight;'>
+					<b>Nom de la catégorie :</b>
+				</td>
+				<td>
+					<input type='text' name='nom_categorie' required placeholder='Nom de la catégorie' value='$nom_categorie'>
+				</td>
+			</tr>
+			
+			<tr>
+			    <td style='color: white; font-family: ralewaylight;'>
+			        <b>Status : </b>
+                </td>
+                <td>
+                    <select name='status_categorie' required>
+        ";
+
+		if ($status_categorie == "1")
+        {
+            echo "
+                <option value='1' selected>Activé</option>
+                <option value='0'>Désactivé</option>
+            ";
+        }
+
+		else
+        {
+            echo "
+                <option value='1'>Activé</option>
+                <option value='0' selected>Désactivé</option>
+            ";
+        }
+
+        echo "
+                    </select>
+                </td>
+            </tr>
+			
+			<tr>
+				<td colspan='2'>
+				    <input type='hidden' name='id_categorie' value='$id_categorie'>
+					<input style='background-color: black;' class='input_styled' type='submit' name='confirmation_modifier_categorie' value='Enregistrer les modifications'>
+				</td>
+			</tr>
+		</form>
+		</table>
+        ";
 	}
 
 
