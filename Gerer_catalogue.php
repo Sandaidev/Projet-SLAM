@@ -141,18 +141,15 @@ if(isset($_SESSION["idUtilisateur"]))
 	elseif (isset($_REQUEST["creer_categorie"]))
 	{
 		// Cas : Création d'un catégorie (affichage du formulaire)
-
 		Vue_formulaire_modification_categorie(true);
 	}
 
 	elseif (isset($_REQUEST["confirmation_creer_categorie"]))
 	{
 		// Cas : Création d'un catégorie (affichage du formulaire)
-		Categorie_Creer($connexion, $_REQUEST["nom_categorie"]);
-
-		// On doit recharger la page après la création de la catégorie
-		// On doit aussi unset $_REQUEST pour éviter un reload infini de la page.
-		Vue_notifier_msg("La catégorie a été créé.");
+		Categorie_Creer($connexion, $_REQUEST["nom_categorie"], $_REQUEST["status_categorie"]);
+        $liste_categories = Categorie_select($connexion);
+        Vue_afficher_liste_gestion_categories($liste_categories);
 	}
 
 	elseif (isset($_REQUEST["gerer_produits"]))
