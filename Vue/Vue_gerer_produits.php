@@ -2,6 +2,14 @@
 
 function Vue_afficher_liste_gestion_produits($liste_produits, $liste_categories, $liste_tva)
 {
+    /*
+    print_debug($liste_produits);
+    print_debug($liste_categories);
+    print_debug($liste_tva);
+    print_debug($_REQUEST);
+    print_debug($_SESSION);
+    */
+
     echo "<h1 style='color: white;'>Gestion des produits</h1>";
     echo "<hr class='styled'>";
 
@@ -63,7 +71,7 @@ function Vue_afficher_liste_gestion_produits($liste_produits, $liste_categories,
             </td>
             
             <td>
-            $produit[codeProduit]
+            $produit[codeReference]
             </td>
             
             <td>
