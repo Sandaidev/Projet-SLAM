@@ -47,14 +47,15 @@ function categorie_selectParID($connexionPDO, $idCategorie)
  * @param $nomCategorie
  * @return int
  */
-function Categorie_Creer($connexionPDO, $nomCategorie)
+function Categorie_Creer($connexionPDO, $nomCategorie, $statusCategorie)
 {
 
     $requetePreparée = $connexionPDO->prepare(
-        'INSERT INTO `categorie` (`idCategorie`, `nomCategorie`) 
-         VALUES (NULL, :paramNomCategorie);');
+        'INSERT INTO `categorie` (`idCategorie`, `nomCategorie`, `statusCategorie`) 
+         VALUES (NULL, :paramNomCategorie, :paramStatus);');
 
     $requetePreparée->bindParam('paramNomCategorie', $nomCategorie);
+    $requetePreparée->bindParam('paramStatus', $statusCategorie);
 
     $reponse = $requetePreparée->execute(); // $reponse boolean sur l'état de la requête
     $idCategorie = $connexionPDO->lastInsertId();
@@ -82,16 +83,18 @@ function Categorie_Supprimer($connexionPDO, $idCategorie)
  * @param $nomCategorie
  * @return bool
  */
-function Categorie_Modifier($connexionPDO, $idCategorie, $nomCategorie)
+function Categorie_Modifier($connexionPDO, $idCategorie, $nomCategorie, $status_categorie)
 {
     $requetePreparée = $connexionPDO->prepare(
         'UPDATE `categorie` 
-         SET `nomCategorie`= :paramNom    
+         SET `nomCategorie`= :paramNom,
+             `statusCategorie` = :paramStatus
          WHERE idCategorie = :paramID');
 
     $requetePreparée->bindParam('paramNom', $nomCategorie);
     $requetePreparée->bindParam('paramID', $idCategorie);
-    $reponse = $requetePreparée->execute(); //$reponse boolean sur l'état de la requête
+    $requetePreparée->bindParam('paramStatus', $status_categorie);
 
+    $reponse = $requetePreparée->execute(); //$reponse boolean sur l'état de la requête
     return $reponse;
 }
