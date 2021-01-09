@@ -60,34 +60,39 @@ function produit_selectParCategorie($connexionPDO, $idCategorie)
  * @param $idCategorie
  * @param $nomProduit
  * @param $description
- * @param $codeReference
  * @param $prixHT
- * @param $img_src
  * @param $status_produit
  * @param $id_tva
  * @param $resume
  * @return bool
  */
-function produit_creer($connexionPDO, $idCategorie, $nomProduit, $description, $prixHT, $resume, $img_src, $status_produit, $id_tva)
+function produit_creer($connexionPDO, $idCategorie, $nomProduit, $description, $prixHT, $resume, $status_produit, $id_tva)
 {
     $requetePreparée = $connexionPDO->prepare(
         'INSERT INTO `produit` (`idCategorie`, `nomProduit`, `description`, `codeReference`, `prixHT`, `resume`, `imgSrc`, `statusProduit`, `idTVA`)
-         VALUES (:paramIDCategorie, :paramNomProduit, :paramDescription, :paramCodeReference, :paramPrixHT, :paramResume, :paramImgSrc, :paramStatusProduit, :paramIDTVA);');
+         VALUES (:paramIDCategorie, :paramNomProduit, :paramDescription, NULL, :paramPrixHT, :paramResume, NULL, :paramStatusProduit, :paramIDTVA);');
 
     $requetePreparée->bindParam('paramIDCategorie', $idCategorie);
 	$requetePreparée->bindParam('paramNomProduit', $nomProduit);
 	$requetePreparée->bindParam('paramDescription', $description);
 	$requetePreparée->bindParam('paramPrixHT', $prixHT);
     $requetePreparée->bindParam('paramResume', $resume);
-    $requetePreparée->bindParam('paramImgSrc', $img_src);
     $requetePreparée->bindParam('paramStatusProduit', $status_produit);
     $requetePreparée->bindParam('paramIDTVA', $id_tva);
+    $requetePreparée->execute();
 
     // Le code de référence est dynamique
 	// C'est les trois premières lettres du produit suivi de son ID dans la BDD
 	$codeReference_id = $connexionPDO->lastInsertId();
 	$codeReference = substr(strtoupper($nomProduit), 0, 3) . "_" . $codeReference_id;
-	$requetePreparée->bindParam('paramCodeReference', $codeReference);
+	$requetePreparée = $connexionPDO->prepare(
+	  'UPDATE `produit` SET `codeReference` = :paramREF WHERE `produit`.`idProduit` = :paramID;'
+    );
+
+	$id_produit = produit_selectParID($connexionPDO, $codeReference_id)["idProduit"];
+
+    $requetePreparée->bindParam('paramREF', $codeReference);
+    $requetePreparée->bindParam('paramID', $id_produit);
 
 	$reponse = $requetePreparée->execute(); //$reponse boolean sur l'état de la requête
     return $reponse;
