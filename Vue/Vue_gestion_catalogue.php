@@ -29,37 +29,37 @@ function Vue_formulaire_modification_produit($liste_categories, $infos_produit=n
 			<table style='display: inline-block; font-family: ralewaymedium;'>
 
 				<tr>
-					<td>
-						<b style='color: white'>Article :</b> <input type='text' name='nom_produit'>
+					<td style='vertical-align: top; width : 350px; text-align: center;'>
+						<b style='color: white;'>⸻ Nom de l'article ⸻</b> <input style='width: 100%; border-radius: 8px;' type='text' name='nom_produit'>
 					</td>
 					<!-- FIXME path to article thumbnail in prod -->
-					<td rowspan='6'> <img style='width:250px; border-radius: 16px; margin: 16px; box-shadow: black 0 0 16px;' src='/Projet-SLAM/public/PLACEHOLDER.jpg'>
+					<td rowspan='7'> <img style='width:270px; border-radius: 16px; margin: 16px; box-shadow: black 0 0 16px;' src='/Projet-SLAM/public/PLACEHOLDER.jpg'>
 					</td>
 					
 				</tr>
 				
 				<tr>
-					<td style='vertical-align: top;width : 250px'>
-						<b style='color: white'>Prix (€ HT): </b> <input type='number' name='prix_ht' step='0.01' min='0'>
+					<td style='vertical-align: top; text-align: center;'>
+						<b style='color: white'>⸻ Prix (€ HT) ⸻</b><input style='width: 100%;' type='number' name='prix_ht' step='0.01' min='0'>
 					</td>
 				</tr>
 				
 				<tr>
-					<td style='vertical-align: top;width : 250px'>
-						<b style='color: white'>Description :</b> <input type='text' name='description'>
+					<td style='vertical-align: top; text-align: center;'>
+						<b style='color: white'>⸻ Description ⸻</b> <input style='width: 100%; border-radius: 8px;' type='text' name='description'>
 					</td>
 				</tr>
 				
 				<tr>
-					<td style='vertical-align: top;width : 250px'>
-						<b style='color: white'>Résumé :</b> <input type='text' name='resume'>
+					<td style='vertical-align: top; text-align: center;'>
+						<b style='color: white;'>⸻ Résumé ⸻</b> <input style='width: 100%; border-radius: 8px;' type='text' name='resume'>
 					</td>
 				</tr>
 				
 				<tr>
-					<td style='vertical-align: top;width : 250px'>
-						<b style='color: white'>Catégorie :</b>
-						<select name='id_categorie'>";
+					<td style='vertical-align: top; text-align: center;'>
+						<b style='color: white;'>⸻ Catégorie ⸻</b>
+						<select style='width: 100%;' name='id_categorie'>";
 
 		// Category dropdown filling
 		foreach ($liste_categories as $categorie)
@@ -73,9 +73,9 @@ function Vue_formulaire_modification_produit($liste_categories, $infos_produit=n
 					</tr>
 					
 					<tr>
-					<td style='vertical-align: top;width : 250px'>
-					<b style='color: white'>TVA :</b>
-					<select name='idTVA'>";
+					<td style='vertical-align: top;width : 100%; text-align: center;'>
+					<b style='color: white'>⸻ TVA ⸻</b>
+					<select style='width: 100%;' name='idTVA'>";
 
 		// Tax dropdown filling
 		foreach ($liste_tva as $ligne_tva)
@@ -85,14 +85,20 @@ function Vue_formulaire_modification_produit($liste_categories, $infos_produit=n
 
 
 		echo "
-					</select>
+                        </select>
                     </td>
-                    </tr>
-					
-					<tr>
-					<td><b style='color: white;'>Image : </b><input style='width: 80%;' type='url' name='img_src' placeholder=\"lien vers l'image\"></td>
-				</tr>
-				
+                </tr>
+                    
+                <tr>
+                    <td style='text-align: center;'>
+					    <b style='color: white'>⸻ Status à la création ⸻</b>
+					    <select style='width: 100%;' name='status_produit' required>
+					        <option value='1' selected>Activé</option>
+				            <option value='0'>Désactivé</option>
+                        </select>
+                    </td>
+                </tr>
+                    			
 				<tr>
 					<td colspan='2'><input style='background-color: black;' class='input_styled' type='submit' name='confirmation_creer_produit' value='Confirmer'></td>
 				</tr>
@@ -118,7 +124,22 @@ function Vue_formulaire_modification_produit($liste_categories, $infos_produit=n
 					<!-- FIXME path to article thumbnail in prod -->
 					<!--
 					<td rowspan='7'> <img style='width:110px;' src='$infos_produit[imgSrc]'>-->
-					<td rowspan='7'> <img style='width:250px;' src='/Projet-SLAM/public/PLACEHOLDER.jpg'>
+					";
+		if ($infos_produit["imgSrc"] == "")
+        {
+            // Si l'article n'a pas d'image uploadée, on affiche un placeholder
+            $img_src = "/Projet-SLAM/public/PLACEHOLDER.jpg";
+        }
+
+		else
+        {
+            $img_src = $infos_produit["imgSrc"];
+        }
+
+
+		echo "
+					
+					<td rowspan='7'> <img style='width:250px;' src='$img_src'>
 					</td>
 				</tr>
 				
