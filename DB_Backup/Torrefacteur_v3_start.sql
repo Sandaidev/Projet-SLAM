@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 09, 2021 at 01:38 PM
+-- Generation Time: Jan 09, 2021 at 02:51 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -32,6 +32,15 @@ CREATE TABLE `categorie` (
   `nomCategorie` text NOT NULL,
   `statusCategorie` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `categorie`
+--
+
+INSERT INTO `categorie` (`idCategorie`, `nomCategorie`, `statusCategorie`) VALUES
+(1, 'Café', 1),
+(2, 'Thé', 1),
+(3, 'Infusion', 1);
 
 -- --------------------------------------------------------
 
@@ -145,6 +154,16 @@ CREATE TABLE `tva` (
   `tauxTVA` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tva`
+--
+
+INSERT INTO `tva` (`idTVA`, `nomTVA`, `tauxTVA`) VALUES
+(1, '20%', 0.2),
+(2, '15%', 0.15),
+(3, '10%', 0.1),
+(4, '5%', 0.05);
+
 -- --------------------------------------------------------
 
 --
@@ -224,7 +243,7 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT for table `categorie`
 --
 ALTER TABLE `categorie`
-  MODIFY `idCategorie` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idCategorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `commande`
@@ -248,7 +267,7 @@ ALTER TABLE `produit`
 -- AUTO_INCREMENT for table `tva`
 --
 ALTER TABLE `tva`
-  MODIFY `idTVA` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idTVA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `utilisateur`
