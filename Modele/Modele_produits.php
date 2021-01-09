@@ -6,9 +6,25 @@
 function produit_select($connexionPDO)
 {
     $requetePreparée = $connexionPDO->prepare('select * from `produit`');
-    $reponse = $requetePreparée->execute(); //$reponse boolean sur l'état de la requête
+    $reponse = $requetePreparée->execute();
     $tableauReponse = $requetePreparée->fetchAll(PDO::FETCH_ASSOC);
     return $tableauReponse;
+}
+
+function produit_desactiver($connexionPDO, $id_produit)
+{
+    $db_request = $connexionPDO->prepare("UPDATE `produit` SET `statusProduit` = 0 WHERE `produit`.`idProduit` = :paramIDProduit; ");
+    $db_request->bindParam('paramIDProduit', $id_produit);
+    $reponse = $db_request->execute();
+    return $reponse;
+}
+
+function produit_activer($connexionPDO, $id_produit)
+{
+    $db_request = $connexionPDO->prepare("UPDATE `produit` SET `statusProduit` = 1 WHERE `produit`.`idProduit` = :paramIDProduit; ");
+    $db_request->bindParam('paramIDProduit', $id_produit);
+    $reponse = $db_request->execute();
+    return $reponse;
 }
 
 /**
@@ -46,20 +62,26 @@ function produit_selectParCategorie($connexionPDO, $idCategorie)
  * @param $description
  * @param $codeReference
  * @param $prixHT
+ * @param $img_src
+ * @param $status_produit
+ * @param $id_tva
  * @param $resume
  * @return bool
  */
-function produit_creer($connexionPDO, $idCategorie, $nomProduit, $description, $prixHT, $resume)
+function produit_creer($connexionPDO, $idCategorie, $nomProduit, $description, $prixHT, $resume, $img_src, $status_produit, $id_tva)
 {
     $requetePreparée = $connexionPDO->prepare(
-        'INSERT INTO `produit` (`idCategorie`, `nomProduit`, `description`, `codeReference`, `prixHT`, `resume`) 
-         VALUES (:paramIDCategorie, :paramNomProduit, :paramDescription, :paramCodeReference, :paramPrixHT, :paramResume);');
+        'INSERT INTO `produit` (`idCategorie`, `nomProduit`, `description`, `codeReference`, `prixHT`, `resume`, `imgSrc`, `statusProduit`, `idTVA`)
+         VALUES (:paramIDCategorie, :paramNomProduit, :paramDescription, :paramCodeReference, :paramPrixHT, :paramResume, :paramImgSrc, :paramStatusProduit, :paramIDTVA);');
 
     $requetePreparée->bindParam('paramIDCategorie', $idCategorie);
 	$requetePreparée->bindParam('paramNomProduit', $nomProduit);
 	$requetePreparée->bindParam('paramDescription', $description);
 	$requetePreparée->bindParam('paramPrixHT', $prixHT);
     $requetePreparée->bindParam('paramResume', $resume);
+    $requetePreparée->bindParam('paramImgSrc', $img_src);
+    $requetePreparée->bindParam('paramStatusProduit', $status_produit);
+    $requetePreparée->bindParam('paramIDTVA', $id_tva);
 
     // Le code de référence est dynamique
 	// C'est les trois premières lettres du produit suivi de son ID dans la BDD
@@ -103,7 +125,7 @@ function produit_modifier($connexionPDO, $idProduit, $idCategorie, $nomProduit, 
 			`nomProduit`= :paramNomProduit,
 			`description`= :paramDescription,
 			`prixHT`= :paramPrixHT,
-			`resume`= :paramResume,
+			`resume`= :paramResume
 		WHERE `produit`.`idProduit` = :paramIDProduit');
 
     $requetePreparée->bindParam(':paramIDCategorie', $idCategorie);
