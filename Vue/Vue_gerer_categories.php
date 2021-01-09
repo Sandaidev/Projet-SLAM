@@ -18,18 +18,23 @@ function Vue_afficher_liste_gestion_categories($liste_categories)
         <tr>
             <td colspan='7' style='text-align: center;'>
                 <form style='display: contents'>
-                    <button type='submit' name='creer_categorie' style='width: 60%;'>Créer une catégorie</button>
+                    <button type='submit' name='creer_categorie' style='width: 40%;'>Créer une catégorie</button>
                 </form>
-                <hr class='styled' style='width: 80%'>
+                <hr class='styled' style='width: 60%'>
             </td>
         </tr>
-    
+    <tr>
+        <td style='color: white; text-align: center; font-family: ralewaylight;' colspan='3'>
+            <i>Attention : Supprimer une catégorie va également les produits qui y sont liés!</i>
+        </td>
+    </tr>
     <form>
         <tr>
             <td colspan='7'>
                 <button type='submit' name='supprimer_liste_categories'>Supprimer les catégories sélectionnés</button>
                 <button type='submit' name='desactiver_liste_categories'>Désactiver les catégories sélectionnés</button>
                 <button type='submit' name='activer_liste_categories'>Activer les catégories sélectionnés</button>
+                <button type='submit' name='modifier_categorie'>Modifier la catégorie sélectionnée</button>
             </td>
         </tr>
         <tr style='color: white; text-decoration: white underline;'>
