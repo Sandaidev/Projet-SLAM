@@ -75,6 +75,8 @@ function Vue_formulaire_modification_produit($liste_categories, $infos_produit=n
 
 		else
         {
+            $confirm_disable_tag = "";
+
             echo "<select style='width: 100%;' name='id_categorie' required>";
 
             // Category dropdown filling
