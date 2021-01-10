@@ -84,7 +84,11 @@ function produit_creer($connexionPDO, $idCategorie, $nomProduit, $description, $
     // Le code de référence est dynamique
 	// C'est les trois premières lettres du produit suivi de son ID dans la BDD
 	$codeReference_id = $connexionPDO->lastInsertId();
-	$codeReference = substr(strtoupper($nomProduit), 0, 3) . "_" . $codeReference_id;
+
+    $nomProduit_code = utf8_encode($nomProduit);
+    $nomProduit_code = iconv('UTF-8', 'ASCII//TRANSLIT', $nomProduit_code);
+
+	$codeReference = substr(strtoupper($nomProduit_code), 0, 3) . "_" . $codeReference_id;
 	$requetePreparée = $connexionPDO->prepare(
 	  'UPDATE `produit` SET `codeReference` = :paramREF WHERE `produit`.`idProduit` = :paramID;'
     );
