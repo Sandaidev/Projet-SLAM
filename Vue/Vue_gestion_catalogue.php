@@ -32,7 +32,7 @@ function Vue_formulaire_modification_produit($liste_categories, $infos_produit=n
 					<td style='vertical-align: top; width : 350px; text-align: center;'>
 						<b style='color: white;'>⸻ Nom de l'article ⸻</b> <input style='width: 100%; border-radius: 8px;' type='text' name='nom_produit' required>
 					</td>
-					<td rowspan='7'> <img style='width:270px; border-radius: 16px; margin: 16px; box-shadow: black 0 0 16px;' src='$GLOBALS[site_baseurl]/public/PLACEHOLDER.jpg'>
+					<td rowspan='7'> <img style='width:350px; border-radius: 16px; margin: 16px; box-shadow: black 0 0 16px;' src='$GLOBALS[site_baseurl]/public/PLACEHOLDER.jpg'>
 					</td>
 					
 				</tr>
@@ -134,7 +134,7 @@ function Vue_formulaire_modification_produit($liste_categories, $infos_produit=n
 		// Cas : Modification d'un produit
 		echo "
 		<form style='display: contents;'>
-			<table style='display: inline-block; font-family: ralewaymedium;'>
+			<table style='display: inline-block; font-family: ralewaymedium; max-width: 45%;'>
 
 				<tr>
 					<td style='vertical-align: top; width : 350px; text-align: center;'>
@@ -145,12 +145,12 @@ function Vue_formulaire_modification_produit($liste_categories, $infos_produit=n
 
 		if ($infos_produit["imgSrc"] == "")
         {
-            echo "<img style='width:270px; border-radius: 16px; margin: 16px; box-shadow: black 0 0 16px;' src='$GLOBALS[site_baseurl]/public/PLACEHOLDER.jpg'>";
+            echo "<img style='width:350px; border-radius: 16px; margin: 16px; box-shadow: black 0 0 16px;' src='$GLOBALS[site_baseurl]/public/PLACEHOLDER.jpg'>";
         }
 
 		else
         {
-            echo "<img style='width:270px; border-radius: 16px; margin: 16px; box-shadow: black 0 0 16px;' src='$GLOBALS[site_baseurl]/public/$infos_produit[imgSrc]'>";
+            echo "<img style='width:350px; border-radius: 16px; margin: 16px; box-shadow: black 0 0 16px;' src='$GLOBALS[site_baseurl]/public/$infos_produit[imgSrc]'>";
         }
 
 		echo "
@@ -251,14 +251,24 @@ function Vue_formulaire_modification_produit($liste_categories, $infos_produit=n
                         </select>
                     </td>
                 </tr>
-                    			
+
 				<tr>
-					<td colspan='2'><input style='background-color: black;' class='input_styled' type='submit' name='confirmation_modifier_produit' value='Confirmer'></td>
-				</tr>
+					<td><input style='background-color: black;' class='input_styled' type='submit' name='confirmation_modifier_produit' value='Confirmer'></td>
 				
+		</form>
+        <form>
+                    <td style='text-align: center;'>
+                        <b style='color: white'>⸻ Image ⸻</b>
+                        <form action='Gerer_catalogue.php' method='POST' enctype='multipart/form-data'>
+                            <input style='color: white; width: 100%;' type='file' name='fichier'/>
+                            <input type='hidden' name='idProduit' value='$infos_produit[idProduit]'>
+                            <input class='input_styled' type='submit' style='width: 100%; background-color: black;' value=\"Importer l'image\">
+                        </form>
+                    </td>
+                  </tr>
+        </form>
 			</table>
 			</button>
-		</form>
 		";
 	}
 

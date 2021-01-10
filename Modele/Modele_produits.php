@@ -1,4 +1,14 @@
 <?php
+
+function produit_modifier_url_image($connexioPDO, $id_produit, $url_image)
+{
+    $request = $connexioPDO->prepare("UPDATE `produit` SET `imgSrc` = :paramURL WHERE `produit`.`idProduit` = :paramID;");
+    $request->bindParam("paramURL", $url_image);
+    $request->bindParam("paramID", $id_produit);
+    $reponse = $request->execute();
+    return $reponse;
+}
+
 /**
  * @param $connexionPDO : connexion à la base de données
  * @return mixed : le tableau des produits ou null (something went wrong...)
