@@ -66,17 +66,19 @@ function Vue_afficher_liste_produits($liste_produits)
 
 	else
 	{
+        echo "
+        <h1 style='color: white;'>Liste des produits</h1>
+        <hr class='styled'>
+        ";
 
-		foreach ($liste_produits as $produit)
+
+        foreach ($liste_produits as $produit)
 		{
 			echo "
 			<form style='display: contents;'>
 				<input type='hidden' name='idProduit' value='$produit[idProduit]'>
 				<input type='hidden' name='idCategorie' value='$_REQUEST[idCategorie]'>
-				<button onclick='submit();' width='25%' 
-            	onmouseover=\"this.style.background='#FFFF99';this.style.color='#FF0000';\"
-            	onmouseout=\"this.style.background='';this.style.color='';\"
-            	style='margin: 20px'>
+				<button onclick='submit();' style='margin: 16px'>
 			
 					<table style='padding: 20px; display: inline-block; height: 300px;'>
 						
