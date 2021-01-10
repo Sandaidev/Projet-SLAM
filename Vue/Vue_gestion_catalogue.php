@@ -30,45 +30,63 @@ function Vue_formulaire_modification_produit($liste_categories, $infos_produit=n
 
 				<tr>
 					<td style='vertical-align: top; width : 350px; text-align: center;'>
-						<b style='color: white;'>⸻ Nom de l'article ⸻</b> <input style='width: 100%; border-radius: 8px;' type='text' name='nom_produit'>
+						<b style='color: white;'>⸻ Nom de l'article ⸻</b> <input style='width: 100%; border-radius: 8px;' type='text' name='nom_produit' required>
 					</td>
-					<!-- FIXME path to article thumbnail in prod -->
-					<td rowspan='7'> <img style='width:270px; border-radius: 16px; margin: 16px; box-shadow: black 0 0 16px;' src='/Projet-SLAM/public/PLACEHOLDER.jpg'>
+					<td rowspan='7'> <img style='width:270px; border-radius: 16px; margin: 16px; box-shadow: black 0 0 16px;' src='$GLOBALS[site_baseurl]/public/PLACEHOLDER.jpg'>
 					</td>
 					
 				</tr>
 				
 				<tr>
 					<td style='vertical-align: top; text-align: center;'>
-						<b style='color: white'>⸻ Prix (€ HT) ⸻</b><input style='width: 100%;' type='number' name='prix_ht' step='0.01' min='0'>
+						<b style='color: white'>⸻ Prix (€ HT) ⸻</b><input style='width: 100%;' type='number' name='prix_ht' step='0.01' min='0' required>
 					</td>
 				</tr>
 				
 				<tr>
 					<td style='vertical-align: top; text-align: center;'>
-						<b style='color: white'>⸻ Description ⸻</b> <input style='width: 100%; border-radius: 8px;' type='text' name='description'>
+						<b style='color: white'>⸻ Description ⸻</b> <input style='width: 100%; border-radius: 8px;' type='text' name='description' required>
 					</td>
 				</tr>
 				
 				<tr>
 					<td style='vertical-align: top; text-align: center;'>
-						<b style='color: white;'>⸻ Résumé ⸻</b> <input style='width: 100%; border-radius: 8px;' type='text' name='resume'>
+						<b style='color: white;'>⸻ Résumé ⸻</b> <input style='width: 100%; border-radius: 8px;' type='text' name='resume' required>
 					</td>
 				</tr>
 				
 				<tr>
 					<td style='vertical-align: top; text-align: center;'>
 						<b style='color: white;'>⸻ Catégorie ⸻</b>
-						<select style='width: 100%;' name='id_categorie'>";
+						";
 
-		// Category dropdown filling
-		foreach ($liste_categories as $categorie)
-		{
-			echo "<option value='$categorie[idCategorie]'>$categorie[idCategorie] - $categorie[nomCategorie]</option>";
-		}
+		if (sizeof($liste_categories) == 0)
+        {
+            // Si il n'y a aucune catégories, on désactive la liste
+
+            $confirm_disable_tag = "disabled";
+
+            echo "
+                <select style='width: 100%;' name='id_categorie' disabled>
+                    <option>Vous devez d'abord créer une catégorie!</option>
+                </select>
+                ";
+        }
+
+		else
+        {
+            echo "<select style='width: 100%;' name='id_categorie' required>";
+
+            // Category dropdown filling
+            foreach ($liste_categories as $categorie)
+            {
+                echo "<option value='$categorie[idCategorie]'>$categorie[idCategorie] - $categorie[nomCategorie]</option>";
+            }
+
+            echo "</select>";
+        }
 
 		echo "
-					</select>
 					</td>
 					</tr>
 					
@@ -100,7 +118,7 @@ function Vue_formulaire_modification_produit($liste_categories, $infos_produit=n
                 </tr>
                     			
 				<tr>
-					<td colspan='2'><input style='background-color: black;' class='input_styled' type='submit' name='confirmation_creer_produit' value='Confirmer'></td>
+					<td colspan='2'><input style='background-color: black;' class='input_styled' type='submit' name='confirmation_creer_produit' value='Confirmer' $confirm_disable_tag></td>
 				</tr>
 				
 			</table>
@@ -113,89 +131,127 @@ function Vue_formulaire_modification_produit($liste_categories, $infos_produit=n
 	{
 		// Cas : Modification d'un produit
 		echo "
-		<form style='display: contents;'>			
-			<input type='hidden' name='id_produit' value='$infos_produit[idProduit]'>
-			<table style='padding: 20px; display: inline-block;'>
+		<form style='display: contents;'>
+			<table style='display: inline-block; font-family: ralewaymedium;'>
 
 				<tr>
-					<td style='vertical-align: top;width : 250px'>
-						<b>Article :</b> <input type='text' name='nom_produit' value='$infos_produit[nomProduit]'>
+					<td style='vertical-align: top; width : 350px; text-align: center;'>
+						<b style='color: white;'>⸻ Nom de l'article ⸻</b> <input style='width: 100%; border-radius: 8px;' type='text' name='nom_produit' value='$infos_produit[nomProduit]'>
 					</td>
-					<!-- FIXME path to article thumbnail in prod -->
-					<!--
-					<td rowspan='7'> <img style='width:110px;' src='$infos_produit[imgSrc]'>-->
+					<td rowspan='7'>
 					";
+
 		if ($infos_produit["imgSrc"] == "")
         {
-            // Si l'article n'a pas d'image uploadée, on affiche un placeholder
-            $img_src = "/Projet-SLAM/public/PLACEHOLDER.jpg";
+            echo "<img style='width:270px; border-radius: 16px; margin: 16px; box-shadow: black 0 0 16px;' src='$GLOBALS[site_baseurl]/public/PLACEHOLDER.jpg'>";
         }
 
 		else
         {
-            $img_src = $infos_produit["imgSrc"];
+            echo "<img style='width:270px; border-radius: 16px; margin: 16px; box-shadow: black 0 0 16px;' src='$GLOBALS[site_baseurl]/public/$infos_produit[imgSrc]'>";
         }
-
 
 		echo "
 					
-					<td rowspan='7'> <img style='width:250px;' src='$img_src'>
 					</td>
 				</tr>
 				
 				<tr>
-					<td style='vertical-align: top;width : 250px'>
-						<b>Référence : </b> <input type='text' name='code_reference' value='$infos_produit[codeReference]'>
+					<td style='vertical-align: top; text-align: center;'>
+						<b style='color: white'>⸻ Prix (€ HT) ⸻</b><input style='width: 100%;' type='number' name='prix_ht' step='0.01' min='0' value='$infos_produit[prixHT]'>
 					</td>
 				</tr>
 				
 				<tr>
-					<td style='vertical-align: top;width : 250px'>
-						<b>Prix : </b> <input type='number' name='prix_ht' value='$infos_produit[prixHT]'> € HT
+					<td style='vertical-align: top; text-align: center;'>
+						<b style='color: white'>⸻ Description ⸻</b> <input style='width: 100%; border-radius: 8px;' type='text' name='description' value='$infos_produit[description]'>
 					</td>
 				</tr>
 				
 				<tr>
-					<td style='vertical-align: top;width : 250px'>
-						<b>Description :</b> <input type='text' name='description' value='$infos_produit[description]'>
+					<td style='vertical-align: top; text-align: center;'>
+						<b style='color: white;'>⸻ Résumé ⸻</b> <input style='width: 100%; border-radius: 8px;' type='text' name='resume' value='$infos_produit[resume]'>
 					</td>
 				</tr>
 				
 				<tr>
-					<td style='vertical-align: top;width : 250px'>
-						<b>Résumé :</b> <input type='text' name='resume' value='$infos_produit[resume]'>
-					</td>
-				</tr>
-				
-				<tr>
-					<td style='vertical-align: top;width : 250px'>
-						<b>Catégorie :</b>
-						<select name='id_categorie'>";
+					<td style='vertical-align: top; text-align: center;'>
+						<b style='color: white;'>⸻ Catégorie ⸻</b>
+						<select style='width: 100%;' name='id_categorie'>";
 
-							// Category dropdown filling
-							foreach ($liste_categories as $categorie)
-							{
-								if ($categorie["idCategorie"] == $infos_produit[id_categorie])
-								{
-									echo "<option value='$categorie[idCategorie]' selected>$categorie[nomCategorie]</option>";
-								}
+        // Category dropdown filling
+        foreach ($liste_categories as $categorie)
+        {
+            if ($infos_produit["idCategorie"] == $categorie["idCategorie"])
+            {
+                echo "<option value='$categorie[idCategorie]' selected>$categorie[idCategorie] - $categorie[nomCategorie]</option>";
+            }
 
-								else
-								{
-									echo "<option value='$categorie[idCategorie]'>$categorie[nomCategorie]</option>";
-								}
-							}
+            else
+            {
+                echo "<option value='$categorie[idCategorie]'>$categorie[idCategorie] - $categorie[nomCategorie]</option>";
+            }
+        }
 
-						echo "
-						</select>
+        echo "
+					</select>
 					</td>
-				</tr>
-				
+					</tr>
+					
+					<tr>
+					<td style='vertical-align: top;width : 100%; text-align: center;'>
+					<b style='color: white'>⸻ TVA ⸻</b>
+					<select style='width: 100%;' name='idTVA'>";
+
+        // Tax dropdown filling
+        foreach ($liste_tva as $ligne_tva)
+        {
+            if ($infos_produit["idTVA"] == $ligne_tva["idTVA"])
+            {
+                echo "<option value='$ligne_tva[idTVA]' selected>$ligne_tva[idTVA] - $ligne_tva[nomTVA]</option>";
+            }
+
+            else
+            {
+                echo "<option value='$ligne_tva[idTVA]'>$ligne_tva[idTVA] - $ligne_tva[nomTVA]</option>";
+            }
+        }
+
+
+        echo "
+                        </select>
+                    </td>
+                </tr>
+                    
+                <tr>
+                    <td style='text-align: center;'>
+					    <b style='color: white'>⸻ Status ⸻</b>
+					    <select style='width: 100%;' name='status_produit' required>
+					    ";
+
+        if ($infos_produit["statusProduit"] == "1")
+        {
+            echo "
+                <option value='1' selected>Activé</option>
+			    <option value='0'>Désactivé</option>
+            ";
+        }
+
+        else
+        {
+            echo "
+                <option value='1'>Activé</option>
+			    <option value='0' selected>Désactivé</option>
+            ";
+        }
+
+        echo "
+                        </select>
+                    </td>
+                </tr>
+                    			
 				<tr>
-					<td>
-						<input type='submit' name='confirmation_modifier_produit' value='Confirmer'>
-						<input type='submit' name='supprimer_produit' value='Supprimer ce produit' style='background-color: red'>
-					</td>
+					<td colspan='2'><input style='background-color: black;' class='input_styled' type='submit' name='confirmation_modifier_produit' value='Confirmer'></td>
 				</tr>
 				
 			</table>
