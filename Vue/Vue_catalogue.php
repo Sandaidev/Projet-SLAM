@@ -1,5 +1,8 @@
 <?php
 
+global $site_baseurl;
+$site_baseurl = "/Projet-SLAM";
+
 function Vue_Catalogue_menu($liste_categories, $mode_admin=false)
 {
     echo "
@@ -81,8 +84,20 @@ function Vue_afficher_liste_produits($liste_produits)
 							<td style='vertical-align: top;width : 250px'>
 								<b>Article :</b> $produit[nomProduit]
 							</td>
-							<!-- FIXME path to article thumbnail in prod -->
-							<td rowspan='4'> <img style='width:110px;' src='/Projet-SLAM/public/PLACEHOLDER.jpg'>
+							<td rowspan='4'>
+							";
+
+            if ($produit["imgSrc"] == "")
+            {
+                echo "<img style='width:110px;' src='$GLOBALS[site_baseurl]/public/PLACEHOLDER.jpg'>";
+            }
+
+            else
+            {
+                echo "<img style='width:110px;' src='$GLOBALS[site_baseurl]/public/$produit[imgSrc]'>";
+            }
+
+            echo "
 							</td>
 						</tr>
 						
@@ -131,8 +146,22 @@ function Vue_afficher_produit_detail($produit)
 					<td style='vertical-align: top;width : 250px'>
 						<b>Article :</b> $produit[nomProduit]
 					</td>
-					<!-- FIXME path to article thumbnail in prod -->
-					<td rowspan='4'> <img style='width:110px;' src='/Projet-SLAM/public/PLACEHOLDER.jpg'>
+					
+					<td rowspan='4'> 
+					
+					";
+
+	if ($produit["imgSrc"] == "")
+    {
+        echo "<img style='width:110px;' src='$GLOBALS[site_baseurl]/public/PLACEHOLDER.jpg'>";
+    }
+
+	else
+    {
+        echo "<img style='width:110px;' src='$GLOBALS[site_baseurl]/public/$produit[imgSrc]'>";
+    }
+
+	echo "
 					</td>
 				</tr>
 				
